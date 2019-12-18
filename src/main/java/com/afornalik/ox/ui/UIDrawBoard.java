@@ -13,20 +13,26 @@ class UIDrawBoard {
     String draw() {
         StringBuilder sb = new StringBuilder();
         sb.append("\n  ");
-        for(int i = 1;i < (board.getBound()*2)+1 ; i++){
-            if(i%2 == 0){
-                sb.append((i/2));
-            }else {
-                sb.append(" ");
+        for (int i = 1; i < (board.getBound() * 2) + 1; i++) {
+            if (i % 2 == 0) {
+                sb.append((i / 2));
+            } else {
+                if (i < 19) {
+                    sb.append(" ");
+                }
             }
         }
         sb.append("\n");
-        for(int i = 1;i <= board.getBound(); i++){
-            sb.append(i+" ");
-            for (int k = 0 ; k< (board.getBound()*2)+1 ; k++){
-                if(k%2==0){
+        for (int i = 1; i <= board.getBound(); i++) {
+            if (i < 10) {
+                sb.append(i).append(" ");
+            } else {
+                sb.append(i);
+            }
+            for (int k = 0; k < (board.getBound() * 2) + 1; k++) {
+                if (k % 2 == 0) {
                     sb.append("|");
-                }else {
+                } else {
                     sb.append("_");
                 }
             }

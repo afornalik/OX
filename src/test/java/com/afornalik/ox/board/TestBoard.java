@@ -1,6 +1,5 @@
 package com.afornalik.ox.board;
 
-import com.afornalik.ox.board.Board;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;

@@ -1,8 +1,5 @@
 package com.afornalik.ox.ui;
 
-import org.mockito.BDDMockito;
-import org.mockito.Mockito;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -14,11 +11,7 @@ import static org.testng.Assert.assertEquals;
 @Test
 public class TestUI  {
 
-
-    //not completed -> need to know how to check output method
-
-    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
+    private ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
     @BeforeMethod
     public void init()
     {
@@ -33,7 +26,7 @@ public class TestUI  {
         ui.sayHello();
 
         //then
-        assertEquals(byteArrayOutputStream.toString() , "Welcome to game OX\n");
+        assertEquals(byteArrayOutputStream.toString() , "Welcome to game OX");
     }
 
 }

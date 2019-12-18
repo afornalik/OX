@@ -2,7 +2,7 @@ package com.afornalik.ox.board;
 
 class BoardField {
 
-    FieldStatus fieldStatus;
+    private FieldStatus fieldStatus;
 
     FieldStatus showStatus() {
         return fieldStatus;

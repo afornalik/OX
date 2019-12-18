@@ -1,7 +1,7 @@
 package com.afornalik.ox.ui;
 
-public class UI {
-    public void sayHello() {
-        System.out.println("Welcome to game OX");
+class UI {
+    void sayHello() {
+        System.out.print("Welcome to game OX");
     }
 }
