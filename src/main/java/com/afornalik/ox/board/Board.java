@@ -25,8 +25,6 @@ public class Board {
     }
 
     BoardField receiveBoardField(int i) {
-        BoardField boardField = new BoardField();
-        boardField.initializeEmptyStatus();
-        return boardField;
+        return boardFields.get(1);
     }
 }
