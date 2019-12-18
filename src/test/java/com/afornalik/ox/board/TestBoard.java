@@ -25,4 +25,15 @@ public class TestBoard {
         //then
         assertEquals(board.getBound(),BOUND_FOUR);
     }
+
+    public void shouldCreateBoardAndInitializeAllFieldWithEmptyStatus() {
+        //given
+        Board board = new Board(BOUND_THREE);
+
+        //when
+        boolean result = board.initializeAllField();
+
+        //then
+        assertTrue(result);
+    }
 }

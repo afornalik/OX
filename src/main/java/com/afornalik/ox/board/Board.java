@@ -12,4 +12,8 @@ public class Board {
     public int getBound() {
         return bound;
     }
+
+    boolean initializeAllField() {
+        return true;
+    }
 }
