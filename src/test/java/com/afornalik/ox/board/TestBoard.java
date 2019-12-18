@@ -2,6 +2,8 @@ package com.afornalik.ox.board;
 
 import org.testng.annotations.Test;
 
+import java.util.TreeMap;
+
 import static org.testng.Assert.*;
 
 @Test
@@ -26,14 +28,26 @@ public class TestBoard {
         assertEquals(board.getBound(),BOUND_FOUR);
     }
 
-    public void shouldCreateBoardAndInitializeAllFieldWithEmptyStatus() {
+    public void shouldCreateAndInitializeBoard() {
         //given
         Board board = new Board(BOUND_THREE);
 
         //when
-        boolean result = board.initializeAllField();
+        boolean result = board.initializeAllField(new TreeMap<>());
 
         //then
         assertTrue(result);
+    }
+
+    public void shouldReturnEmptyStatusFromBoardFieldAfterInitialization() {
+        //given
+        Board board = new Board(BOUND_THREE);
+        board.initializeAllField(new TreeMap<>());
+
+        //when
+        BoardField result = board.receiveBoardField(0);
+
+        //then
+        assertEquals(result.showStatus(),FieldStatus.EMPTY);
     }
 }

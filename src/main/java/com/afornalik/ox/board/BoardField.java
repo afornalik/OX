@@ -12,7 +12,7 @@ class BoardField {
         fieldStatus = FieldStatus.EMPTY;
     }
 
-    public void changeStatus(FieldStatus newFieldStatus) {
+    void changeStatus(FieldStatus newFieldStatus) {
         fieldStatus = newFieldStatus;
     }
 }
