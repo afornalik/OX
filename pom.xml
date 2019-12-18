@@ -7,8 +7,7 @@
     <artifactId>OX</artifactId>
     <version>0.1</version>
     <name>OX</name>
-    <url></url>
-    <description></description>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,7 +41,6 @@
 		    <archive>
 			<manifest>
 			     <addClasspath>true</addClasspath>
-			     <mainClass><!-- enter path to main class --></mainClass>
 			</manifest>
 		    </archive>
 		</configuration>
