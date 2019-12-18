@@ -28,6 +28,7 @@ public class TestBoard {
         assertEquals(board.getBound(),BOUND_FOUR);
     }
 
+
     public void shouldCreateAndInitializeBoard() {
         //given
         Board board = new Board(BOUND_THREE);
@@ -39,15 +40,40 @@ public class TestBoard {
         assertTrue(result);
     }
 
-    public void shouldReturnEmptyStatusFromBoardFieldAfterInitialization() {
+
+    public void shouldReturnEmptyStatusFromBoardFieldAfterInitialization() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
         board.initializeAllField(new TreeMap<>());
 
         //when
-        BoardField result = board.receiveBoardField(0);
+        BoardField result1 = board.receiveBoardField(0);
+        BoardField result2 = board.receiveBoardField(4);
+        BoardField result3 = board.receiveBoardField(8);
 
         //then
-        assertEquals(result.showStatus(),FieldStatus.EMPTY);
+        assertEquals(result1.showStatus(),FieldStatus.EMPTY);
+        assertEquals(result2.showStatus(),FieldStatus.EMPTY);
+        assertEquals(result3.showStatus(),FieldStatus.EMPTY);
+    }
+
+    @Test(expectedExceptions = OutOfBoardException.class)
+    public void shouldThrowExceptionOutOfBoardExceptionWithMinusValue() throws OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+        board.initializeAllField(new TreeMap<>());
+
+        //when
+        BoardField result1 = board.receiveBoardField(-1);
+    }
+
+    @Test(expectedExceptions = OutOfBoardException.class)
+    public void shouldThrowExceptionOutOfBoardExceptionWithTooHighValue() throws OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+        board.initializeAllField(new TreeMap<>());
+
+        //when
+        BoardField result1 = board.receiveBoardField(9);
     }
 }

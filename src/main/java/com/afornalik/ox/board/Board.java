@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class Board {
 
-    private Map<Integer,BoardField> boardFields;
+    private Map<Integer, BoardField> boardFields;
     private final int bound;
 
     public Board(int bound) {
@@ -15,16 +15,19 @@ public class Board {
         return bound;
     }
 
-    boolean initializeAllField(Map<Integer,BoardField> mapImplementation) {
+    boolean initializeAllField(Map<Integer, BoardField> mapImplementation) {
         int fieldQuantity = bound * bound;
         boardFields = mapImplementation;
-        for (int i = 0; i < fieldQuantity; i++){
-            boardFields.put(i,new BoardField());
+        for (int i = 0; i < fieldQuantity; i++) {
+            boardFields.put(i, new BoardField());
         }
         return true;
     }
 
-    BoardField receiveBoardField(int i) {
+    BoardField receiveBoardField(int i) throws OutOfBoardException {
+        if (i < 0 || i > (boardFields.size()-1)) {
+            throw new OutOfBoardException();
+        }
         return boardFields.get(1);
     }
 }

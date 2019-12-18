@@ -18,7 +18,7 @@ public class TestUI  {
         System.setOut(new PrintStream(byteArrayOutputStream));
     }
 
-    public void shouldPrintGreetingsToUser() {
+    public void shouldPrintGreetingToUser() {
         //given
         UI ui = new UI();
 

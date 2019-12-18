@@ -21,9 +21,9 @@ public class TestUIDrawBoard {
 
         //then
         assertThat(result).isEqualTo("\n   1 2 3\n" +
-                "1 |_|_|_|\n"+
-                "2 |_|_|_|\n"+
-                "3 |_|_|_|\n");
+                                       "1 |_|_|_|\n"+
+                                       "2 |_|_|_|\n"+
+                                       "3 |_|_|_|\n");
     }
 
     public void shouldReturnStringWithDrawBoard10x10() {
