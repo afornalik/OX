@@ -9,8 +9,6 @@ public class Board {
         this.bound = bound;
     }
 
-
-
     public int getBound() {
         return bound;
     }
