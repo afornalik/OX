@@ -1,4 +1,11 @@
 package com.afornalik.ox.board;
 
-public class BoardField {
+class BoardField {
+    FieldStatus showStatus() {
+        return FieldStatus.EMPTY;
+    }
+
+    void initializeEmptyStatus() {
+
+    }
 }
