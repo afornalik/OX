@@ -20,7 +20,7 @@ public class TestBoardField {
         assertEquals(boardField.showStatus(),FIELD_STATUS_EMPTY);
     }
 
-    public void shouldSetUpFieldValueToXAfterInitialization() {
+    public void shouldSetUpFieldValueToXAfterInitialization() throws ChangeFieldStatusException {
         //given
         BoardField boardField = new BoardField();
 
@@ -31,12 +31,25 @@ public class TestBoardField {
         assertEquals(boardField.showStatus(),FIELD_STATUS_X);
     }
 
-    public void shouldSetUpFieldValueToOAfterInitialization() {
+    public void shouldSetUpFieldValueToOAfterInitialization() throws ChangeFieldStatusException {
         //given
         BoardField boardField = new BoardField();
 
         //then
         boardField.changeStatus(FIELD_STATUS_O);
+
+        //then
+        assertEquals(boardField.showStatus(),FIELD_STATUS_O);
+    }
+
+    @Test(expectedExceptions = ChangeFieldStatusException.class)
+    public void shouldPreventChangingStateFromOToX() throws ChangeFieldStatusException {
+        //given
+        BoardField boardField = new BoardField();
+
+        //then
+        boardField.changeStatus(FIELD_STATUS_O);
+        boardField.changeStatus(FIELD_STATUS_X);
 
         //then
         assertEquals(boardField.showStatus(),FIELD_STATUS_O);

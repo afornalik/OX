@@ -12,7 +12,11 @@ class BoardField {
         return fieldStatus;
     }
 
-    void changeStatus(FieldStatus newFieldStatus) {
-        this.fieldStatus = newFieldStatus;
+    void changeStatus(FieldStatus newFieldStatus) throws ChangeFieldStatusException {
+        if (fieldStatus != FieldStatus.EMPTY) {
+            throw new ChangeFieldStatusException();
+        }else {
+            this.fieldStatus = newFieldStatus;
+        }
     }
 }

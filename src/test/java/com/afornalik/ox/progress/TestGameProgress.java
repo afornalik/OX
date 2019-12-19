@@ -17,9 +17,6 @@ public class TestGameProgress {
     public void shouldCreateGame() {
         //given
         Board board = new Board(BOUND_THREE);
-       /* UIDrawBoard uiDrawBoard = new UIDrawBoard(board);
-        UIOutputDestination uiConsole = new UIConsole();
-       */
         UI ui = Mockito.mock(UI.class);
         GameProgress gameProgress = new GameProgress(ui,board);
 
@@ -28,6 +25,5 @@ public class TestGameProgress {
 
         //then
         verify(ui, times(1)).printBoard();
-
     }
 }
