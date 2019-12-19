@@ -1,9 +1,19 @@
 package com.afornalik.ox.progress;
 
-import com.afornalik.ox.board.Board;
-import com.afornalik.ox.board.FieldStatus;
+import com.afornalik.ox.board.*;
 
 public class OneMove {
-    public OneMove(Board board, int indexOfField, FieldStatus fieldStatusX) {
+
+
+    private final Board board;
+
+
+    public OneMove(Board board) {
+        this.board = board;
+    }
+
+    public void makeMove(int indexOfField, FieldStatus fieldStatusX) throws OutOfBoardException, ChangeFieldStatusException {
+        BoardField boardField = board.receiveBoardField(indexOfField);
+        boardField.changeStatus(fieldStatusX);
     }
 }

@@ -1,4 +1,4 @@
 package com.afornalik.ox.board;
 
-class OutOfBoardException extends Exception  {
+public class OutOfBoardException extends Exception  {
 }

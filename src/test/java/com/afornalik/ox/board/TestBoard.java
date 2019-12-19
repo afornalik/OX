@@ -29,18 +29,6 @@ public class TestBoard {
     }
 
 
-    public void shouldCreateAndInitializeBoard() {
-        //given
-        Board board = new Board(BOUND_THREE);
-
-        //when
-        boolean result = board.initializeAllField(new TreeMap<>());
-
-        //then
-        assertTrue(result);
-    }
-
-
     public void shouldReturnEmptyStatusFromBoardFieldAfterInitialization() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);

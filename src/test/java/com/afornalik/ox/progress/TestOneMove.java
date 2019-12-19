@@ -1,10 +1,12 @@
 package com.afornalik.ox.progress;
 
-import com.afornalik.ox.board.Board;
-import com.afornalik.ox.board.FieldStatus;
+import com.afornalik.ox.board.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.TreeMap;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
 public class TestOneMove {
@@ -16,10 +18,25 @@ public class TestOneMove {
     public void shouldCreateMove() {
         //when
         Board board = new Board(BOUND_THREE);
-        OneMove oneMove = new OneMove(board,INDEX_OF_FIELD,FIELD_STATUS_X);
+        OneMove oneMove = new OneMove(board);
 
         //then
         Assert.assertNotNull(oneMove);
     }
 
+
+    public void shouldChangeFieldStatusOnBoardFromEmptyToX() throws OutOfBoardException, ChangeFieldStatusException {
+        //given
+        Board board = new Board(BOUND_THREE);
+        board.initializeAllField(new TreeMap<>());
+        OneMove oneMove = new OneMove(board);
+
+        //when
+        assertThat(board.receiveBoardField(INDEX_OF_FIELD)).isEqualTo(new BoardField());
+        oneMove.makeMove(INDEX_OF_FIELD,FIELD_STATUS_X);
+        BoardField boardFieldAfter = board.receiveBoardField(INDEX_OF_FIELD);
+
+        //then
+        Assert.assertEquals(boardFieldAfter.showStatus(),FieldStatus.X);
+    }
 }

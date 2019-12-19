@@ -15,13 +15,12 @@ public class Board {
         return bound;
     }
 
-    public boolean initializeAllField(Map<Integer, BoardField> mapImplementation) {
+    public void initializeAllField(Map<Integer, BoardField> mapImplementation) {
         int fieldQuantity = bound * bound;
         boardFields = mapImplementation;
         for (int i = 0; i < fieldQuantity; i++) {
             boardFields.put(i, new BoardField());
         }
-        return true;
     }
 
     public BoardField receiveBoardField(int i) throws OutOfBoardException {
