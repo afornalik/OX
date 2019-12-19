@@ -55,4 +55,30 @@ public class TestBoardField {
         assertEquals(boardField.showStatus(),FIELD_STATUS_O);
     }
 
+    @Test(expectedExceptions = ChangeFieldStatusException.class)
+    public void shouldPreventChangingStateFromXToO() throws ChangeFieldStatusException {
+        //given
+        BoardField boardField = new BoardField();
+
+        //then
+        boardField.changeStatus(FIELD_STATUS_X);
+        boardField.changeStatus(FIELD_STATUS_O);
+
+        //then
+        assertEquals(boardField.showStatus(),FIELD_STATUS_X);
+    }
+
+    @Test(expectedExceptions = ChangeFieldStatusException.class)
+    public void shouldPreventChangingStateFromXOrOToEmpty() throws ChangeFieldStatusException {
+        //given
+        BoardField boardField = new BoardField();
+
+        //then
+        boardField.changeStatus(FIELD_STATUS_X);
+        boardField.changeStatus(FIELD_STATUS_EMPTY);
+
+        //then
+        assertEquals(boardField.showStatus(),FIELD_STATUS_X);
+    }
+
 }
