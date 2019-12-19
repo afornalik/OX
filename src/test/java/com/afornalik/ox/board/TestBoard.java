@@ -63,7 +63,7 @@ public class TestBoard {
 
 
     @Test(expectedExceptions = OutOfBoardException.class)
-    public void shouldThrowExceptionOutOfBoardExceptionWithMinusValue() throws OutOfBoardException {
+    public void shouldThrowOutOfBoardExceptionWithMinusValue() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
         board.initializeAllField(new TreeMap<>());
@@ -73,7 +73,7 @@ public class TestBoard {
     }
 
     @Test(expectedExceptions = OutOfBoardException.class)
-    public void shouldThrowExceptionOutOfBoardExceptionWithTooHighValue() throws OutOfBoardException {
+    public void shouldThrowOutOfBoardExceptionWithTooHighValue() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
         board.initializeAllField(new TreeMap<>());

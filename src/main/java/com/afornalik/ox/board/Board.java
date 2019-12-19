@@ -15,7 +15,7 @@ public class Board {
         return bound;
     }
 
-    boolean initializeAllField(Map<Integer, BoardField> mapImplementation) {
+    public boolean initializeAllField(Map<Integer, BoardField> mapImplementation) {
         int fieldQuantity = bound * bound;
         boardFields = mapImplementation;
         for (int i = 0; i < fieldQuantity; i++) {
@@ -24,7 +24,7 @@ public class Board {
         return true;
     }
 
-    BoardField receiveBoardField(int i) throws OutOfBoardException {
+    public BoardField receiveBoardField(int i) throws OutOfBoardException {
         if (i < 0 || i > (boardFields.size()-1)) {
             throw new OutOfBoardException();
         }

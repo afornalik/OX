@@ -69,7 +69,7 @@ public class TestBoardField {
     }
 
     @Test(expectedExceptions = ChangeFieldStatusException.class)
-    public void shouldPreventChangingStateFromXOrOToEmpty() throws ChangeFieldStatusException {
+    public void shouldPreventChangingStateFromXToEmpty() throws ChangeFieldStatusException {
         //given
         BoardField boardField = new BoardField();
 
