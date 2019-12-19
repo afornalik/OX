@@ -50,12 +50,17 @@ public class TestBoard {
         BoardField result1 = board.receiveBoardField(0);
         BoardField result2 = board.receiveBoardField(4);
         BoardField result3 = board.receiveBoardField(8);
+        BoardField result4 = board.receiveBoardField(3);
+        BoardField result5 = board.receiveBoardField(7);
 
         //then
         assertEquals(result1.showStatus(),FieldStatus.EMPTY);
         assertEquals(result2.showStatus(),FieldStatus.EMPTY);
         assertEquals(result3.showStatus(),FieldStatus.EMPTY);
+        assertNotEquals(result4.showStatus(),FieldStatus.O);
+        assertNotEquals(result5.showStatus(),FieldStatus.X);
     }
+
 
     @Test(expectedExceptions = OutOfBoardException.class)
     public void shouldThrowExceptionOutOfBoardExceptionWithMinusValue() throws OutOfBoardException {
