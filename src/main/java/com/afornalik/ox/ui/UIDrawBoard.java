@@ -2,7 +2,7 @@ package com.afornalik.ox.ui;
 
 import com.afornalik.ox.board.Board;
 
-class UIDrawBoard {
+public class UIDrawBoard {
 
     private final Board board;
 
