@@ -22,7 +22,7 @@ public class TestUI {
 
         //then
         verify(uiDrawBoard,times(1)).draw();
-        verify(uiConsole,times(1)).say(uiDrawBoard.draw());
+        verify(uiConsole,times(1)).print(uiDrawBoard.draw());
     }
 
     public void shouldPrintBoardOnOtherOutput() {
@@ -36,6 +36,6 @@ public class TestUI {
 
         //then
         verify(uiDrawBoard,times(1)).draw();
-        verify(uiLogger,times(1)).say(uiDrawBoard.draw());
+        verify(uiLogger,times(1)).print(uiDrawBoard.draw());
     }
 }

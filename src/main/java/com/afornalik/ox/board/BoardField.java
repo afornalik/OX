@@ -2,17 +2,13 @@ package com.afornalik.ox.board;
 
 class BoardField {
 
-    private FieldStatus fieldStatus;
+    private final FieldStatus fieldStatus;
 
-    BoardField() {
-        this.fieldStatus = FieldStatus.EMPTY;
+    BoardField(FieldStatus fieldStatus) {
+        this.fieldStatus = fieldStatus;
     }
 
     FieldStatus showStatus() {
         return fieldStatus;
-    }
-
-    void changeStatus(FieldStatus newFieldStatus) {
-        this.fieldStatus = newFieldStatus;
     }
 }

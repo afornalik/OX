@@ -9,7 +9,7 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-        Board board = new Board(7);
+        Board board = new Board(Integer.valueOf(args[0]));
         UI ui = new UI(new UIConsole(),new UIDrawBoard(board));
 
         ui.printBoard();

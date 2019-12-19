@@ -2,7 +2,6 @@ package com.afornalik.ox.ui;
 
 public class UI {
 
-
     private final UIOutputDestination uiOutputDestination;
     private final UIDrawBoard uiDrawBoard;
 
@@ -12,6 +11,6 @@ public class UI {
     }
 
     public void printBoard() {
-        uiOutputDestination.say(uiDrawBoard.draw());
+        uiOutputDestination.print(uiDrawBoard.draw());
     }
 }

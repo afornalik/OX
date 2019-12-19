@@ -1,6 +1,5 @@
 package com.afornalik.ox.ui;
 
-import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -21,7 +20,7 @@ public class TestUIConsole {
         UIConsole uiConsole = new UIConsole();
 
         //when
-        uiConsole.say(DUMMY_STRING);
+        uiConsole.print(DUMMY_STRING);
 
         //then
         assertThat(byteArrayOutputStream.toString()).isEqualTo(DUMMY_STRING);
