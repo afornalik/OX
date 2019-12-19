@@ -24,4 +24,18 @@ public class TestUI {
         verify(uiDrawBoard,times(1)).draw();
         verify(uiConsole,times(1)).say(uiDrawBoard.draw());
     }
+
+    public void shouldPrintBoardOnOtherOutput() {
+        //given
+        UILogger uiLogger = Mockito.mock(UILogger.class);
+        UIDrawBoard uiDrawBoard = Mockito.mock(UIDrawBoard.class);
+        UI ui = new UI(uiLogger,uiDrawBoard);
+
+        //when
+        ui.printBoard();
+
+        //then
+        verify(uiDrawBoard,times(1)).draw();
+        verify(uiLogger,times(1)).say(uiDrawBoard.draw());
+    }
 }

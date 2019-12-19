@@ -3,15 +3,15 @@ package com.afornalik.ox.ui;
 public class UI {
 
 
-    private final UIConsole uiConsole;
+    private final UIOutputDestination uiOutputDestination;
     private final UIDrawBoard uiDrawBoard;
 
-    public UI(UIConsole uiConsole, UIDrawBoard uiDrawBoard) {
-        this.uiConsole = uiConsole;
+    public UI(UIOutputDestination uiOutputDestination, UIDrawBoard uiDrawBoard) {
+        this.uiOutputDestination = uiOutputDestination;
         this.uiDrawBoard = uiDrawBoard;
     }
 
     public void printBoard() {
-        uiConsole.say(uiDrawBoard.draw());
+        uiOutputDestination.say(uiDrawBoard.draw());
     }
 }
