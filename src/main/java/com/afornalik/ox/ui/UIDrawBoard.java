@@ -6,7 +6,7 @@ public class UIDrawBoard {
 
     private final Board board;
 
-    UIDrawBoard(Board board) {
+    public UIDrawBoard(Board board) {
         this.board = board;
     }
 

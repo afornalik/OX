@@ -11,7 +11,7 @@ public class UI {
         this.uiDrawBoard = uiDrawBoard;
     }
 
-    public void say() {
+    public void printBoard() {
         uiConsole.say(uiDrawBoard.draw());
     }
 }

@@ -18,7 +18,7 @@ public class TestUI {
         UI ui = new UI(uiConsole,uiDrawBoard);
 
         //when
-        ui.say();
+        ui.printBoard();
 
         //then
         verify(uiDrawBoard,times(1)).draw();
