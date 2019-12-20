@@ -3,6 +3,7 @@ package com.afornalik.ox;
 import com.afornalik.ox.board.Board;
 import com.afornalik.ox.board.FieldStatus;
 import com.afornalik.ox.board.OutOfBoardException;
+import com.afornalik.ox.board.OverrideFieldException;
 import com.afornalik.ox.progress.GameProgress;
 import com.afornalik.ox.ui.UI;
 import com.afornalik.ox.ui.UIConsole;
@@ -44,6 +45,9 @@ public class MainApp {
                 board.insertBoardField(position,fieldStatus);
             }catch (NumberFormatException | OutOfBoardException e){
                 System.out.println("use numbers or 'x'");
+            } catch (OverrideFieldException e) {
+                System.out.println("Field is already selected ! move again");
+                mod--;
             }
             gameProgress.start();
             System.out.println("\n");

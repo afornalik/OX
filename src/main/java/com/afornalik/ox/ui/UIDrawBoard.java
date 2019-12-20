@@ -16,9 +16,7 @@ public class UIDrawBoard {
         this.board = board;
         this.boardDimension = new BigInteger(String.valueOf(board.getBound()))
                 .multiply(BigInteger.TWO).add(BigInteger.ONE);
-
     }
-
 
     String draw() throws OutOfBoardException {
         int index = 0;

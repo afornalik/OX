@@ -3,6 +3,7 @@ package com.afornalik.ox.ui;
 import com.afornalik.ox.board.Board;
 import com.afornalik.ox.board.FieldStatus;
 import com.afornalik.ox.board.OutOfBoardException;
+import com.afornalik.ox.board.OverrideFieldException;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,7 +32,7 @@ public class TestUIDrawBoard {
                                        "3 |_|_|_|\n");
     }
 
-    public void shouldReturnStringWithTwoMarkDrawBoard3x3() throws OutOfBoardException {
+    public void shouldReturnStringWithTwoMarkDrawBoard3x3() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
         UIDrawBoard uiDrawBoard = new UIDrawBoard(board);
@@ -48,7 +49,7 @@ public class TestUIDrawBoard {
                                        "3 |_|_|_|\n");
     }
 
-    public void shouldReturnStringWithFourMarkDrawBoard3x3() throws OutOfBoardException {
+    public void shouldReturnStringWithFourMarkDrawBoard3x3() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
         UIDrawBoard uiDrawBoard = new UIDrawBoard(board);
@@ -92,7 +93,7 @@ public class TestUIDrawBoard {
                                        "10|_|_|_|_|_|_|_|_|_|_|\n");
     }
 
-    public void shouldReturnStringWithMarkedFieldBoard10x10() throws OutOfBoardException {
+    public void shouldReturnStringWithMarkedFieldBoard10x10() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_TEN);
         UIDrawBoard uiDrawBoard = new UIDrawBoard(board);

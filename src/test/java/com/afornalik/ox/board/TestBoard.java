@@ -44,13 +44,15 @@ public class TestBoard {
     }
 
 
+
     @Test(expectedExceptions = OutOfBoardException.class)
-    public void shouldThrowOutOfBoardExceptionWithMinusValue() throws OutOfBoardException {
+    public void shouldThrowOutOfBoardExceptionWhenInsertTooLowValue() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
 
         //when
-        BoardField result1 = board.receiveBoardField(-1);
+        board.insertBoardField(MINUS_INDEX, FIELD_STATUS_X);
+
     }
 
     @Test(expectedExceptions = OutOfBoardException.class)
@@ -62,7 +64,7 @@ public class TestBoard {
         BoardField result1 = board.receiveBoardField(9);
     }
 
-    public void shouldInsertMarkXIntoBoard() throws OutOfBoardException {
+    public void shouldInsertMarkXIntoBoard() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
 
@@ -74,13 +76,13 @@ public class TestBoard {
         assertThat(result.showStatus()).isEqualTo(FIELD_STATUS_X);
     }
 
-    @Test(expectedExceptions = OutOfBoardException.class)
-    public void shouldThrowOutOfBoardExceptionWhenInsertTooLowValue() throws OutOfBoardException {
+    @Test(expectedExceptions = OverrideFieldException.class)
+    public void shouldPreventFromOverrideMarkInBoard() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
 
         //when
-        board.insertBoardField(MINUS_INDEX, FIELD_STATUS_X);
-
+        board.insertBoardField(INDEX_1,FIELD_STATUS_X);
+        board.insertBoardField(INDEX_1,FIELD_STATUS_O);
     }
 }

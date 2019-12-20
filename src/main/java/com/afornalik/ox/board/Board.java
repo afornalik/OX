@@ -22,12 +22,16 @@ public class Board {
         return bound;
     }
 
-    public void insertBoardField(int indexOfField, FieldStatus fieldStatusX) throws OutOfBoardException {
+    public void insertBoardField(int indexOfField, FieldStatus fieldStatusX) throws OutOfBoardException, OverrideFieldException {
         if (indexOfField < minValue || indexOfField > maxValue.intValue()) {
             throw new OutOfBoardException("Out of board - min value is : " + minValue + ", and max value is : " + maxValue.toString());
         }
-        BoardField boardField = new BoardField(fieldStatusX);
-        boardFields.put(indexOfField, boardField);
+        if(receiveBoardField(indexOfField) == null) {
+            BoardField boardField = new BoardField(fieldStatusX);
+            boardFields.put(indexOfField, boardField);
+        }else {
+            throw new OverrideFieldException();
+        }
     }
 
     public BoardField receiveBoardField(int indexOfField) throws OutOfBoardException {

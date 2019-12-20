@@ -27,7 +27,7 @@ public class TestOneMove {
     }
 
 
-    public void shouldChangeFieldStatusOnBoardFromEmptyToX() throws OutOfBoardException {
+    public void shouldChangeFieldStatusOnBoardFromEmptyToX() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = Mockito.mock(Board.class);
         OneMove oneMove = new OneMove(board);
