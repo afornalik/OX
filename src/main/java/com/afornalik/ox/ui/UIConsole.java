@@ -10,6 +10,7 @@ public class UIConsole implements UIOutputDestination, UIInput {
         this.scanner = scanner;
     }
 
+    @Override
     public void print(String dummyString) {
         System.out.print(dummyString);
     }
