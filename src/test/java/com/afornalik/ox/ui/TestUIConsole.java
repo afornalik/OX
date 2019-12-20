@@ -21,7 +21,7 @@ public class TestUIConsole {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
         Scanner scanner = Mockito.mock(Scanner.class);
-        UIOutputDestination uiConsole = new UIConsole(scanner);
+        UIOperations uiConsole = new UIConsole(scanner);
 
         //when
         uiConsole.print(DUMMY_STRING);
@@ -34,7 +34,7 @@ public class TestUIConsole {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
         Mockito.when(scanner.next()).thenReturn(DUMMY_STRING);
-        UIInput uiInput = new UIConsole(scanner);
+        UIOperations uiInput = new UIConsole(scanner);
 
         //when
         String result = uiInput.read();

@@ -1,6 +1,6 @@
 package com.afornalik.ox.ui;
 
-public class UILogger implements UIOutputDestination, UIInput {
+public class UILogger implements UIOperations {
     public void print(String draw) {
         //TODO implement logger version
     }

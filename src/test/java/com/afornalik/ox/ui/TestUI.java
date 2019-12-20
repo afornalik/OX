@@ -47,7 +47,7 @@ public class TestUI {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
         when(scanner.next()).thenReturn(NUMBER_VALUE);
-        UIOutputDestination uiInput = new UIConsole(scanner);
+        UIOperations uiInput = new UIConsole(scanner);
         UI ui = new UI(uiInput,null);
 
         //when

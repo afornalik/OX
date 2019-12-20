@@ -2,7 +2,7 @@ package com.afornalik.ox.ui;
 
 import java.util.Scanner;
 
-public class UIConsole implements UIOutputDestination, UIInput {
+public class UIConsole implements  UIOperations {
 
     private final Scanner scanner;
 

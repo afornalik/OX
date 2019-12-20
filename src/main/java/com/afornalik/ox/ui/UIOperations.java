@@ -1,5 +1,8 @@
 package com.afornalik.ox.ui;
 
-public interface UIOutputDestination {
+public interface UIOperations {
+
     void print(String draw);
+
+    String read();
 }
