@@ -25,7 +25,8 @@ public class Board {
 
 
     public void insertMark(int indexOfField, FieldStatus fieldStatusX) {
-
+        BoardField boardField = new BoardField(fieldStatusX);
+        boardFields.put(indexOfField,boardField);
     }
 
 
