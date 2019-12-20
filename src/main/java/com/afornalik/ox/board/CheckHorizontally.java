@@ -15,16 +15,19 @@ public class CheckHorizontally implements CheckBoard {
         int tempLength = 1;
         boolean leftFlag = true;
         boolean rightFlag = true;
-        for (int i = 1; i <= conditionLength * 2; i++) {
-            //to correct !
-            BoardField leftField = board.receiveBoardField(location - i);
-            if (leftField != null && (leftFlag)) {
-                if (leftField.showStatus() == fieldStatus) {
-                    tempLength++;
+        for (int i = 1; i <= conditionLength; i++) {
+            if(location-i % board.getBound() >= 0) {
+                BoardField leftField = board.receiveBoardField(location - i);
+                if (leftField != null && (leftFlag)) {
+                    if (leftField.showStatus() == fieldStatus) {
+                        tempLength++;
+                    }
+                } else {
+                    leftFlag = false;
                 }
-            } else {
-                leftFlag = false;
-            }
+            }else {
+                leftFlag= false;
+                }
             BoardField rightField = board.receiveBoardField(location + i);
             if (rightField != null && (rightFlag)) {
                 if (rightField.showStatus() == fieldStatus) {

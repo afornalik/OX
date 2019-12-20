@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 @Test
 public class TestCheckHorizontally {
 
-    private static final int BOARD = 5;
+    private static final int BOARD = 3;
     private static final int CONDITION_LENGTH = 3;
 
     public void shouldCheckHorizontally() throws OutOfBoardException {
@@ -34,6 +34,21 @@ public class TestCheckHorizontally {
 
         //then
         Assertions.assertThat(result).isTrue();
+    }
+
+    public void shouldCheckHorizontallyReturnFalse() throws OverrideFieldException, OutOfBoardException {
+        //given
+        Board board = new Board(BOARD);
+        board.insertBoardField(2,FieldStatus.O);
+        board.insertBoardField(3,FieldStatus.O);
+        board.insertBoardField(4,FieldStatus.O);
+        CheckBoard checkBoard = new CheckHorizontally(board, CONDITION_LENGTH);
+
+        //when
+        boolean result = checkBoard.check(3,FieldStatus.O);
+
+        //then
+        Assertions.assertThat(result).isFalse();
     }
 
 
