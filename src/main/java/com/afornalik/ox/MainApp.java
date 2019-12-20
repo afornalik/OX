@@ -26,7 +26,7 @@ public class MainApp {
             System.out.println("range set to 3");
             board = new Board(3);
         }
-        GameProgress gameProgress = new GameProgress(new UI(new UIConsole(),new UIDrawBoard(board)),board);
+        GameProgress gameProgress = new GameProgress(new UI(new UIConsole(new Scanner(System.in)),new UIDrawBoard(board)),board);
         String control;
         int mod= 0;
         do {
