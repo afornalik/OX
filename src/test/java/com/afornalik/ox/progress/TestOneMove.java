@@ -1,6 +1,8 @@
 package com.afornalik.ox.progress;
 
 import com.afornalik.ox.board.*;
+import org.mockito.BDDMockito;
+import org.mockito.Mockito;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,6 +28,15 @@ public class TestOneMove {
 
 
     public void shouldChangeFieldStatusOnBoardFromEmptyToX()  {
+        //given
+        Board board = Mockito.mock(Board.class);
+        OneMove oneMove = new OneMove(board);
+
+        //when
+        oneMove.makeMove(INDEX_OF_FIELD,FIELD_STATUS_X);
+
+        //then
+        BDDMockito.verify(board,Mockito.times(1)).insertMark(INDEX_OF_FIELD,FIELD_STATUS_X);
 
     }
 }

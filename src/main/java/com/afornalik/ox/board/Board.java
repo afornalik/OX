@@ -23,6 +23,12 @@ public class Board {
     }
 
 
+
+    public void insertMark(int indexOfField, FieldStatus fieldStatusX) {
+
+    }
+
+
     BoardField receiveBoardField(int i) throws OutOfBoardException {
         if (i < minValue || i > maxValue.intValue()) {
             throw new OutOfBoardException("Out of board - min value is : " +minValue+", and max value is : "+maxValue.toString());
@@ -31,6 +37,5 @@ public class Board {
         }
         return boardFields.get(1);
     }
-
 
 }

@@ -15,16 +15,21 @@ optymistyczne :
 19.12.2019
 
 pesymistyczne :
-* wypchniecie na mastera 
-* utworzenie nowej gałęzi
-* utworzenie interfejsu użytkownika do obsługi planszy
+* wypchniecie na mastera - recenzja (w trakcie)
+* utworzenie interfejsu użytkownika do obsługi planszy (-)
     
 realistyczne :
-* można zrobić ruch na planszy 3 x 3 
-* na nowej gałęzi stworzenie klasy konfiguracyjnej gry
-* testy
+* można zrobić ruch na planszy 3 x 3 (-)
+* na nowej gałęzi stworzenie klasy konfiguracyjnej gry (-)
+* testy (+)
 
 optymistyczne :
-* zakonczenie zbierania danych od użytkownika do ustawienia konfiguracji
-* walidacja wprowadzonych danych
-* walidacja sprowadzony koordynatów 
+* zakonczenie zbierania danych od użytkownika do ustawienia konfiguracji (-)
+* walidacja wprowadzonych danych (-)
+* walidacja sprowadzony koordynatów (-)
+
+----
+
+20.12.2019
+
+patrz 19.12.2019
