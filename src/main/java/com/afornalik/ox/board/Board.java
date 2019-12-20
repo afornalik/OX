@@ -13,7 +13,7 @@ public class Board {
 
     public Board(int bound) {
         this.bound = bound;
-        this.maxValue= new BigInteger(String.valueOf(bound))
+        this.maxValue = new BigInteger(String.valueOf(bound))
                 .multiply(BigInteger.valueOf(bound))
                 .subtract(BigInteger.ONE);
     }
@@ -22,21 +22,20 @@ public class Board {
         return bound;
     }
 
-
-
-    public void insertMark(int indexOfField, FieldStatus fieldStatusX) {
+    public void insertBoardField(int indexOfField, FieldStatus fieldStatusX) throws OutOfBoardException {
+        if (indexOfField < minValue || indexOfField > maxValue.intValue()) {
+            throw new OutOfBoardException("Out of board - min value is : " + minValue + ", and max value is : " + maxValue.toString());
+        }
         BoardField boardField = new BoardField(fieldStatusX);
-        boardFields.put(indexOfField,boardField);
+        boardFields.put(indexOfField, boardField);
     }
 
-
-    BoardField receiveBoardField(int i) throws OutOfBoardException {
-        if (i < minValue || i > maxValue.intValue()) {
-            throw new OutOfBoardException("Out of board - min value is : " +minValue+", and max value is : "+maxValue.toString());
-        } else if (boardFields.get(i) == null) {
+    BoardField receiveBoardField(int indexOfField) throws OutOfBoardException {
+        if (indexOfField < minValue || indexOfField > maxValue.intValue()) {
+            throw new OutOfBoardException("Out of board - min value is : " + minValue + ", and max value is : " + maxValue.toString());
+        } else if (boardFields.get(indexOfField) == null) {
             return null;
         }
         return boardFields.get(1);
     }
-
 }

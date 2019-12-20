@@ -27,7 +27,7 @@ public class TestOneMove {
     }
 
 
-    public void shouldChangeFieldStatusOnBoardFromEmptyToX()  {
+    public void shouldChangeFieldStatusOnBoardFromEmptyToX() throws OutOfBoardException {
         //given
         Board board = Mockito.mock(Board.class);
         OneMove oneMove = new OneMove(board);
@@ -36,7 +36,7 @@ public class TestOneMove {
         oneMove.makeMove(INDEX_OF_FIELD,FIELD_STATUS_X);
 
         //then
-        BDDMockito.verify(board,Mockito.times(1)).insertMark(INDEX_OF_FIELD,FIELD_STATUS_X);
+        BDDMockito.verify(board,Mockito.times(1)).insertBoardField(INDEX_OF_FIELD,FIELD_STATUS_X);
 
     }
 }

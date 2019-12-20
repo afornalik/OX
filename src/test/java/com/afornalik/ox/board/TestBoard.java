@@ -1,11 +1,8 @@
 package com.afornalik.ox.board;
 
-import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
 
-import java.util.TreeMap;
-
+import static org.assertj.core.api.Assertions.*;
 import static org.testng.Assert.*;
 
 @Test
@@ -14,7 +11,7 @@ public class TestBoard {
     private static final int BOUND_FOUR = 4;
     private static final int BOUND_THREE = 3;
     private static final int INDEX_1 = 1;
-    private static final int INDEX_2 = 2;
+    private static final int MINUS_INDEX = -1;
     private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
     private static final FieldStatus FIELD_STATUS_O = FieldStatus.O;
 
@@ -23,7 +20,7 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE);
 
         //then
-        assertEquals(board.getBound(),BOUND_THREE);
+        assertEquals(board.getBound(), BOUND_THREE);
     }
 
     public void shouldCreateBoard4x4() {
@@ -31,7 +28,7 @@ public class TestBoard {
         Board board = new Board(BOUND_FOUR);
 
         //then
-        assertEquals(board.getBound(),BOUND_FOUR);
+        assertEquals(board.getBound(), BOUND_FOUR);
     }
 
 
@@ -70,10 +67,22 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE);
 
         //when
-        board.insertMark(INDEX_1,FIELD_STATUS_X);
+        board.insertBoardField(INDEX_1, FIELD_STATUS_X);
         BoardField result = board.receiveBoardField(INDEX_1);
 
         //then
-        Assertions.assertThat(result.showStatus()).isEqualTo(FIELD_STATUS_X);
+        assertThat(result.showStatus()).isEqualTo(FIELD_STATUS_X);
     }
+
+    @Test(expectedExceptions = OutOfBoardException.class)
+    public void shouldThrowOutOfBoardExceptionWhenInsertTooLowValue() throws OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+
+        //when
+        board.insertBoardField(MINUS_INDEX, FIELD_STATUS_X);
+
+    }
+
+
 }

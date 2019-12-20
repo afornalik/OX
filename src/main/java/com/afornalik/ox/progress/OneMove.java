@@ -11,6 +11,10 @@ public class OneMove {
     }
 
     public void makeMove(int indexOfField, FieldStatus fieldStatusX) {
-        board.insertMark(indexOfField,fieldStatusX);
+        try {
+            board.insertBoardField(indexOfField,fieldStatusX);
+        } catch (OutOfBoardException e) {
+            e.printStackTrace();
+        }
     }
 }
