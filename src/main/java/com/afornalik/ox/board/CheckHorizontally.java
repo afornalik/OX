@@ -11,7 +11,35 @@ public class CheckHorizontally implements CheckBoard {
     }
 
     @Override
-    public boolean check() {
+    public boolean check(int location, FieldStatus fieldStatus) throws OutOfBoardException {
+        int tempLength = 1;
+        boolean leftFlag = true;
+        boolean rightFlag = true;
+        for (int i = 1; i <= conditionLength * 2; i++) {
+            //to correct !
+            BoardField leftField = board.receiveBoardField(location - i);
+            if (leftField != null && (leftFlag)) {
+                if (leftField.showStatus() == fieldStatus) {
+                    tempLength++;
+                }
+            } else {
+                leftFlag = false;
+            }
+            BoardField rightField = board.receiveBoardField(location + i);
+            if (rightField != null && (rightFlag)) {
+                if (rightField.showStatus() == fieldStatus) {
+                    tempLength++;
+                }
+            } else {
+                rightFlag = false;
+            }
+            if (tempLength >= conditionLength) {
+                return true;
+            }
+            if (!leftFlag && !rightFlag){
+                return false;
+            }
+        }
         return false;
     }
 }
