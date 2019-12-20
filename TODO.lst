@@ -1,0 +1,21 @@
+1.pobiera od użytkownika rozmiar planszy
+2.pobiera od użytkownika długość sekwencji wygrywającej
+3.sprawdza czy sekwencja nie jest dłuższa niż długość planszy
+4.pobiera nazwę pierwszego gracza
+5.pobiera nazwę drugiego gracza
+6.sprawdza poprawność nazw graczy(powiedzmy)
+7.tworzy gracza
+8.ustawia ilość punktów na 0
+9.dodaje 3 punkty do puli gracza po wygranym meczu
+10.dodaje 1 punkt do puli gracza po zremisowanym meczu
+11.dodaje 1 punkt obu graczom
+12.ustawia czy zaczyna x czy 0
+13.jeżeli zaczyna x to następnie zaczyna 0 a potem znowu x (i na odwrót)
+14.powstaje obiek settings
+15.można ustawić 0 lub X na polu
+16.nie można zmienić raz postawionego znaku na inny
+17.wypisanie planszy po oddaniu ruchu
+18.przyjęcie danych od użytkownika o koordynatach punku.
+19.sprawdzenie czy koordynaty nie wybiegają poza planszę.
+20.jeżeli koordnaty wybiegają za planszę to ...
+21.

@@ -7,8 +7,7 @@
     <artifactId>OX</artifactId>
     <version>0.1</version>
     <name>OX</name>
-    <url></url>
-    <description></description>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,12 +15,26 @@
     </properties>
 
     <dependencies>
-	<dependency>
-    	    <groupId>org.testng</groupId>
-    	    <artifactId>testng</artifactId>
-    	    <version>7.0.0</version>
-    	    <scope>test</scope>
-	</dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.0.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.2.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <!-- use 2.9.1 for Java 7 projects -->
+            <version>3.11.1</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -34,20 +47,20 @@
                     <release>11</release>
                 </configuration>
             </plugin>
-	    <plugin>
-	   	<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-jar-plugin</artifactId>
-		<version>3.2.0</version>
-		<configuration>
-		    <archive>
-			<manifest>
-			     <addClasspath>true</addClasspath>
-			     <mainClass><!-- enter path to main class --></mainClass>
-			</manifest>
-		    </archive>
-		</configuration>
-	    </plugin>
-	</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.afornalik.ox.MainApp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
 
