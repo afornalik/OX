@@ -10,7 +10,7 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-        Board board = new Board(9);
+        Board board = new Board(Integer.valueOf(args[0]));
         GameProgress gameProgress = new GameProgress(new UI(new UIConsole(),new UIDrawBoard(board)),board);
 
         gameProgress.start();

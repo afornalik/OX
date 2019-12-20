@@ -20,7 +20,7 @@ public class TestUIConsole {
         UIConsole uiConsole = new UIConsole();
 
         //when
-        uiConsole.say(DUMMY_STRING);
+        uiConsole.print(DUMMY_STRING);
 
         //then
         assertThat(byteArrayOutputStream.toString()).isEqualTo(DUMMY_STRING);

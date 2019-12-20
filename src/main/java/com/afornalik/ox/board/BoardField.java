@@ -2,25 +2,18 @@ package com.afornalik.ox.board;
 
 import java.util.Objects;
 
-public class BoardField {
+class BoardField {
 
-    private FieldStatus fieldStatus;
+    private final FieldStatus fieldStatus;
 
-    public BoardField() {
-        this.fieldStatus = FieldStatus.EMPTY;
+    BoardField(FieldStatus fieldStatus) {
+        this.fieldStatus = fieldStatus;
     }
 
-    public FieldStatus showStatus() {
+    FieldStatus showStatus() {
         return fieldStatus;
     }
 
-    public void changeStatus(FieldStatus newFieldStatus) throws ChangeFieldStatusException {
-        if (fieldStatus != FieldStatus.EMPTY) {
-            throw new ChangeFieldStatusException();
-        }else {
-            this.fieldStatus = newFieldStatus;
-        }
-    }
 
     @Override
     public boolean equals(Object o) {

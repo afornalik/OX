@@ -25,18 +25,7 @@ public class TestOneMove {
     }
 
 
-    public void shouldChangeFieldStatusOnBoardFromEmptyToX() throws OutOfBoardException, ChangeFieldStatusException {
-        //given
-        Board board = new Board(BOUND_THREE);
-        board.initializeAllField(new TreeMap<>());
-        OneMove oneMove = new OneMove(board);
+    public void shouldChangeFieldStatusOnBoardFromEmptyToX()  {
 
-        //when
-        assertThat(board.receiveBoardField(INDEX_OF_FIELD)).isEqualTo(new BoardField());
-        oneMove.makeMove(INDEX_OF_FIELD,FIELD_STATUS_X);
-        BoardField boardFieldAfter = board.receiveBoardField(INDEX_OF_FIELD);
-
-        //then
-        Assert.assertEquals(boardFieldAfter.showStatus(),FieldStatus.X);
     }
 }
