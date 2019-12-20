@@ -1,5 +1,7 @@
 package com.afornalik.ox.ui;
 
+import com.afornalik.ox.board.OutOfBoardException;
+
 public class UI {
 
     private final UIOutputDestination uiOutputDestination;
@@ -11,6 +13,10 @@ public class UI {
     }
 
     public void printBoard() {
-        uiOutputDestination.print(uiDrawBoard.draw());
+        try {
+            uiOutputDestination.print(uiDrawBoard.draw());
+        } catch (OutOfBoardException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -30,12 +30,12 @@ public class Board {
         boardFields.put(indexOfField, boardField);
     }
 
-    BoardField receiveBoardField(int indexOfField) throws OutOfBoardException {
+    public BoardField receiveBoardField(int indexOfField) throws OutOfBoardException {
         if (indexOfField < minValue || indexOfField > maxValue.intValue()) {
             throw new OutOfBoardException("Out of board - min value is : " + minValue + ", and max value is : " + maxValue.toString());
         } else if (boardFields.get(indexOfField) == null) {
             return null;
         }
-        return boardFields.get(1);
+        return boardFields.get(indexOfField);
     }
 }

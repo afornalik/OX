@@ -83,6 +83,4 @@ public class TestBoard {
         board.insertBoardField(MINUS_INDEX, FIELD_STATUS_X);
 
     }
-
-
 }

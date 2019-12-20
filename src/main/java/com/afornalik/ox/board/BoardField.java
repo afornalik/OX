@@ -2,7 +2,7 @@ package com.afornalik.ox.board;
 
 import java.util.Objects;
 
-class BoardField {
+public class BoardField {
 
     private final FieldStatus fieldStatus;
 
@@ -10,7 +10,7 @@ class BoardField {
         this.fieldStatus = fieldStatus;
     }
 
-    FieldStatus showStatus() {
+    public FieldStatus showStatus() {
         return fieldStatus;
     }
 
