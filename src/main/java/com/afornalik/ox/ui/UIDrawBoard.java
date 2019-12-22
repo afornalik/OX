@@ -42,21 +42,11 @@ public class UIDrawBoard {
             } else {
                 FieldStatus fieldStatus = board.receiveBoardField(index);
                 index++;
-                sb.append(returnFieldSymbol(fieldStatus));
+                sb.append(fieldStatus);
             }
         }
         return index;
     }
 
-    private String returnFieldSymbol(FieldStatus fieldStatus) {
-        if (fieldStatus != null) {
-            if (fieldStatus == FieldStatus.X) {
-                return "X";
-            } else {
-                return "O";
-            }
-        } else {
-            return "_";
-        }
-    }
+
 }

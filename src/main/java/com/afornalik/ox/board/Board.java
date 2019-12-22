@@ -9,7 +9,7 @@ import java.util.TreeMap;
  * also this class make some basic operations.
  *
  * @author Andrzej Fornalik
- * @version 1.0
+ * @version 0.1
  * @since 2019-12-20
  */
 public class Board {
@@ -58,10 +58,20 @@ public class Board {
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      */
     public FieldStatus receiveBoardField(int indexOfField) throws OutOfBoardException {
-        if (checkIndexRange(indexOfField)) {
-            return boardFields.get(indexOfField);
+        if (checkIndexRange(indexOfField) ) {
+            if(boardFields.get(indexOfField) != null) {
+                return boardFields.get(indexOfField);
+            }
         }
         return FieldStatus.EMPTY;
+    }
+
+    /**
+     * Method return number empty field in the board.
+     * @return int number of empty field.
+     */
+    public int receiveNumberOfEmptyFields() {
+        return (maxValue.intValue()+1) - boardFields.size();
     }
 
     private boolean checkIndexRange(int indexOfField) throws OutOfBoardException {

@@ -3,7 +3,6 @@ package com.afornalik.ox.board;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.testng.Assert.*;
 
 @Test
 public class TestBoard {
@@ -14,7 +13,7 @@ public class TestBoard {
     private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
 
 
-    public void shouldReturnNullInsteadOfBoardField() throws OutOfBoardException {
+    public void shouldReturnUnderliningInsteadOfBoardField() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
 
@@ -22,7 +21,7 @@ public class TestBoard {
         FieldStatus result = board.receiveBoardField(3);
 
         //then
-        assertNull(result);
+        assertThat(result).isEqualTo(FieldStatus.EMPTY);
     }
 
 

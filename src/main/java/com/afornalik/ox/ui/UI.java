@@ -4,19 +4,24 @@ import com.afornalik.ox.board.OutOfBoardException;
 
 public class UI {
 
-    private final UIOutputDestination uiOutputDestination;
+    private final UIOperations uiOperations;
     private final UIDrawBoard uiDrawBoard;
 
-    public UI(UIOutputDestination uiOutputDestination, UIDrawBoard uiDrawBoard) {
-        this.uiOutputDestination = uiOutputDestination;
+    public UI(UIOperations uiOperations, UIDrawBoard uiDrawBoard) {
+        this.uiOperations = uiOperations;
         this.uiDrawBoard = uiDrawBoard;
     }
 
     public void printBoard() {
         try {
-            uiOutputDestination.print(uiDrawBoard.draw());
+            uiOperations.print(uiDrawBoard.draw());
         } catch (OutOfBoardException e) {
             System.out.println(e.getMessage());
         }
     }
+
+    public int readNumber(){
+        return uiOperations.readNumber();
+    }
+
 }
