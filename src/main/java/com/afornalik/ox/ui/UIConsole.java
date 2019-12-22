@@ -1,8 +1,30 @@
 package com.afornalik.ox.ui;
 
-public class UIConsole implements UIOutputDestination{
+import java.util.Scanner;
 
-    public void print(String dummyString) {
-        System.out.print(dummyString);
+public class UIConsole implements UIOperations {
+
+    private final Scanner scanner;
+
+    public UIConsole(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public void print(String string) {
+        System.out.print(string);
+    }
+
+    public int readNumber() {
+        String stringToParse = scanner.next();
+        int integerVal;
+        do {
+            try {
+                integerVal = Integer.parseInt(stringToParse);
+                break;
+            } catch (NumberFormatException e) {
+                this.print(" Insert number ");
+            }
+        } while (true);
+        return integerVal;
     }
 }

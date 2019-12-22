@@ -2,60 +2,66 @@ package com.afornalik.ox.board;
 
 import org.testng.annotations.Test;
 
-import java.util.TreeMap;
-
-import static org.testng.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
 @Test
 public class TestBoard {
 
-    private static final int BOUND_FOUR = 4;
     private static final int BOUND_THREE = 3;
-
-    public void shouldCreateBoard3x3() {
-        //when
-        Board board = new Board(BOUND_THREE);
-
-        //then
-        assertEquals(board.getBound(),BOUND_THREE);
-    }
-
-    public void shouldCreateBoard4x4() {
-        //when
-        Board board = new Board(BOUND_FOUR);
-
-        //then
-        assertEquals(board.getBound(),BOUND_FOUR);
-    }
+    private static final int INDEX_1 = 1;
+    private static final int MINUS_INDEX = -1;
+    private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
 
 
-    public void shouldReturnNullInsteadOfBoardField() throws OutOfBoardException {
+    public void shouldReturnUnderliningInsteadOfBoardField() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
 
         //when
-        BoardField result = board.receiveBoardField(3);
+        FieldStatus result = board.receiveBoardField(3);
 
         //then
-        assertNull(result);
+        assertThat(result).isEqualTo(FieldStatus.EMPTY);
     }
 
 
     @Test(expectedExceptions = OutOfBoardException.class)
-    public void shouldThrowExceptionOutOfBoardExceptionWithMinusValue() throws OutOfBoardException {
+    public void shouldThrowOutOfBoardExceptionWithMinusValue() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
 
         //when
-        BoardField result1 = board.receiveBoardField(-1);
+        FieldStatus result1 = board.receiveBoardField(-1);
     }
 
     @Test(expectedExceptions = OutOfBoardException.class)
-    public void shouldThrowExceptionOutOfBoardExceptionWithTooHighValue() throws OutOfBoardException {
+    public void shouldThrowOutOfBoardExceptionWithTooHighValue() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
 
         //when
-        BoardField result1 = board.receiveBoardField(9);
+        FieldStatus result1 = board.receiveBoardField(9);
+    }
+
+    public void shouldInsertMarkXIntoBoard() throws OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+
+        //when
+        board.insertBoardField(INDEX_1, FIELD_STATUS_X);
+        FieldStatus result = board.receiveBoardField(INDEX_1);
+
+        //then
+        assertThat(result).isEqualTo(FIELD_STATUS_X);
+    }
+
+    @Test(expectedExceptions = OutOfBoardException.class)
+    public void shouldThrowOutOfBoardExceptionWhenInsertTooLowValue() throws OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+
+        //when
+        board.insertBoardField(MINUS_INDEX, FIELD_STATUS_X);
+
     }
 }
