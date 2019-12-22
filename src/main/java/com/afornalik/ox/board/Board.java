@@ -13,7 +13,7 @@ import java.util.TreeMap;
  * @since 2019-12-20
  */
 public class Board {
-    private Map<Integer, FieldStatus> boardFields = new TreeMap<>();
+    private final Map<Integer, FieldStatus> boardFields = new TreeMap<>();
     private final int borderSize;
     private final BigInteger maxValue;
 
@@ -58,8 +58,8 @@ public class Board {
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      */
     public FieldStatus receiveBoardField(int indexOfField) throws OutOfBoardException {
-        if (checkIndexRange(indexOfField) ) {
-            if(boardFields.get(indexOfField) != null) {
+        if (checkIndexRange(indexOfField)) {
+            if (boardFields.get(indexOfField) != null) {
                 return boardFields.get(indexOfField);
             }
         }
@@ -68,10 +68,11 @@ public class Board {
 
     /**
      * Method return number empty field in the board.
+     *
      * @return int number of empty field.
      */
     public int receiveNumberOfEmptyFields() {
-        return (maxValue.intValue()+1) - boardFields.size();
+        return (maxValue.intValue() + 1) - boardFields.size();
     }
 
     private boolean checkIndexRange(int indexOfField) throws OutOfBoardException {

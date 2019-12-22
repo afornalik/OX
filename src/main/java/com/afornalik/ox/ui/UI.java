@@ -20,7 +20,7 @@ public class UI {
         }
     }
 
-    public int readNumber(){
+    public int readNumber() {
         return uiOperations.readNumber();
     }
 

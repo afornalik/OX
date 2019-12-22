@@ -1,13 +1,9 @@
 package com.afornalik.ox.progress;
 
 import com.afornalik.ox.board.*;
-import org.assertj.core.api.Assertions;
-import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.BDDMockito.*;
-import static org.testng.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
 public class TestOneMove {
@@ -22,7 +18,7 @@ public class TestOneMove {
         OneMove oneMove = new OneMove(board);
 
         //then
-        assertNotNull(oneMove);
+        assertThat(oneMove).isNotNull();
     }
 
     public void shouldChangeFieldStatusOnBoardFromEmptyToX() throws OutOfBoardException {
@@ -32,7 +28,7 @@ public class TestOneMove {
 
         //when
         FieldStatus before = board.receiveBoardField(INDEX_OF_FIELD);
-        oneMove.makeMove(INDEX_OF_FIELD,FIELD_STATUS_X);
+        oneMove.makeMove(INDEX_OF_FIELD, FIELD_STATUS_X);
         FieldStatus after = board.receiveBoardField(INDEX_OF_FIELD);
 
         //then

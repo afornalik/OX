@@ -5,7 +5,7 @@ public enum FieldStatus {
     X("X"),
     O("O");
 
-    String value;
+    final String value;
 
     FieldStatus(String value) {
         this.value = value;

@@ -4,7 +4,8 @@ import com.afornalik.ox.board.OutOfBoardException;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
-import static org.mockito.BDDMockito.*;
+import static org.mockito.BDDMockito.verify;
+import static org.mockito.BDDMockito.times;
 
 @Test
 public class TestUI {

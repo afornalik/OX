@@ -9,7 +9,7 @@ import com.afornalik.ox.ui.UIDrawBoard;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class MainApp {
+class MainApp {
 
     public static void main(String[] args) {
         System.out.println("Welcome");
@@ -21,7 +21,7 @@ public class MainApp {
             System.out.println("range set to 3");
             board = new Board(3);
         }
-        UI ui = new UI(new UIConsole(new Scanner(System.in)),new UIDrawBoard(board));
+        UI ui = new UI(new UIConsole(new Scanner(System.in)), new UIDrawBoard(board));
         GameProgress gameProgress = new GameProgress(ui);
         gameProgress.oneTurn(board);
     }

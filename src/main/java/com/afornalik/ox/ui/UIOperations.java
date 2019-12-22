@@ -1,6 +1,7 @@
 package com.afornalik.ox.ui;
 
-public interface UIOperations {
+interface UIOperations {
     void print(String draw);
+
     int readNumber();
 }
