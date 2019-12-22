@@ -21,7 +21,7 @@ public class TestOneMove {
         assertThat(oneMove).isNotNull();
     }
 
-    public void shouldChangeFieldStatusOnBoardFromEmptyToX() throws OutOfBoardException {
+    public void shouldChangeFieldStatusOnBoardFromEmptyToX() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
         OneMove oneMove = new OneMove(board);

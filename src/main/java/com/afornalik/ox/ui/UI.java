@@ -16,7 +16,7 @@ public class UI {
         try {
             uiOperations.print(uiDrawBoard.draw());
         } catch (OutOfBoardException e) {
-            System.out.println(e.getMessage());
+           uiOperations.print(e.getMessage());
         }
     }
 

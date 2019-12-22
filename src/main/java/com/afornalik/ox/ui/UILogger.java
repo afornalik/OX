@@ -9,4 +9,9 @@ public class UILogger implements UIOperations {
     public int readNumber() {
         return 0;
     }
+
+    @Override
+    public String read() {
+        return null;
+    }
 }

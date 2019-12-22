@@ -27,4 +27,9 @@ public class UIConsole implements UIOperations {
         } while (true);
         return integerVal;
     }
+
+    @Override
+    public String read() {
+        return scanner.next();
+    }
 }

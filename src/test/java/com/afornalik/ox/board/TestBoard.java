@@ -13,7 +13,7 @@ public class TestBoard {
     private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
 
 
-    public void shouldReturnUnderliningInsteadOfBoardField() throws OutOfBoardException {
+    public void shouldReturnEmptyStatus() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
 

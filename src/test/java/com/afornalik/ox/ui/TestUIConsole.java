@@ -1,5 +1,7 @@
 package com.afornalik.ox.ui;
 
+import org.assertj.core.api.Assertions;
+import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -26,4 +28,21 @@ public class TestUIConsole {
         //then
         assertThat(byteArrayOutputStream.toString()).isEqualTo(DUMMY_STRING);
     }
+
+    public void shouldReceiveConsoleInputFromUser() {
+        //given
+        Scanner scanner = Mockito.mock(Scanner.class);
+        Mockito.when(scanner.next()).thenReturn(DUMMY_STRING);
+        UIOperations uiInput = new UIConsole(scanner);
+
+        //when
+        String result = uiInput.read();
+
+        //then
+        Assertions.assertThat(result).isEqualTo(DUMMY_STRING);
+
+    }
+
+
+
 }
