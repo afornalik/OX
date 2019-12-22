@@ -67,9 +67,6 @@ public class TestUIDrawBoard {
                                        "3 |_|_|_|\n");
     }
 
-
-
-
     public void shouldReturnStringWithDrawBoard10x10() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_TEN);
@@ -117,7 +114,4 @@ public class TestUIDrawBoard {
                                        "9 |_|_|_|_|_|_|_|_|_|_|\n"+
                                        "10|_|_|_|_|_|_|_|_|_|_|\n");
     }
-
-
-
 }

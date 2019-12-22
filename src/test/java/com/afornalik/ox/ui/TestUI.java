@@ -13,27 +13,27 @@ public class TestUI {
         //given
         UIConsole uiConsole = Mockito.mock(UIConsole.class);
         UIDrawBoard uiDrawBoard = Mockito.mock(UIDrawBoard.class);
-        UI ui = new UI(uiConsole,uiDrawBoard);
+        UI ui = new UI(uiConsole, uiDrawBoard);
 
         //when
         ui.printBoard();
 
         //then
-        verify(uiDrawBoard,times(1)).draw();
-        verify(uiConsole,times(1)).print(uiDrawBoard.draw());
+        verify(uiDrawBoard, times(1)).draw();
+        verify(uiConsole, times(1)).print(uiDrawBoard.draw());
     }
 
     public void shouldPrintBoardOnOtherOutput() throws OutOfBoardException {
         //given
         UILogger uiLogger = Mockito.mock(UILogger.class);
         UIDrawBoard uiDrawBoard = Mockito.mock(UIDrawBoard.class);
-        UI ui = new UI(uiLogger,uiDrawBoard);
+        UI ui = new UI(uiLogger, uiDrawBoard);
 
         //when
         ui.printBoard();
 
         //then
-        verify(uiDrawBoard,times(1)).draw();
-        verify(uiLogger,times(1)).print(uiDrawBoard.draw());
+        verify(uiDrawBoard, times(1)).draw();
+        verify(uiLogger, times(1)).print(uiDrawBoard.draw());
     }
 }

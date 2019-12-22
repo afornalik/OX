@@ -12,7 +12,6 @@ public class TestUIConsole {
 
     private static final String DUMMY_STRING = "Some dummy string to print";
 
-
     public void shouldPrintOutGivenString() {
         //given
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -25,8 +24,4 @@ public class TestUIConsole {
         //then
         assertThat(byteArrayOutputStream.toString()).isEqualTo(DUMMY_STRING);
     }
-
-
-
-
 }
