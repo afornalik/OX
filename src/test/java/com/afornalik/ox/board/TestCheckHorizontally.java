@@ -24,9 +24,9 @@ public class TestCheckHorizontally {
     public void shouldCheckHorizontallyReturnTrue() throws OverrideFieldException, OutOfBoardException {
         //given
         Board board = new Board(BOARD);
-        board.insertBoardField(3,FieldStatus.O);
-        board.insertBoardField(4,FieldStatus.O);
-        board.insertBoardField(5,FieldStatus.O);
+        board.insertBoardField(1,1,FieldStatus.O);
+        board.insertBoardField(1,2,FieldStatus.O);
+        board.insertBoardField(2,1,FieldStatus.O);
         CheckBoard checkBoard = new CheckHorizontally(board, CONDITION_LENGTH);
 
         //when
@@ -39,9 +39,9 @@ public class TestCheckHorizontally {
     public void shouldCheckHorizontallyReturnFalse() throws OverrideFieldException, OutOfBoardException {
         //given
         Board board = new Board(BOARD);
-        board.insertBoardField(2,FieldStatus.O);
-        board.insertBoardField(3,FieldStatus.O);
-        board.insertBoardField(4,FieldStatus.O);
+        board.insertBoardField(2,1,FieldStatus.O);
+        board.insertBoardField(1,1,FieldStatus.O);
+        board.insertBoardField(1,2,FieldStatus.O);
         CheckBoard checkBoard = new CheckHorizontally(board, CONDITION_LENGTH);
 
         //when

@@ -14,6 +14,7 @@ import java.util.TreeMap;
  */
 public class Board {
     private final Map<Integer, FieldStatus> boardFields = new TreeMap<>();
+    private final MoveConvert moveConvert;
     private final int borderSize;
     private final BigInteger maxValue;
 
@@ -23,6 +24,7 @@ public class Board {
      * @param borderSize describe size of board. Prefer value are between 3 and 50.
      */
     public Board(int borderSize) {
+        moveConvert = new MoveConvert(borderSize);
         this.borderSize = borderSize;
         this.maxValue = new BigInteger(String.valueOf(borderSize))
                 .multiply(BigInteger.valueOf(borderSize))
@@ -41,12 +43,14 @@ public class Board {
     /**
      * Method to insert appropriate value into board.
      *
-     * @param indexOfField int This is index of field where value will be insert.
+     * @param axisX int This is horizontal coordinate of field
+     * @param axisY int This is vertical coordinate of field
      * @param fieldStatus  FieldStatus This is enum value which determine what symbol will be inserted
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      * @throws OverrideFieldException throw when field is already taken by another mark
      */
-    public void insertBoardField(int indexOfField, FieldStatus fieldStatus) throws OutOfBoardException,OverrideFieldException {
+    public void insertBoardField(int axisX,int axisY, FieldStatus fieldStatus) throws OutOfBoardException,OverrideFieldException {
+        int indexOfField = moveConvert.convertToIndex(axisX,axisY);
         if (checkIndexRange(indexOfField)) {
             if (receiveBoardField(indexOfField) == FieldStatus.EMPTY) {
                 boardFields.put(indexOfField, fieldStatus);

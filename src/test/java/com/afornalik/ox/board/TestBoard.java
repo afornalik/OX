@@ -50,7 +50,7 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE);
 
         //when
-        board.insertBoardField(INDEX_1, FIELD_STATUS_X);
+        board.insertBoardField(2,1, FIELD_STATUS_X);
         FieldStatus result = board.receiveBoardField(INDEX_1);
 
         //then
@@ -63,7 +63,7 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE);
 
         //when
-        board.insertBoardField(MINUS_INDEX, FIELD_STATUS_X);
+        board.insertBoardField(-1,-1, FIELD_STATUS_X);
     }
 
     @Test(expectedExceptions = OutOfBoardException.class)
@@ -72,7 +72,7 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE);
 
         //when
-        board.insertBoardField(OVER_MAX_INDEX, FIELD_STATUS_X);
+        board.insertBoardField(10,10, FIELD_STATUS_X);
     }
 
     @Test(expectedExceptions = OverrideFieldException.class)
@@ -81,8 +81,8 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE);
 
         //when
-        board.insertBoardField(INDEX_1,FIELD_STATUS_X);
-        board.insertBoardField(INDEX_1,FIELD_STATUS_X);
+        board.insertBoardField(1,1,FIELD_STATUS_X);
+        board.insertBoardField(1,1,FIELD_STATUS_X);
     }
 
     @Test(expectedExceptions = OverrideFieldException.class)
@@ -91,7 +91,7 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE);
 
         //when
-        board.insertBoardField(INDEX_1,FIELD_STATUS_X);
-        board.insertBoardField(INDEX_1,FIELD_STATUS_O);
+        board.insertBoardField(1,1,FIELD_STATUS_X);
+        board.insertBoardField(1,1,FIELD_STATUS_O);
     }
 }

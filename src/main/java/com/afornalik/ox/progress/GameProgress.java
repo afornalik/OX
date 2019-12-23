@@ -28,7 +28,12 @@ public class GameProgress {
         boolean flag = false;
         do {
             try {
-                board.insertBoardField(ui.readNumber(), fieldStatus);
+                System.out.println(fieldStatus+" move");
+                System.out.print("Insert horizontal coordinate :");
+                int horizontal = ui.readNumber();
+                System.out.print("Insert vertical coordinate :");
+                int vertical = ui.readNumber();
+                board.insertBoardField(horizontal,vertical, fieldStatus);
                 flag = true;
             } catch (OverrideFieldException | OutOfBoardException e) {
                 //to change in future into ui.print
