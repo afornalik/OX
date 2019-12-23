@@ -10,6 +10,8 @@ public class CheckHorizontally implements CheckBoard {
         this.conditionLength = conditionLength;
     }
 
+
+    //in progress - not work yet
     @Override
     public boolean check(int location, FieldStatus fieldStatus) throws OutOfBoardException {
         int tempLength = 1;

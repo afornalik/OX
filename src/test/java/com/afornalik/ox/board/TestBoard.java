@@ -7,13 +7,10 @@ import static org.assertj.core.api.Assertions.*;
 @Test
 public class TestBoard {
 
+    private static final FieldStatus FIELD_STATUS_O = FieldStatus.O;
+    private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
     private static final int BOUND_THREE = 3;
     private static final int INDEX_1 = 1;
-    private static final int MINUS_INDEX = -1;
-    private static final int OVER_MAX_INDEX = 9;
-    private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
-    private static final FieldStatus FIELD_STATUS_O = FieldStatus.O;
-
 
     public void shouldReturnEmptyStatus() throws OutOfBoardException {
         //given
@@ -93,5 +90,28 @@ public class TestBoard {
         //when
         board.insertBoardField(1,1,FIELD_STATUS_X);
         board.insertBoardField(1,1,FIELD_STATUS_O);
+    }
+
+    public void shouldTakeTwoParameterAndTransformThemIntoAppropriateIndexNumber() throws OverrideFieldException, OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+
+        //when
+        board.insertBoardField(1,1,FIELD_STATUS_X);
+        FieldStatus result = board.receiveBoardField(0);
+
+        //then
+        assertThat(result).isEqualTo(FIELD_STATUS_X);
+    }
+    public void shouldTakeTwoParameterAndTransformThemIntoAppropriateIndexNumber2() throws OverrideFieldException, OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+
+        //when
+        board.insertBoardField(2,3,FIELD_STATUS_O);
+        FieldStatus result = board.receiveBoardField(7);
+
+        //then
+        assertThat(result).isEqualTo(FIELD_STATUS_O);
     }
 }

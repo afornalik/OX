@@ -14,7 +14,6 @@ import java.util.TreeMap;
  */
 public class Board {
     private final Map<Integer, FieldStatus> boardFields = new TreeMap<>();
-    private final MoveConvert moveConvert;
     private final int borderSize;
     private final BigInteger maxValue;
 
@@ -24,7 +23,6 @@ public class Board {
      * @param borderSize describe size of board. Prefer value are between 3 and 50.
      */
     public Board(int borderSize) {
-        moveConvert = new MoveConvert(borderSize);
         this.borderSize = borderSize;
         this.maxValue = new BigInteger(String.valueOf(borderSize))
                 .multiply(BigInteger.valueOf(borderSize))
@@ -50,12 +48,14 @@ public class Board {
      * @throws OverrideFieldException throw when field is already taken by another mark
      */
     public void insertBoardField(int axisX,int axisY, FieldStatus fieldStatus) throws OutOfBoardException,OverrideFieldException {
-        int indexOfField = moveConvert.convertToIndex(axisX,axisY);
-        if (checkIndexRange(indexOfField)) {
-            if (receiveBoardField(indexOfField) == FieldStatus.EMPTY) {
-                boardFields.put(indexOfField, fieldStatus);
-            } else {
-                throw new OverrideFieldException(" Field is already taken.");
+        if(axisX < borderSize && axisY < borderSize) {
+            int indexOfField = convertToIndex(axisX, axisY);
+            if (checkIndexRange(indexOfField)) {
+                if (receiveBoardField(indexOfField) == FieldStatus.EMPTY) {
+                    boardFields.put(indexOfField, fieldStatus);
+                } else {
+                    throw new OverrideFieldException(" Field is already taken.");
+                }
             }
         }
     }
@@ -91,5 +91,9 @@ public class Board {
             throw new OutOfBoardException("Out of board - min value is : " + minValue + ", and max value is : " + maxValue.toString());
         }
         return true;
+    }
+
+    private int convertToIndex(int axisX, int axisY) {
+        return  ((axisY-1)*borderSize)+(axisX-1);
     }
 }
