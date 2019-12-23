@@ -10,6 +10,7 @@ public class TestBoard {
     private static final int BOUND_THREE = 3;
     private static final int INDEX_1 = 1;
     private static final int MINUS_INDEX = -1;
+    private static final int OVER_MAX_INDEX = 9;
     private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
 
 
@@ -62,6 +63,14 @@ public class TestBoard {
 
         //when
         board.insertBoardField(MINUS_INDEX, FIELD_STATUS_X);
+    }
 
+    @Test(expectedExceptions = OutOfBoardException.class)
+    public void shouldThrowOutOfBoardExceptionWhenInsertTooHighValue() throws OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+
+        //when
+        board.insertBoardField(OVER_MAX_INDEX, FIELD_STATUS_X);
     }
 }
