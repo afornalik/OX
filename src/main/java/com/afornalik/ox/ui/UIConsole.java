@@ -15,9 +15,9 @@ public class UIConsole implements UIOperations {
     }
 
     public int readNumber() {
-        String stringToParse = scanner.next();
         int integerVal;
         do {
+            String stringToParse = scanner.next();
             try {
                 integerVal = Integer.parseInt(stringToParse);
                 break;
