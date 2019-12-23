@@ -2,6 +2,8 @@ package com.afornalik.ox.progress;
 
 import com.afornalik.ox.board.Board;
 import com.afornalik.ox.board.FieldStatus;
+import com.afornalik.ox.board.OutOfBoardException;
+import com.afornalik.ox.board.OverrideFieldException;
 import com.afornalik.ox.ui.UI;
 
 public class GameProgress {
@@ -20,11 +22,20 @@ public class GameProgress {
 
     private boolean onePlayerMove(Board board, FieldStatus fieldStatus) {
         ui.printBoard();
-        OneMove oMove = new OneMove(board);
         if (board.receiveNumberOfEmptyFields() == 0) {
             return true;
         }
-        oMove.makeMove(ui.readNumber(), fieldStatus);
+        boolean flag = false;
+        do {
+            try {
+                board.insertBoardField(ui.readNumber(), fieldStatus);
+                flag = true;
+            } catch (OverrideFieldException | OutOfBoardException e) {
+                //to change in future into ui.print
+                System.out.println(e.getMessage());
+                ui.printBoard();
+            }
+        }while (!flag) ;
         return false;
     }
 }
