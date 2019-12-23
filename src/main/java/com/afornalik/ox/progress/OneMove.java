@@ -13,7 +13,7 @@ class OneMove {
     void makeMove(int indexOfField, FieldStatus fieldStatusX) {
         try {
             board.insertBoardField(indexOfField, fieldStatusX);
-        } catch (OutOfBoardException e) {
+        } catch (OutOfBoardException | OverrideFieldException e) {
             System.out.println(e.getMessage());
         }
     }

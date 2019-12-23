@@ -12,6 +12,7 @@ public class TestBoard {
     private static final int MINUS_INDEX = -1;
     private static final int OVER_MAX_INDEX = 9;
     private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
+    private static final FieldStatus FIELD_STATUS_O = FieldStatus.O;
 
 
     public void shouldReturnEmptyStatus() throws OutOfBoardException {
@@ -44,7 +45,7 @@ public class TestBoard {
         FieldStatus result1 = board.receiveBoardField(9);
     }
 
-    public void shouldInsertMarkXIntoBoard() throws OutOfBoardException {
+    public void shouldInsertMarkXIntoBoard() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
 
@@ -57,7 +58,7 @@ public class TestBoard {
     }
 
     @Test(expectedExceptions = OutOfBoardException.class)
-    public void shouldThrowOutOfBoardExceptionWhenInsertTooLowValue() throws OutOfBoardException {
+    public void shouldThrowOutOfBoardExceptionWhenInsertTooLowValue() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
 
@@ -66,11 +67,31 @@ public class TestBoard {
     }
 
     @Test(expectedExceptions = OutOfBoardException.class)
-    public void shouldThrowOutOfBoardExceptionWhenInsertTooHighValue() throws OutOfBoardException {
+    public void shouldThrowOutOfBoardExceptionWhenInsertTooHighValue() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
 
         //when
         board.insertBoardField(OVER_MAX_INDEX, FIELD_STATUS_X);
+    }
+
+    @Test(expectedExceptions = OverrideFieldException.class)
+    public void shouldThrowOverrideFieldExceptionWhenInsertTwoSameMarkInField() throws OverrideFieldException, OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+
+        //when
+        board.insertBoardField(INDEX_1,FIELD_STATUS_X);
+        board.insertBoardField(INDEX_1,FIELD_STATUS_X);
+    }
+
+    @Test(expectedExceptions = OverrideFieldException.class)
+    public void shouldThrowOverrideFieldExceptionWhenInsertTwoDifferentMarkInField() throws OverrideFieldException, OutOfBoardException {
+        //given
+        Board board = new Board(BOUND_THREE);
+
+        //when
+        board.insertBoardField(INDEX_1,FIELD_STATUS_X);
+        board.insertBoardField(INDEX_1,FIELD_STATUS_O);
     }
 }

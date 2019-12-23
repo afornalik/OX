@@ -44,10 +44,16 @@ public class Board {
      * @param indexOfField int This is index of field where value will be insert.
      * @param fieldStatus  FieldStatus This is enum value which determine what symbol will be inserted
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
+     * @throws OverrideFieldException throw when field is already taken by another mark
      */
-    public void insertBoardField(int indexOfField, FieldStatus fieldStatus) throws OutOfBoardException {
-        if (checkIndexRange(indexOfField))
-            boardFields.put(indexOfField, fieldStatus);
+    public void insertBoardField(int indexOfField, FieldStatus fieldStatus) throws OutOfBoardException,OverrideFieldException {
+        if (checkIndexRange(indexOfField)) {
+            if (receiveBoardField(indexOfField) == FieldStatus.EMPTY) {
+                boardFields.put(indexOfField, fieldStatus);
+            } else {
+                throw new OverrideFieldException(" Field is already taken.");
+            }
+        }
     }
 
     /**
