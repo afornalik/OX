@@ -1,6 +1,8 @@
 package com.afornalik.ox.view.draw;
 
 import com.afornalik.ox.model.board.Board;
+import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.OutOfBoardException;
 
 import java.util.Formatter;
 
@@ -41,7 +43,18 @@ public class UIDrawBoardCellNumerate implements UIDrawBoard {
             if (index % board.getBorderSize() == 0) {
                 sb.append("\n|");
             }
-            Formatter formatter = new Formatter().format("%3d|", index + 1);
+            Formatter formatter = new Formatter();
+            FieldStatus fieldStatus = FieldStatus.EMPTY;
+            try {
+                fieldStatus = board.receiveBoardField(index);
+            } catch (OutOfBoardException e) {
+                //to do
+            }
+            if (fieldStatus != FieldStatus.EMPTY) {
+                formatter.format("%2s |", fieldStatus.toString());
+            } else {
+                formatter.format("%3s|", index + 1);
+            }
             sb.append(formatter.toString());
         }
         return sb.append("\n").toString();

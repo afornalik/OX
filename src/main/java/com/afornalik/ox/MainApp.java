@@ -4,6 +4,7 @@ import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.controller.GameProgress;
 import com.afornalik.ox.view.UIConsole;
 import com.afornalik.ox.view.UIOperations;
+import com.afornalik.ox.view.draw.UIDrawBoardCellNumerate;
 import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
 
 import java.util.InputMismatchException;
@@ -21,7 +22,7 @@ class MainApp {
             System.out.println("range set to 3");
             board = new Board(3);
         }
-        UIOperations ui = new UIConsole(new UIDrawBoardSideNumerate(board),new Scanner(System.in));
+        UIOperations ui = new UIConsole(new UIDrawBoardCellNumerate(board),new Scanner(System.in));
         GameProgress gameProgress = new GameProgress(ui);
         gameProgress.oneTurn(board);
     }
