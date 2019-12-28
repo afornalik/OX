@@ -4,10 +4,17 @@ import com.afornalik.ox.model.board.FieldStatus;
 
 class Player {
 
-    private String name = "player" ;
-    private int score = 0;
-    private FieldStatus sign = FieldStatus.EMPTY;
-    private boolean first = true;
+    private final String name;
+    private int score;
+    private final FieldStatus sign;
+    private final boolean first;
+
+    Player(PlayerBuilder playerBuilder) {
+        this.name = playerBuilder.name;
+        this.score = playerBuilder.score;
+        this.sign = playerBuilder.sign;
+        this.first = playerBuilder.first;
+    }
 
     int getScore() {
         return score;
@@ -23,5 +30,40 @@ class Player {
 
     boolean isFirst() {
         return first;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    static class PlayerBuilder {
+        private String name = "player";
+        private int score = 0;
+        private final FieldStatus sign;
+        private boolean first = true;
+
+        PlayerBuilder(FieldStatus sign) {
+            this.sign = sign;
+        }
+
+        PlayerBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        PlayerBuilder score(int score) {
+            this.score = score;
+            return this;
+        }
+
+
+        PlayerBuilder first(boolean first) {
+            this.first = first;
+            return this;
+        }
+
+        Player build() {
+            return new Player(this);
+        }
     }
 }
