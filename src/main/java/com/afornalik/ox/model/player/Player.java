@@ -2,14 +2,14 @@ package com.afornalik.ox.model.player;
 
 import com.afornalik.ox.model.board.FieldStatus;
 
-class Player {
+public class Player {
 
     private final String name;
     private int score;
     private final FieldStatus sign;
     private final boolean first;
 
-    Player(PlayerBuilder playerBuilder) {
+    private Player(PlayerBuilder playerBuilder) {
         this.name = playerBuilder.name;
         this.score = playerBuilder.score;
         this.sign = playerBuilder.sign;
@@ -47,33 +47,33 @@ class Player {
                 '}';
     }
 
-    static class PlayerBuilder {
+    public static class PlayerBuilder {
         private String name = "player";
         private int score = 0;
         private final FieldStatus sign;
         private boolean first = true;
 
-        PlayerBuilder(FieldStatus sign) {
+        public PlayerBuilder(FieldStatus sign) {
             this.sign = sign;
         }
 
-        PlayerBuilder name(String name) {
+        public PlayerBuilder name(String name) {
             this.name = name;
             return this;
         }
 
-        PlayerBuilder score(int score) {
+        public PlayerBuilder score(int score) {
             this.score = score;
             return this;
         }
 
 
-        PlayerBuilder first(boolean first) {
+        public PlayerBuilder first(boolean first) {
             this.first = first;
             return this;
         }
 
-        Player build() {
+        public Player build() {
             return new Player(this);
         }
     }

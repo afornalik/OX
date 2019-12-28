@@ -4,12 +4,12 @@ import com.afornalik.ox.model.board.FieldStatus;
 
 import java.util.Map;
 
-class PlayerContainer {
+public class PlayerContainer {
 
     private Player playerOne;
     private Player playerTwo;
 
-    void createPlayer(Map<String, Object> playerInfo) {
+    public void createPlayer(Map<String, Object> playerInfo) {
         if(playerOne == null) {
             playerOne = convertMapToPlayer(playerInfo);
         }else if(playerTwo == null) {
@@ -25,11 +25,11 @@ class PlayerContainer {
                 .build();
     }
 
-    String showPlayerOne() {
+    public String showPlayerOne() {
         return playerOne.toString();
     }
 
-    String showPlayerTwo() {
+    public String showPlayerTwo() {
         return playerTwo.toString();
     }
 }
