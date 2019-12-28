@@ -36,6 +36,17 @@ class Player {
         this.score = score;
     }
 
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", score=" + score +
+                ", sign=" + sign +
+                ", first=" + first +
+                '}';
+    }
+
     static class PlayerBuilder {
         private String name = "player";
         private int score = 0;

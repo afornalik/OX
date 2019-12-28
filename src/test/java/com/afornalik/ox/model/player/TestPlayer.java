@@ -20,7 +20,7 @@ public class TestPlayer {
         //then
         assertThat(player.getName()).isEqualTo("player");
         assertThat(player.getScore()).isEqualTo(0);
-        assertThat(player.getSign()).isEqualTo(FieldStatus.EMPTY);
+        assertThat(player.getSign()).isEqualTo(FieldStatus.O);
         assertThat(player.isFirst()).isEqualTo(true);
     }
 
