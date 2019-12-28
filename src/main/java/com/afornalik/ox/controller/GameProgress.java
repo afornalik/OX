@@ -2,13 +2,13 @@ package com.afornalik.ox.controller;
 
 import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.model.board.FieldStatus;
-import com.afornalik.ox.view.UI;
+import com.afornalik.ox.view.UIOperations;
 
 public class GameProgress {
 
-    private final UI ui;
+    private final UIOperations ui;
 
-    public GameProgress(UI ui) {
+    public GameProgress(UIOperations ui) {
         this.ui = ui;
     }
 
@@ -19,7 +19,7 @@ public class GameProgress {
     }
 
     private boolean onePlayerMove(Board board, FieldStatus fieldStatus) {
-        ui.printBoard();
+        ui.drawBoard();
         OneMove oMove = new OneMove(board);
         if (board.receiveNumberOfEmptyFields() == 0) {
             return true;

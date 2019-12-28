@@ -2,9 +2,9 @@ package com.afornalik.ox;
 
 import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.controller.GameProgress;
-import com.afornalik.ox.view.UI;
 import com.afornalik.ox.view.UIConsole;
-import com.afornalik.ox.view.UIDrawBoard;
+import com.afornalik.ox.view.UIOperations;
+import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -21,7 +21,7 @@ class MainApp {
             System.out.println("range set to 3");
             board = new Board(3);
         }
-        UI ui = new UI(new UIConsole(new Scanner(System.in)), new UIDrawBoard(board));
+        UIOperations ui = new UIConsole(new UIDrawBoardSideNumerate(board),new Scanner(System.in));
         GameProgress gameProgress = new GameProgress(ui);
         gameProgress.oneTurn(board);
     }

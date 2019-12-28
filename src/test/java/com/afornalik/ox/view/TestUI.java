@@ -1,6 +1,9 @@
 package com.afornalik.ox.view;
 
+import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.model.board.OutOfBoardException;
+import com.afornalik.ox.view.draw.UIDrawBoard;
+import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
 import org.assertj.core.api.Assertions;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
@@ -19,41 +22,26 @@ public class TestUI {
 
     public void shouldPrintBoardOnConsole() throws OutOfBoardException {
         //given
-        UIConsole uiConsole = Mockito.mock(UIConsole.class);
         UIDrawBoard uiDrawBoard = Mockito.mock(UIDrawBoard.class);
-        UI ui = new UI(uiConsole, uiDrawBoard);
+        UIOperations ui = new UIConsole(uiDrawBoard, new Scanner(System.in));
 
         //when
-        ui.printBoard();
+        ui.drawBoard();
 
         //then
-        verify(uiDrawBoard, times(1)).draw();
-        verify(uiConsole, times(1)).print(uiDrawBoard.draw());
+        verify(uiDrawBoard, times(1)).drawBoard();
     }
 
-    public void shouldPrintBoardOnOtherOutput() throws OutOfBoardException {
-        //given
-        UILogger uiLogger = Mockito.mock(UILogger.class);
-        UIDrawBoard uiDrawBoard = Mockito.mock(UIDrawBoard.class);
-        UI ui = new UI(uiLogger, uiDrawBoard);
 
-        //when
-        ui.printBoard();
-
-        //then
-        verify(uiDrawBoard, times(1)).draw();
-        verify(uiLogger, times(1)).print(uiDrawBoard.draw());
-    }
 
     public void shouldReadNumberFromUser() {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
         when(scanner.next()).thenReturn(NUMBER_VALUE);
-        UIOperations uiInput = new UIConsole(scanner);
-        UI ui = new UI(uiInput,null);
+        UIOperations uiInput = new UIConsole(new UIDrawBoardSideNumerate(new Board(5)),scanner);
 
         //when
-        int result = ui.readNumber();
+        int result = uiInput.readNumber();
 
         //then
         Assertions.assertThat(result).isEqualTo(Integer.parseInt(NUMBER_VALUE));

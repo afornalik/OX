@@ -4,12 +4,14 @@ import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.model.board.FieldStatus;
 import com.afornalik.ox.model.board.OutOfBoardException;
 import com.afornalik.ox.model.board.OverrideFieldException;
+import com.afornalik.ox.view.draw.UIDrawBoard;
+import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-public class TestUIDrawBoard {
+public class TestUIDrawBoardSideNumerate {
 
     private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
     private static final FieldStatus FIELD_STATUS_O = FieldStatus.O;
@@ -20,10 +22,10 @@ public class TestUIDrawBoard {
     public void shouldReturnStringWithDrawBoard3x3() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
-        UIDrawBoard uiDrawBoard = new UIDrawBoard(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when
-        String result = uiDrawBoard.draw();
+        String result = uiDrawBoard.drawBoard();
 
         //then
         assertThat(result).isEqualTo("\n   1 2 3\n" +
@@ -35,12 +37,12 @@ public class TestUIDrawBoard {
     public void shouldReturnStringWithTwoMarkDrawBoard3x3() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
-        UIDrawBoard uiDrawBoard = new UIDrawBoard(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when
         board.insertBoardField(INDEX[0], FIELD_STATUS_O);
         board.insertBoardField(INDEX[1], FIELD_STATUS_O);
-        String result = uiDrawBoard.draw();
+        String result = uiDrawBoard.drawBoard();
 
         //then
         assertThat(result).isEqualTo("\n   1 2 3\n" +
@@ -52,14 +54,14 @@ public class TestUIDrawBoard {
     public void shouldReturnStringWithFourMarkDrawBoard3x3() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_THREE);
-        UIDrawBoard uiDrawBoard = new UIDrawBoard(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when
         board.insertBoardField(INDEX[1], FIELD_STATUS_O);
         board.insertBoardField(INDEX[3], FIELD_STATUS_X);
         board.insertBoardField(INDEX[4], FIELD_STATUS_O);
         board.insertBoardField(INDEX[5], FIELD_STATUS_X);
-        String result = uiDrawBoard.draw();
+        String result = uiDrawBoard.drawBoard();
 
         //then
         assertThat(result).isEqualTo("\n   1 2 3\n" +
@@ -71,10 +73,10 @@ public class TestUIDrawBoard {
     public void shouldReturnStringWithDrawBoard10x10() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_TEN);
-        UIDrawBoard uiDrawBoard = new UIDrawBoard(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when
-        String result = uiDrawBoard.draw();
+        String result = uiDrawBoard.drawBoard();
 
         //then
         assertThat(result).isEqualTo("\n   1 2 3 4 5 6 7 8 910\n" +
@@ -93,14 +95,14 @@ public class TestUIDrawBoard {
     public void shouldReturnStringWithMarkedFieldBoard10x10() throws OutOfBoardException, OverrideFieldException {
         //given
         Board board = new Board(BOUND_TEN);
-        UIDrawBoard uiDrawBoard = new UIDrawBoard(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when
         board.insertBoardField(6, FIELD_STATUS_X);
         board.insertBoardField(8, FIELD_STATUS_X);
         board.insertBoardField(15, FIELD_STATUS_O);
         board.insertBoardField(18, FIELD_STATUS_X);
-        String result = uiDrawBoard.draw();
+        String result = uiDrawBoard.drawBoard();
 
         //then
         assertThat(result).isEqualTo("\n   1 2 3 4 5 6 7 8 910\n" +
