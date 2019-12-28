@@ -14,6 +14,4 @@ public interface UIOperations {
 
     void drawBoard(Board board);
 
-
-
 }

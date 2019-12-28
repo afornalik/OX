@@ -8,7 +8,7 @@ import java.math.BigInteger;
 
 /**
  * Class responsible for print board on console.
- * board have two side numerated but, cell in grid are empty.
+ * board have two side numerated axis.
  *
  * @author Andrzej Fornalik
  */
@@ -29,6 +29,21 @@ public class UIDrawBoardSideNumerate implements UIDrawBoard {
         this.board = board;
         this.boardDimension = new BigInteger(String.valueOf(board.getBorderSize()))
                 .multiply(BigInteger.TWO).add(BigInteger.ONE);
+    }
+
+    /**
+     * Method construct String representing board.
+     * Method use StringBuilder to construct this string, exception OutOfBoardException is caught.
+     *
+     * @param board Board This parameter determine board to be draw
+     * @return String String representation of the board
+     */
+    @Override
+    public String drawBoard(Board board) {
+        this.board = board;
+        this.boardDimension = new BigInteger(String.valueOf(board.getBorderSize()))
+                .multiply(BigInteger.TWO).add(BigInteger.ONE);
+        return this.drawBoard();
     }
 
     /**
@@ -65,28 +80,13 @@ public class UIDrawBoardSideNumerate implements UIDrawBoard {
                 try {
                     fieldStatus = board.receiveBoardField(index);
                 } catch (OutOfBoardException e) {
-                    //to do
+                    //to do !
                 }
                 index++;
                 sb.append(fieldStatus);
             }
         }
         return index;
-    }
-
-    /**
-     * Method construct String representing board.
-     * Method use StringBuilder to construct this string, exception OutOfBoardException is caught.
-     *
-     * @param board Board This parameter determine board to be draw
-     * @return String String representation of the board
-     */
-    @Override
-    public String drawBoard(Board board) {
-        this.board = board;
-        this.boardDimension = new BigInteger(String.valueOf(board.getBorderSize()))
-                .multiply(BigInteger.TWO).add(BigInteger.ONE);
-        return this.drawBoard();
     }
 
 }
