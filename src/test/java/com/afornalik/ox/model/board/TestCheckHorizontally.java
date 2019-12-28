@@ -1,4 +1,4 @@
-package com.afornalik.ox.model;
+package com.afornalik.ox.model.board;
 
 import com.afornalik.ox.model.board.*;
 import org.assertj.core.api.Assertions;
