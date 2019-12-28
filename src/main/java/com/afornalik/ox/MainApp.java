@@ -1,10 +1,10 @@
 package com.afornalik.ox;
 
-import com.afornalik.ox.board.Board;
-import com.afornalik.ox.progress.GameProgress;
-import com.afornalik.ox.ui.UI;
-import com.afornalik.ox.ui.UIConsole;
-import com.afornalik.ox.ui.UIDrawBoard;
+import com.afornalik.ox.model.board.Board;
+import com.afornalik.ox.controller.GameProgress;
+import com.afornalik.ox.view.UI;
+import com.afornalik.ox.view.UIConsole;
+import com.afornalik.ox.view.UIDrawBoard;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package com.afornalik.ox.board;
+package com.afornalik.ox.model.board;
 
 import java.math.BigInteger;
 import java.util.Map;

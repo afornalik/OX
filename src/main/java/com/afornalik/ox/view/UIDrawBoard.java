@@ -1,8 +1,8 @@
-package com.afornalik.ox.ui;
+package com.afornalik.ox.view;
 
-import com.afornalik.ox.board.Board;
-import com.afornalik.ox.board.FieldStatus;
-import com.afornalik.ox.board.OutOfBoardException;
+import com.afornalik.ox.model.board.Board;
+import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.OutOfBoardException;
 
 import java.math.BigInteger;
 

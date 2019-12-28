@@ -1,8 +1,8 @@
-package com.afornalik.ox.progress;
+package com.afornalik.ox.controller;
 
-import com.afornalik.ox.board.Board;
-import com.afornalik.ox.board.FieldStatus;
-import com.afornalik.ox.ui.UI;
+import com.afornalik.ox.model.board.Board;
+import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.view.UI;
 
 public class GameProgress {
 

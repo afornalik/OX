@@ -1,4 +1,4 @@
-package com.afornalik.ox.board;
+package com.afornalik.ox.model.board;
 
 public class OverrideFieldException extends Exception {
 }

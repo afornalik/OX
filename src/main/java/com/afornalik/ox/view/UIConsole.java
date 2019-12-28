@@ -1,4 +1,4 @@
-package com.afornalik.ox.ui;
+package com.afornalik.ox.view;
 
 import java.util.Scanner;
 

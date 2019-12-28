@@ -1,4 +1,4 @@
-package com.afornalik.ox.ui;
+package com.afornalik.ox.view;
 
 import org.assertj.core.api.Assertions;
 import org.mockito.Mockito;

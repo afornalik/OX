@@ -1,6 +1,6 @@
-package com.afornalik.ox.ui;
+package com.afornalik.ox.view;
 
-import com.afornalik.ox.board.OutOfBoardException;
+import com.afornalik.ox.model.board.OutOfBoardException;
 import org.assertj.core.api.Assertions;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;

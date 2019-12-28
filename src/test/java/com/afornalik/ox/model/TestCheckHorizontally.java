@@ -1,5 +1,6 @@
-package com.afornalik.ox.board;
+package com.afornalik.ox.model;
 
+import com.afornalik.ox.model.board.*;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
@@ -15,7 +16,7 @@ public class TestCheckHorizontally {
         CheckBoard checkBoard = new CheckHorizontally(board, CONDITION_LENGTH);
 
         //when
-        boolean result = checkBoard.check(3,FieldStatus.X);
+        boolean result = checkBoard.check(3, FieldStatus.X);
 
         //then
         Assertions.assertThat(result).isFalse();

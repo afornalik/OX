@@ -1,6 +1,9 @@
-package com.afornalik.ox.progress;
+package com.afornalik.ox.controller;
 
-import com.afornalik.ox.board.*;
+import com.afornalik.ox.model.board.Board;
+import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.OutOfBoardException;
+
 
 class OneMove {
 

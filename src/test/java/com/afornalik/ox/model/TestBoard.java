@@ -1,5 +1,8 @@
-package com.afornalik.ox.board;
+package com.afornalik.ox.model;
 
+import com.afornalik.ox.model.board.Board;
+import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.OutOfBoardException;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.*;

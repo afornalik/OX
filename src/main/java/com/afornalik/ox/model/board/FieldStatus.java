@@ -1,4 +1,4 @@
-package com.afornalik.ox.board;
+package com.afornalik.ox.model.board;
 
 public enum FieldStatus {
     EMPTY("_"),
