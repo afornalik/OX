@@ -1,6 +1,7 @@
 package com.afornalik.ox.controller;
 
 import com.afornalik.ox.model.board.Board;
+import com.afornalik.ox.model.board.FieldStatus;
 import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.UIConsole;
 import com.afornalik.ox.view.UIOperations;
@@ -37,15 +38,15 @@ class MainApp {
 
         uiOperations = new UIConsole(new UIDrawBoardCellNumerate(board),scanner);
         uiOperations.drawBoard();
-        skirmishController.makeMove();
+        skirmishController.makeMove(FieldStatus.X);
 
         uiOperations.drawBoard();
-        skirmishController.makeMove();
+        skirmishController.makeMove(FieldStatus.O);
 
         uiOperations.drawBoard();
-        skirmishController.makeMove();
+        skirmishController.makeMove(FieldStatus.X);
 
         uiOperations.drawBoard();
-        skirmishController.makeMove();
+        skirmishController.makeMove(FieldStatus.O);
     }
 }

@@ -21,16 +21,33 @@ public class TestSkirmishController {
         //given
         UIOperations uiConsole = Mockito.mock(UIConsole.class);
         Mockito.when(uiConsole.readNumber()).thenReturn(1);
-        SkirmishController skirmishController = new SkirmishController(uiConsole, BOARD, PLAYER_CONTAINER);
+        SkirmishController skirmishController = new SkirmishController(uiConsole, new Board(5), PLAYER_CONTAINER);
 
         //when
-        Board result = skirmishController.makeMove();
+        Board result = skirmishController.makeMove(FieldStatus.X);
         BOARD.insertBoardField(1, FieldStatus.X);
 
         //then
-        assertThat(result).isEqualTo(BOARD);
-        assertThat(result.receiveBoardField(1)).isEqualTo(FieldStatus.X);
-        assertThat(result.receiveBoardField(1)).isEqualTo(BOARD.receiveBoardField(1));
+        assertThat(result.receiveBoardField(0)).isEqualTo(FieldStatus.X);
+        assertThat(result.receiveBoardField(0)).isEqualTo(BOARD.receiveBoardField(1));
+    }
+
+    public void shouldBothPlayerMakeAMove() throws OutOfBoardException {
+        //given
+        UIOperations uiConsole = Mockito.mock(UIConsole.class);
+        Mockito.when(uiConsole.readNumber()).thenReturn(1,2);
+        SkirmishController skirmishController = new SkirmishController(uiConsole, new Board(5), PLAYER_CONTAINER);
+
+        //when
+        Board result = skirmishController.makeTurn();
+        BOARD.insertBoardField(1, FieldStatus.X);
+        BOARD.insertBoardField(2, FieldStatus.O);
+
+        //then
+        assertThat(result.receiveBoardField(0)).isEqualTo(FieldStatus.X);
+        assertThat(result.receiveBoardField(1)).isEqualTo(FieldStatus.O);
+        assertThat(result.receiveBoardField(0)).isEqualTo(BOARD.receiveBoardField(1));
+        assertThat(result.receiveBoardField(1)).isEqualTo(BOARD.receiveBoardField(2));
     }
 
 }

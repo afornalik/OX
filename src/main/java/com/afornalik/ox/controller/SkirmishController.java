@@ -19,14 +19,23 @@ class SkirmishController {
         this.playerContainer = playerContainer;
     }
 
-    Board makeMove() {
+    Board makeMove(FieldStatus fieldStatus) {
 
-        uiConsole.print("Make a move :");
         try {
-            board.insertBoardField((uiConsole.readNumber()-1), FieldStatus.X);
+            board.insertBoardField((uiConsole.readNumber()-1), fieldStatus);
         } catch (OutOfBoardException e) {
             uiConsole.print(e.getMessage());
         }
+        return board;
+    }
+
+    Board makeTurn() {
+        uiConsole.drawBoard();
+        uiConsole.print("Player 1 move : ");
+        makeMove(FieldStatus.X);
+        uiConsole.drawBoard();
+        uiConsole.print("Player 1 move : ");
+        makeMove(FieldStatus.O);
         return board;
     }
 }
