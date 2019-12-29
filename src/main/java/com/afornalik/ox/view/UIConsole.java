@@ -28,9 +28,10 @@ public class UIConsole implements UIOperations{
 
     @Override
     public int readNumber() {
-        String stringToParse = scanner.next();
+        String stringToParse ;
         int integerVal;
         do {
+            stringToParse = scanner.next();
             try {
                 integerVal = Integer.parseInt(stringToParse);
                 break;

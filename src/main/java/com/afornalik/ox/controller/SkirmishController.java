@@ -31,11 +31,17 @@ class SkirmishController {
 
     Board makeTurn() {
         uiConsole.drawBoard();
+        if(board.receiveNumberOfEmptyFields()== 0){
+            return null;
+        }
         uiConsole.print("Player 1 move : ");
         makeMove(FieldStatus.X);
         uiConsole.drawBoard();
-        uiConsole.print("Player 1 move : ");
+        if(board.receiveNumberOfEmptyFields()== 0){
+            return null;
+        }
+        uiConsole.print("Player 2 move : ");
         makeMove(FieldStatus.O);
-        return board;
+        return makeTurn();
     }
 }

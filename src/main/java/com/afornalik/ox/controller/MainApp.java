@@ -34,19 +34,11 @@ class MainApp {
         headController.greetUser();
         playerController.createPlayer();
         Board board = boardController.createBoard();
-        SkirmishController skirmishController = new SkirmishController(uiOperations,board,new PlayerContainer());
 
         uiOperations = new UIConsole(new UIDrawBoardCellNumerate(board),scanner);
-        uiOperations.drawBoard();
-        skirmishController.makeMove(FieldStatus.X);
+        SkirmishController skirmishController = new SkirmishController(uiOperations,board,new PlayerContainer());
+        skirmishController.makeTurn();
 
-        uiOperations.drawBoard();
-        skirmishController.makeMove(FieldStatus.O);
 
-        uiOperations.drawBoard();
-        skirmishController.makeMove(FieldStatus.X);
-
-        uiOperations.drawBoard();
-        skirmishController.makeMove(FieldStatus.O);
     }
 }
