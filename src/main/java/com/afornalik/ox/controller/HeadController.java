@@ -14,6 +14,6 @@ class HeadController {
 
     void greetUser() {
         //actual version --> should be in view package
-        uiOperations.print("Hello in game OX");
+        uiOperations.print("Hello in game OX\n\n");
     }
 }

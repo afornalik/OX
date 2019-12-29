@@ -42,7 +42,7 @@ class PlayerController {
             }
         }while(!playerAttributes.containsKey("first"));
 
-        uiOperations.print("Score set to 0 ");
+        uiOperations.print("Score set to 0 \n");
         playerAttributes.put("score",0);
 
         PlayerContainer playerContainer = new PlayerContainer();

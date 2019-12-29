@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 public class TestBoardController {
 
     private static int BOARD_SIZE = 3;
-
     public void shouldCreateBoard() {
         //given
         UIOperations uiOperations = Mockito.mock(UIConsole.class);
@@ -25,4 +24,6 @@ public class TestBoardController {
         //then
         Assertions.assertThat(result).isEqualTo(new Board(BOARD_SIZE));
     }
+
+
 }
