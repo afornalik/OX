@@ -6,12 +6,12 @@ public interface UIOperations {
 
     void print(String draw);
 
-    int readNumber();
-
-    String read();
-
     void drawBoard();
 
     void drawBoard(Board board);
+
+    int readNumber();
+
+    String read();
 
 }

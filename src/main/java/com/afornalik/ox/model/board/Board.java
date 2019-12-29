@@ -2,6 +2,7 @@ package com.afornalik.ox.model.board;
 
 import java.math.BigInteger;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
 /**
@@ -81,5 +82,20 @@ public class Board {
             throw new OutOfBoardException("Out of board - min value is : " + minValue + ", and max value is : " + maxValue.toString());
         }
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return borderSize == board.borderSize &&
+                Objects.equals(boardFields, board.boardFields) &&
+                Objects.equals(maxValue, board.maxValue);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(boardFields, borderSize, maxValue);
     }
 }

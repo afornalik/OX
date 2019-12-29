@@ -19,7 +19,7 @@ class PlayerController {
 
         Map<String,Object> playerAttributes = new HashMap<>();
 
-        uiOperations.print("Give name for first Player : ");
+        uiOperations.print("Player name : ");
         playerAttributes.put("name",uiOperations.read());
 
         do {
@@ -47,6 +47,8 @@ class PlayerController {
 
         PlayerContainer playerContainer = new PlayerContainer();
         playerContainer.createPlayer(playerAttributes);
+
+
 
         return playerContainer.showPlayerOne();
 
