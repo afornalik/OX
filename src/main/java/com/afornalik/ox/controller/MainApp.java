@@ -1,6 +1,7 @@
 package com.afornalik.ox.controller;
 
 import com.afornalik.ox.model.board.Board;
+import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.UIConsole;
 import com.afornalik.ox.view.UIOperations;
 import com.afornalik.ox.view.draw.UIDrawBoardCellNumerate;
@@ -29,12 +30,22 @@ class MainApp {
         HeadController headController = new HeadController(uiOperations);
         PlayerController playerController = new PlayerController(uiOperations);
         BoardController boardController = new BoardController(uiOperations);
-
         headController.greetUser();
         playerController.createPlayer();
         Board board = boardController.createBoard();
+        SkirmishController skirmishController = new SkirmishController(uiOperations,board,new PlayerContainer());
 
         uiOperations = new UIConsole(new UIDrawBoardCellNumerate(board),scanner);
         uiOperations.drawBoard();
+        skirmishController.makeMove();
+
+        uiOperations.drawBoard();
+        skirmishController.makeMove();
+
+        uiOperations.drawBoard();
+        skirmishController.makeMove();
+
+        uiOperations.drawBoard();
+        skirmishController.makeMove();
     }
 }

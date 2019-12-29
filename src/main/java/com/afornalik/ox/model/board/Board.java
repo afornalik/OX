@@ -79,7 +79,7 @@ public class Board {
     private boolean checkIndexRange(int indexOfField) throws OutOfBoardException {
         int minValue = 0;
         if (indexOfField < minValue || indexOfField > maxValue.intValue()) {
-            throw new OutOfBoardException("Out of board - min value is : " + minValue + ", and max value is : " + maxValue.toString());
+            throw new OutOfBoardException("Out of board - min value is : " + (minValue+1) + ", and max value is : " + maxValue.add(BigInteger.ONE).toString());
         }
         return true;
     }
