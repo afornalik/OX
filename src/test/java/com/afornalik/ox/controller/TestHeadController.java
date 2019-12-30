@@ -1,6 +1,7 @@
 package com.afornalik.ox.controller;
 
-import com.afornalik.ox.view.UIConsole;
+import com.afornalik.ox.view.UISimple;
+import com.afornalik.ox.view.print.UIConsoleOperations;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
@@ -13,13 +14,13 @@ public class TestHeadController {
 
      public void shouldGreetUser(){
          //given
-         UIConsole uiConsole = Mockito.mock(UIConsole.class);
-         HeadController headController = new HeadController(uiConsole);
+         UISimple uiSimple = Mockito.mock(UISimple.class);
+         HeadController headController = new HeadController(uiSimple);
 
          //when
          headController.greetUser();
 
          //then
-         verify(uiConsole,times(1)).print(any());
+         verify(uiSimple,times(1)).print(any());
      }
 }

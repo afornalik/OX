@@ -1,6 +1,6 @@
 package com.afornalik.ox.model.board;
 
-public class CheckHorizontally implements CheckBoard {
+public class CheckHorizontally implements BoardChecker{
 
     public final Board board;
     public final int conditionLength;

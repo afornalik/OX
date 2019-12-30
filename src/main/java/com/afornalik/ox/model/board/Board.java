@@ -16,7 +16,7 @@ import java.util.TreeMap;
 public class Board {
     private final Map<Integer, FieldStatus> boardFields = new TreeMap<>();
     private final int borderSize;
-    private final BigInteger maxValue;
+    private final int maxValue;
 
     /**
      * Default constructor to generate board.
@@ -25,9 +25,7 @@ public class Board {
      */
     public Board(int borderSize) {
         this.borderSize = borderSize;
-        this.maxValue = new BigInteger(String.valueOf(borderSize))
-                .multiply(BigInteger.valueOf(borderSize))
-                .subtract(BigInteger.ONE);
+        this.maxValue = borderSize*borderSize;
     }
 
     /**
@@ -72,14 +70,14 @@ public class Board {
      *
      * @return int number of empty field.
      */
-    public int receiveNumberOfEmptyFields() {
-        return (maxValue.intValue() + 1) - boardFields.size();
+    public boolean isAllFieldTaken () {
+        return (maxValue  - boardFields.size()==0) ;
     }
 
     private boolean checkIndexRange(int indexOfField) throws OutOfBoardException {
         int minValue = 0;
-        if (indexOfField < minValue || indexOfField > maxValue.intValue()) {
-            throw new OutOfBoardException("Out of board - min value is : " + (minValue+1) + ", and max value is : " + maxValue.add(BigInteger.ONE).toString());
+        if (indexOfField < minValue || indexOfField > maxValue-1) {
+            throw new OutOfBoardException("Out of board - min value is : " + (minValue+1) + ", and max value is : " + maxValue);
         }
         return true;
     }

@@ -16,17 +16,17 @@ import java.util.Formatter;
 public class UIDrawBoardCellNumerate implements UIDrawBoard {
 
     private final Board board;
-    private final int boardDimension;
+    private final int boardSize;
 
     /**
      * Constructor with parameter board.
-     * This constructor also calculate boardDimension variable.
+     * This constructor also calculate boardSize variable.
      *
      * @param board Board This parameter represent board in OX game
      */
     public UIDrawBoardCellNumerate(Board board) {
         this.board = board;
-        this.boardDimension = board.getBorderSize() * board.getBorderSize();
+        this.boardSize = board.getBorderSize() * board.getBorderSize();
     }
 
     /**
@@ -39,7 +39,7 @@ public class UIDrawBoardCellNumerate implements UIDrawBoard {
     @Override
     public String drawBoard() {
         StringBuilder sb = new StringBuilder();
-        for (int index = 0; index < boardDimension; index++) {
+        for (int index = 0; index < boardSize; index++) {
             if (index % board.getBorderSize() == 0) {
                 sb.append("\n|");
             }
@@ -60,16 +60,4 @@ public class UIDrawBoardCellNumerate implements UIDrawBoard {
         return sb.append("\n").toString();
     }
 
-    /**
-     * NOT COMPLETED
-     * Method construct String representing board.
-     * Method use StringBuilder to construct this string.
-     *
-     * @param board Board This parameter determine board to be draw
-     * @return String String representation of the board
-     */
-    @Override
-    public String drawBoard(Board board) {
-        return null;
-    }
 }

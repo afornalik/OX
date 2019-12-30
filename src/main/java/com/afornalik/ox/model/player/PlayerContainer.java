@@ -2,19 +2,16 @@ package com.afornalik.ox.model.player;
 
 import com.afornalik.ox.model.board.FieldStatus;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class PlayerContainer {
 
-    private Player playerOne;
-    private Player playerTwo;
+    private List<Player> players = new ArrayList<>();
 
     public void createPlayer(Map<String, Object> playerInfo) {
-        if(playerOne == null) {
-            playerOne = convertMapToPlayer(playerInfo);
-        }else if(playerTwo == null) {
-           playerTwo = convertMapToPlayer(playerInfo);
-        }
+           players.add(convertMapToPlayer(playerInfo));
     }
 
     private Player convertMapToPlayer(Map<String, Object> playerInfo) {
@@ -25,11 +22,9 @@ public class PlayerContainer {
                 .build();
     }
 
-    public String showPlayerOne() {
-        return playerOne.toString();
+    public String getPlayer(int index) {
+        return players.get(index).toString();
     }
 
-    public String showPlayerTwo() {
-        return playerTwo.toString();
-    }
+
 }

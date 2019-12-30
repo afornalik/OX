@@ -42,8 +42,8 @@ public class TestPlayerContainer {
         playerContainer.createPlayer( playerInfo2);
 
         //then
-        Assertions.assertThat(playerContainer.showPlayerOne()).isEqualTo(PLAYER1.toString());
-        Assertions.assertThat(playerContainer.showPlayerTwo()).isEqualTo(PLAYER2.toString());
+        Assertions.assertThat(playerContainer.getPlayer(0)).isEqualTo(PLAYER1.toString());
+        Assertions.assertThat(playerContainer.getPlayer(1)).isEqualTo(PLAYER2.toString());
 
     }
 

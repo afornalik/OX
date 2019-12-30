@@ -4,7 +4,6 @@ import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.model.board.FieldStatus;
 import com.afornalik.ox.model.board.OutOfBoardException;
 
-import java.math.BigInteger;
 
 /**
  * Class responsible for print board on console.
@@ -16,34 +15,18 @@ import java.math.BigInteger;
 public class UIDrawBoardSideNumerate implements UIDrawBoard {
 
     private Board board;
-    private BigInteger boardDimension;
+    private int boardSize;
 
     /**
      * Constructor with parameter board.
-     * This constructor also calculate boardDimension variable.
+     * This constructor also calculate boardSize variable.
      *
      * @param board Board This parameter represent board in OX game
      */
 
     public UIDrawBoardSideNumerate(Board board) {
         this.board = board;
-        this.boardDimension = new BigInteger(String.valueOf(board.getBorderSize()))
-                .multiply(BigInteger.TWO).add(BigInteger.ONE);
-    }
-
-    /**
-     * Method construct String representing board.
-     * Method use StringBuilder to construct this string, exception OutOfBoardException is caught.
-     *
-     * @param board Board This parameter determine board to be draw
-     * @return String String representation of the board
-     */
-    @Override
-    public String drawBoard(Board board) {
-        this.board = board;
-        this.boardDimension = new BigInteger(String.valueOf(board.getBorderSize()))
-                .multiply(BigInteger.TWO).add(BigInteger.ONE);
-        return this.drawBoard();
+        this.boardSize = (board.getBorderSize() * 2) + 1;
     }
 
     /**
@@ -53,11 +36,11 @@ public class UIDrawBoardSideNumerate implements UIDrawBoard {
      * @return String String representation of the board
      */
 
-    public String drawBoard()  {
+    public String drawBoard() {
         int index = 0;
         StringBuilder sb = new StringBuilder();
         sb.append("\n  ");
-        for (int i = 1; i < boardDimension.intValue(); i++) {
+        for (int i = 1; i < boardSize; i++) {
             if (i % 2 == 0) sb.append((i / 2));
             else if (i < 19) sb.append(" ");
         }
@@ -71,8 +54,8 @@ public class UIDrawBoardSideNumerate implements UIDrawBoard {
         return sb.toString();
     }
 
-    private int returnGrid(int index, StringBuilder sb)  {
-        for (int k = 0; k < boardDimension.intValue(); k++) {
+    private int returnGrid(int index, StringBuilder sb) {
+        for (int k = 0; k < boardSize; k++) {
             if (k % 2 == 0) {
                 sb.append("|");
             } else {

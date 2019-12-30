@@ -1,7 +1,7 @@
 package com.afornalik.ox.model.board;
 
 @FunctionalInterface
-public interface CheckBoard {
+public interface BoardChecker {
 
     boolean check(int location, FieldStatus fieldStatus) throws OutOfBoardException;
 }

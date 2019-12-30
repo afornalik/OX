@@ -4,15 +4,15 @@ import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.model.board.FieldStatus;
 import com.afornalik.ox.model.board.OutOfBoardException;
 import com.afornalik.ox.model.player.PlayerContainer;
-import com.afornalik.ox.view.UIConsole;
-import com.afornalik.ox.view.UIOperations;
+import com.afornalik.ox.view.UIExtended;
+import com.afornalik.ox.view.UIExtended;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-public class TestSkirmishController {
+public class TestMatchController {
 
     private static final Board BOARD = new Board(5);
     private static final Board BOARD_THREE = new Board(3);
@@ -20,12 +20,12 @@ public class TestSkirmishController {
 
     public void shouldUserMakeAMove() throws OutOfBoardException {
         //given
-        UIOperations uiConsole = Mockito.mock(UIConsole.class);
+        UIExtended uiConsole = Mockito.mock(UIExtended.class);
         Mockito.when(uiConsole.readNumber()).thenReturn(1);
-        SkirmishController skirmishController = new SkirmishController(uiConsole, new Board(5), PLAYER_CONTAINER);
+        MatchController matchController = new MatchController(uiConsole, new Board(5), PLAYER_CONTAINER);
 
         //when
-        Board result = skirmishController.makeMove(FieldStatus.X);
+        Board result = matchController.doMove(FieldStatus.X);
         BOARD.insertBoardField(1, FieldStatus.X);
 
         //then
@@ -37,12 +37,12 @@ public class TestSkirmishController {
     @Test
     public void shouldAllFieldBeMarked() throws OutOfBoardException {
         //given
-        UIOperations uiConsole = Mockito.mock(UIConsole.class);
+        UIExtended uiConsole = Mockito.mock(UIExtended.class);
         Mockito.when(uiConsole.readNumber()).thenReturn(1,2,3,4,5,6,7,8,9);
-        SkirmishController skirmishController = new SkirmishController(uiConsole, new Board(3), PLAYER_CONTAINER);
+        MatchController matchController = new MatchController(uiConsole, new Board(3), PLAYER_CONTAINER);
 
         //when
-        Board result = skirmishController.makeTurn();
+        Board result = matchController.doTurn();
         BOARD_THREE.insertBoardField(0, FieldStatus.X);
         BOARD_THREE.insertBoardField(1, FieldStatus.O);
         BOARD_THREE.insertBoardField(2, FieldStatus.X);
@@ -63,7 +63,7 @@ public class TestSkirmishController {
         assertThat(result.receiveBoardField(6)).isEqualTo(BOARD_THREE.receiveBoardField(6));
         assertThat(result.receiveBoardField(7)).isEqualTo(BOARD_THREE.receiveBoardField(7));
         assertThat(result.receiveBoardField(8)).isEqualTo(BOARD_THREE.receiveBoardField(8));
-        assertThat(result.receiveNumberOfEmptyFields()).isEqualTo(0);
+        assertThat(result.isAllFieldTaken()).isEqualTo(true);
     }
 
 }

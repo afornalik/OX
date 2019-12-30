@@ -1,19 +1,19 @@
 package com.afornalik.ox.controller;
 
-import com.afornalik.ox.view.UIOperations;
+import com.afornalik.ox.view.UISimple;
 
 
 class HeadController {
 
-    private final UIOperations uiOperations;
+    private final UISimple uiSimple;
 
 
-    HeadController( UIOperations uiOperations) {
-        this.uiOperations = uiOperations;
+    HeadController( UISimple uiSimple) {
+        this.uiSimple = uiSimple;
     }
 
     void greetUser() {
         //actual version --> should be in view package
-        uiOperations.print("Welcome in game OX\n\n");
+        uiSimple.print("Welcome in game OX\n\n");
     }
 }

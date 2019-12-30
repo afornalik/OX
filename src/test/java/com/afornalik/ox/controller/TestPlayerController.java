@@ -2,7 +2,8 @@ package com.afornalik.ox.controller;
 
 import com.afornalik.ox.model.board.FieldStatus;
 import com.afornalik.ox.model.player.Player;
-import com.afornalik.ox.view.UIConsole;
+import com.afornalik.ox.model.player.PlayerContainer;
+import com.afornalik.ox.view.print.UIConsoleOperations;
 import org.assertj.core.api.Assertions;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
@@ -18,14 +19,14 @@ public class TestPlayerController {
 
     public void shouldCreateTwoPlayers() {
         //given
-        UIConsole uiConsole = Mockito.mock(UIConsole.class);
-        Mockito.when(uiConsole.read()).thenReturn("Kasia","o","y");
+        UIConsoleOperations uiConsole = Mockito.mock(UIConsoleOperations.class);
+        Mockito.when(uiConsole.read()).thenReturn("Kasia","o","Kasia","o","1");
         PlayerController playerController = new PlayerController(uiConsole);
 
         //when
-        String result = playerController.createPlayer();
+        PlayerContainer result = playerController.createTwoPlayer();
 
         //then
-        Assertions.assertThat(result).isEqualTo(PLAYER1.toString());
+        Assertions.assertThat(result.getPlayer(0)).isEqualTo(PLAYER1.toString());
     }
 }

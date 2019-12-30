@@ -2,6 +2,8 @@ package com.afornalik.ox.view;
 
 import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
+import com.afornalik.ox.view.print.UIConsoleOperations;
+import com.afornalik.ox.view.print.UIOperations;
 import org.assertj.core.api.Assertions;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
@@ -24,7 +26,7 @@ public class TestUIConsole {
         Scanner scanner = new Scanner(System.in);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
-        UIConsole uiConsole = new UIConsole(new UIDrawBoardSideNumerate(new Board(5)), scanner);
+        UIConsoleOperations uiConsole = new UIConsoleOperations(scanner);
 
         //when
         uiConsole.print(DUMMY_STRING);
@@ -37,7 +39,7 @@ public class TestUIConsole {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
         Mockito.when(scanner.next()).thenReturn(DUMMY_STRING);
-        UIConsole uiConsole = new UIConsole(new UIDrawBoardSideNumerate(new Board(5)), scanner);
+        UIConsoleOperations uiConsole = new UIConsoleOperations( scanner);
 
         //when
         String result = uiConsole.read();
@@ -51,7 +53,7 @@ public class TestUIConsole {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
         when(scanner.next()).thenReturn(NUMBER_VALUE);
-        UIOperations uiInput = new UIConsole(new UIDrawBoardSideNumerate(new Board(5)), scanner);
+        UIOperations uiInput = new UIConsoleOperations( scanner);
 
         //when
         int result = uiInput.readNumber();
