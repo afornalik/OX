@@ -1,7 +1,8 @@
-package com.afornalik.ox.board;
+package com.afornalik.ox.model.board;
 
 import java.math.BigInteger;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
 /**
@@ -41,23 +42,13 @@ public class Board {
     /**
      * Method to insert appropriate value into board.
      *
-     * @param axisX int This is horizontal coordinate of field
-     * @param axisY int This is vertical coordinate of field
+     * @param indexOfField int This is index of field where value will be insert.
      * @param fieldStatus  FieldStatus This is enum value which determine what symbol will be inserted
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
-     * @throws OverrideFieldException throw when field is already taken by another mark
      */
-    public void insertBoardField(int axisX,int axisY, FieldStatus fieldStatus) throws OutOfBoardException,OverrideFieldException {
-        if(axisX < borderSize && axisY < borderSize) {
-            int indexOfField = convertToIndex(axisX, axisY);
-            if (checkIndexRange(indexOfField)) {
-                if (receiveBoardField(indexOfField) == FieldStatus.EMPTY) {
-                    boardFields.put(indexOfField, fieldStatus);
-                } else {
-                    throw new OverrideFieldException(" Field is already taken.");
-                }
-            }
-        }
+    public void insertBoardField(int indexOfField, FieldStatus fieldStatus) throws OutOfBoardException {
+        if (checkIndexRange(indexOfField))
+            boardFields.put(indexOfField, fieldStatus);
     }
 
     /**
@@ -88,12 +79,23 @@ public class Board {
     private boolean checkIndexRange(int indexOfField) throws OutOfBoardException {
         int minValue = 0;
         if (indexOfField < minValue || indexOfField > maxValue.intValue()) {
-            throw new OutOfBoardException("Out of board - min value is : " + minValue + ", and max value is : " + maxValue.toString());
+            throw new OutOfBoardException("Out of board - min value is : " + (minValue+1) + ", and max value is : " + maxValue.add(BigInteger.ONE).toString());
         }
         return true;
     }
 
-    private int convertToIndex(int axisX, int axisY) {
-        return  ((axisY-1)*borderSize)+(axisX-1);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Board board = (Board) o;
+        return borderSize == board.borderSize &&
+                Objects.equals(boardFields, board.boardFields) &&
+                Objects.equals(maxValue, board.maxValue);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(boardFields, borderSize, maxValue);
     }
 }
