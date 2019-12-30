@@ -6,11 +6,8 @@ import com.afornalik.ox.model.board.OutOfBoardException;
 import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.UIConsole;
 import com.afornalik.ox.view.UIOperations;
-import com.afornalik.ox.view.draw.UIDrawBoardCellNumerate;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
-
-import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

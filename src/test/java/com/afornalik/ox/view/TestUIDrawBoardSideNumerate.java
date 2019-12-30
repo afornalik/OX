@@ -19,7 +19,7 @@ public class TestUIDrawBoardSideNumerate {
     private static final int BOUND_TEN = 10;
     private static final int[] INDEX = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
-    public void shouldReturnStringWithDrawBoard3x3() throws OutOfBoardException {
+    public void shouldReturnStringWithDrawBoard3x3() {
         //given
         Board board = new Board(BOUND_THREE);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
@@ -34,7 +34,7 @@ public class TestUIDrawBoardSideNumerate {
                 "3 |_|_|_|\n");
     }
 
-    public void shouldReturnStringWithTwoMarkDrawBoard3x3() throws OutOfBoardException, OverrideFieldException {
+    public void shouldReturnStringWithTwoMarkDrawBoard3x3() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
@@ -51,7 +51,7 @@ public class TestUIDrawBoardSideNumerate {
                 "3 |_|_|_|\n");
     }
 
-    public void shouldReturnStringWithFourMarkDrawBoard3x3() throws OutOfBoardException, OverrideFieldException {
+    public void shouldReturnStringWithFourMarkDrawBoard3x3() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
@@ -70,7 +70,7 @@ public class TestUIDrawBoardSideNumerate {
                 "3 |_|_|_|\n");
     }
 
-    public void shouldReturnStringWithDrawBoard10x10() throws OutOfBoardException {
+    public void shouldReturnStringWithDrawBoard10x10() {
         //given
         Board board = new Board(BOUND_TEN);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
@@ -92,7 +92,7 @@ public class TestUIDrawBoardSideNumerate {
                 "10|_|_|_|_|_|_|_|_|_|_|\n");
     }
 
-    public void shouldReturnStringWithMarkedFieldBoard10x10() throws OutOfBoardException, OverrideFieldException {
+    public void shouldReturnStringWithMarkedFieldBoard10x10() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_TEN);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);

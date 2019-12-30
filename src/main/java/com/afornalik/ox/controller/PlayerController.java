@@ -9,7 +9,7 @@ import java.util.Map;
 
 class PlayerController {
 
-    private UIOperations uiOperations;
+    private final UIOperations uiOperations;
 
     PlayerController(UIOperations uiOperations) {
         this.uiOperations = uiOperations;

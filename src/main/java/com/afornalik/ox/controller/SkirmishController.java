@@ -4,7 +4,6 @@ import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.model.board.FieldStatus;
 import com.afornalik.ox.model.board.OutOfBoardException;
 import com.afornalik.ox.model.player.PlayerContainer;
-import com.afornalik.ox.view.UIConsole;
 import com.afornalik.ox.view.UIOperations;
 
 class SkirmishController {

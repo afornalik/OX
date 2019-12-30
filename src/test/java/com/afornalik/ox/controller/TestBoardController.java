@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 @Test
 public class TestBoardController {
 
-    private static int BOARD_SIZE = 3;
+    private static final int BOARD_SIZE = 3;
     public void shouldCreateBoard() {
         //given
         UIOperations uiOperations = Mockito.mock(UIConsole.class);

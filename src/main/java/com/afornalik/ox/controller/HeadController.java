@@ -5,7 +5,7 @@ import com.afornalik.ox.view.UIOperations;
 
 class HeadController {
 
-    private UIOperations uiOperations;
+    private final UIOperations uiOperations;
 
 
     HeadController( UIOperations uiOperations) {

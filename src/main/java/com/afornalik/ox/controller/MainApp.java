@@ -1,13 +1,11 @@
 package com.afornalik.ox.controller;
 
 import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.FieldStatus;
 import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.UIConsole;
 import com.afornalik.ox.view.UIOperations;
 import com.afornalik.ox.view.draw.UIDrawBoardCellNumerate;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class MainApp {
