@@ -36,27 +36,8 @@ public class TestSkirmishController {
         assertThat(result.receiveBoardField(0)).isEqualTo(BOARD.receiveBoardField(1));
     }
 
-    public void shouldBothPlayerMakeAMove() throws OutOfBoardException {
-        //given
-        Board board = new Board(5);
-        Scanner scanner = Mockito.mock(Scanner.class);
-        Mockito.when(scanner.next()).thenReturn("1","2");
-        UIOperations uiConsole =new UIConsole(new UIDrawBoardCellNumerate(board),scanner);
-        SkirmishController skirmishController = new SkirmishController(uiConsole, board, PLAYER_CONTAINER);
 
-        //when
-        Board result = skirmishController.makeTurn();
-        BOARD.insertBoardField(1, FieldStatus.X);
-        BOARD.insertBoardField(2, FieldStatus.O);
-
-        //then
-        assertThat(result.receiveBoardField(0)).isEqualTo(FieldStatus.X);
-        assertThat(result.receiveBoardField(1)).isEqualTo(FieldStatus.O);
-        assertThat(result.receiveBoardField(0)).isEqualTo(BOARD.receiveBoardField(1));
-        assertThat(result.receiveBoardField(1)).isEqualTo(BOARD.receiveBoardField(2));
-    }
-
-    @Test(enabled = false)
+    @Test
     public void shouldAllFieldBeMarked() throws OutOfBoardException {
         //given
         UIOperations uiConsole = Mockito.mock(UIConsole.class);
