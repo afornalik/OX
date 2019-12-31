@@ -4,7 +4,6 @@ public class CheckHorizontally implements BoardChecker {
 
     private final Board board;
     private final int conditionLength;
-    private static final int HALF = 2;
 
     public CheckHorizontally(Board board, int conditionLength) {
         this.board = board;
@@ -18,11 +17,15 @@ public class CheckHorizontally implements BoardChecker {
         int tempLength = 1;
         boolean leftFlag = true;
         boolean rightFlag = true;
-        FieldStatus tempStatus = FieldStatus.EMPTY;
+        FieldStatus tempStatus;
 
-        for (int range = 1; range < (conditionLength + 1 / HALF); range++) {
+
+        for (int range = 1; range < conditionLength; range++) {
             //left site
-            if (leftFlag && (location - range) > 0) {
+            if (((location + 1) - range) % board.getBorderSize() == 0) {
+                leftFlag = false;
+            }
+            if (leftFlag && (location - range) >= 0) {
                 tempStatus = board.receiveBoardField(location - range);
 
                 if (tempStatus.equals(fieldStatus)) {
@@ -33,9 +36,11 @@ public class CheckHorizontally implements BoardChecker {
                 }
             }
             //right site
-            if (rightFlag && (location + range) < (board.getBorderSize()*board.getBorderSize())) {
+            if (((location) + range) % board.getBorderSize() == 0) {
+                rightFlag = false;
+            }
+            if (rightFlag && (location + range) < (board.getBorderSize() * board.getBorderSize())) {
                 tempStatus = board.receiveBoardField(location + range);
-
 
                 if (tempStatus.equals(fieldStatus)) {
                     //increment length
