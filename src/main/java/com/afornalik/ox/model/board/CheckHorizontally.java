@@ -33,7 +33,7 @@ public class CheckHorizontally implements BoardChecker {
                 }
             }
             //right site
-            if (rightFlag && (location + range) < board.getBorderSize()) {
+            if (rightFlag && (location + range) < (board.getBorderSize()*board.getBorderSize())) {
                 tempStatus = board.receiveBoardField(location + range);
 
 
