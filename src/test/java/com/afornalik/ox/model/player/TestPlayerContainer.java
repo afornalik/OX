@@ -10,13 +10,13 @@ import java.util.Map;
 @Test
 public class TestPlayerContainer {
 
-    private static final Player PLAYER1 =  new Player.PlayerBuilder(FieldStatus.O)
+    private static final Player PLAYER1 = new Player.PlayerBuilder(FieldStatus.O)
             .name("Kasia")
             .score(0)
             .first(true)
             .build();
 
-    private static final Player PLAYER2  = new Player.PlayerBuilder(FieldStatus.X)
+    private static final Player PLAYER2 = new Player.PlayerBuilder(FieldStatus.X)
             .name("Gosia")
             .score(0)
             .first(false)
@@ -38,8 +38,8 @@ public class TestPlayerContainer {
         PlayerContainer playerContainer = new PlayerContainer();
 
         //when
-        playerContainer.createPlayer( playerInfo1);
-        playerContainer.createPlayer( playerInfo2);
+        playerContainer.createPlayer(playerInfo1);
+        playerContainer.createPlayer(playerInfo2);
 
         //then
         Assertions.assertThat(playerContainer.getPlayer(0)).isEqualTo(PLAYER1.toString());

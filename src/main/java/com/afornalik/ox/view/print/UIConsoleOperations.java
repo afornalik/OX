@@ -1,7 +1,5 @@
 package com.afornalik.ox.view.print;
 
-import com.afornalik.ox.view.print.UIOperations;
-
 import java.util.Scanner;
 
 public class UIConsoleOperations implements UIOperations {

@@ -22,8 +22,8 @@ public class Board {
      * Default constructor to generate board.
      *
      * @param borderSize describe size of board. Prefer value are between 3 and 50.
-     * @param condition set a number of mark in row or column to win match. If condition is
-     *                  higher than borderSize than condition is set to borderSize
+     * @param condition  set a number of mark in row or column to win match. If condition is
+     *                   higher than borderSize than condition is set to borderSize
      */
     public Board(int borderSize, int condition) {
         this.borderSize = borderSize;

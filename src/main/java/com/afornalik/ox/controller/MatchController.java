@@ -33,10 +33,7 @@ class MatchController {
             return true;
         }
         uiExtended.print(s);
-        if(doMove(x)){
-            return true;
-        }
-        return false;
+        return doMove(x);
     }
 
     boolean doMove(FieldStatus fieldStatus) {
@@ -44,8 +41,9 @@ class MatchController {
         try {
             index = getIndex();
             board.insertBoardField(index - 1, fieldStatus);
-            if(boardChecker.check(index,fieldStatus)){
-                uiExtended.print("Winner is  : "+fieldStatus);
+            if (boardChecker.check(index - 1, fieldStatus)) {
+                uiExtended.drawBoard();
+                uiExtended.print("Winner is  : " + fieldStatus);
                 return true;
             }
         } catch (OutOfBoardException e) {
