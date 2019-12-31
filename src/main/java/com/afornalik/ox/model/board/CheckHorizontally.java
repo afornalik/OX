@@ -10,51 +10,54 @@ public class CheckHorizontally implements BoardChecker {
         this.conditionLength = conditionLength;
     }
 
-    //in progress - not work yet
     @Override
     public boolean check(int location, FieldStatus fieldStatus) throws OutOfBoardException {
         int tempLength = 1;
+        tempLength = getTempLengthLeft(location, fieldStatus, tempLength);
+        tempLength = getTempLengthRight(location, fieldStatus, tempLength);
+        if (tempLength >= conditionLength) return true;
+        return false;
+    }
+
+    private int getTempLengthLeft(int location, FieldStatus fieldStatus, int tempLength) throws OutOfBoardException {
+        FieldStatus tempStatusLeft;
         boolean leftFlag = true;
-        boolean rightFlag = true;
-        FieldStatus tempStatus;
-
-
         for (int range = 1; range < conditionLength; range++) {
-            //left site
-            if (((location + 1) - range) % board.getBorderSize() == 0) {
-                leftFlag = false;
-            }
+            leftFlag = isEndOfLine(leftFlag, (location + 1) - range);
             if (leftFlag && (location - range) >= 0) {
-                tempStatus = board.receiveBoardField(location - range);
-
-                if (tempStatus.equals(fieldStatus)) {
+                tempStatusLeft = board.receiveBoardField(location - range);
+                if (tempStatusLeft.equals(fieldStatus)) {
                     //increment length
                     tempLength++;
                 } else {
                     leftFlag = false;
                 }
             }
-            //right site
-            if (rightFlag && (location + range) < (board.getBorderSize() * board.getBorderSize())) {
-                tempStatus = board.receiveBoardField(location + range);
+        }
+        return tempLength;
+    }
 
-                if (tempStatus.equals(fieldStatus)) {
-                    //increment length
+    private int getTempLengthRight(int location, FieldStatus fieldStatus, int tempLength) throws OutOfBoardException {
+        FieldStatus tempStatusRight;
+        boolean rightFlag = true;
+        for (int range = 1; range < conditionLength; range++) {
+            if (rightFlag && (location + range) < (board.getBorderSize() * board.getBorderSize())) {
+                tempStatusRight = board.receiveBoardField(location + range);
+                if (tempStatusRight.equals(fieldStatus)) {
                     tempLength++;
                 } else {
                     rightFlag = false;
                 }
             }
-
-            if (((location) + range) % board.getBorderSize() == 0) {
-                rightFlag = false;
-            }
-
-            //check condition
-            if (tempLength >= conditionLength) {
-                return true;
-            }
+            rightFlag = isEndOfLine(rightFlag, (location) + range);
         }
-        return false;
+        return tempLength;
+    }
+
+    private boolean isEndOfLine(boolean rightFlag, int i) {
+        if ((i) % board.getBorderSize() == 0) {
+            rightFlag = false;
+        }
+        return rightFlag;
     }
 }
