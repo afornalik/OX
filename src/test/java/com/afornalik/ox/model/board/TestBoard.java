@@ -15,7 +15,7 @@ public class TestBoard {
 
     public void shouldReturnEmptyStatus() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
 
         //when
         FieldStatus result = board.receiveBoardField(3);
@@ -28,7 +28,7 @@ public class TestBoard {
     @Test(expectedExceptions = OutOfBoardException.class)
     public void shouldThrowOutOfBoardExceptionWithMinusValue() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
 
         //when
         FieldStatus result1 = board.receiveBoardField(-1);
@@ -37,7 +37,7 @@ public class TestBoard {
     @Test(expectedExceptions = OutOfBoardException.class)
     public void shouldThrowOutOfBoardExceptionWithTooHighValue() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
 
         //when
         FieldStatus result1 = board.receiveBoardField(9);
@@ -45,7 +45,7 @@ public class TestBoard {
 
     public void shouldInsertMarkXIntoBoard() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
 
         //when
         board.insertBoardField(INDEX_1, FIELD_STATUS_X);
@@ -58,7 +58,7 @@ public class TestBoard {
     @Test(expectedExceptions = OutOfBoardException.class)
     public void shouldThrowOutOfBoardExceptionWhenInsertTooLowValue() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
 
         //when
         board.insertBoardField(MINUS_INDEX, FIELD_STATUS_X);

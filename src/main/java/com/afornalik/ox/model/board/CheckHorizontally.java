@@ -4,22 +4,22 @@ public class CheckHorizontally implements BoardChecker {
 
     private final Board board;
     private final int conditionLength;
+    private int tempLength =1;
 
-    public CheckHorizontally(Board board, int conditionLength) {
+    public CheckHorizontally(Board board) {
         this.board = board;
-        this.conditionLength = conditionLength;
+        this.conditionLength = board.getCondition();
     }
 
     @Override
     public boolean check(int location, FieldStatus fieldStatus) throws OutOfBoardException {
-        int tempLength = 1;
-        tempLength = getTempLengthLeft(location, fieldStatus, tempLength);
-        tempLength = getTempLengthRight(location, fieldStatus, tempLength);
-        if (tempLength >= conditionLength) return true;
-        return false;
+        tempLength = 1;
+        getTempLengthLeft(location, fieldStatus);
+        getTempLengthRight(location, fieldStatus);
+        return tempLength >= conditionLength;
     }
 
-    private int getTempLengthLeft(int location, FieldStatus fieldStatus, int tempLength) throws OutOfBoardException {
+    private void getTempLengthLeft(int location, FieldStatus fieldStatus) throws OutOfBoardException {
         FieldStatus tempStatusLeft;
         boolean leftFlag = true;
         for (int range = 1; range < conditionLength; range++) {
@@ -27,17 +27,15 @@ public class CheckHorizontally implements BoardChecker {
             if (leftFlag && (location - range) >= 0) {
                 tempStatusLeft = board.receiveBoardField(location - range);
                 if (tempStatusLeft.equals(fieldStatus)) {
-                    //increment length
                     tempLength++;
                 } else {
                     leftFlag = false;
                 }
             }
         }
-        return tempLength;
     }
 
-    private int getTempLengthRight(int location, FieldStatus fieldStatus, int tempLength) throws OutOfBoardException {
+    private void getTempLengthRight(int location, FieldStatus fieldStatus) throws OutOfBoardException {
         FieldStatus tempStatusRight;
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {
@@ -51,7 +49,6 @@ public class CheckHorizontally implements BoardChecker {
             }
             rightFlag = isEndOfLine(rightFlag, (location) + range);
         }
-        return tempLength;
     }
 
     private boolean isEndOfLine(boolean rightFlag, int i) {

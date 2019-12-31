@@ -16,11 +16,11 @@ public class TestCheckHorizontally {
     @Test
     public void shouldBoardBeInWinStateCaseOne() throws OutOfBoardException {
         //given
-        Board board = new Board(BOARD_SIZE);
+        Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
         board.insertBoardField(0,FIELD_STATUS_X);
         board.insertBoardField(1,FIELD_STATUS_X);
         board.insertBoardField(2,FIELD_STATUS_X);
-        BoardChecker boardChecker = new CheckHorizontally(board,CONDITION_LENGTH);
+        BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
         boolean result1 = boardChecker.check(0,FIELD_STATUS_X);
@@ -36,11 +36,11 @@ public class TestCheckHorizontally {
     @Test
     public void shouldBoardBeInWinStateCaseTwo() throws OutOfBoardException {
         //given
-        Board board = new Board(BOARD_SIZE);
+        Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
         board.insertBoardField(3,FIELD_STATUS_O);
         board.insertBoardField(4,FIELD_STATUS_O);
         board.insertBoardField(5,FIELD_STATUS_O);
-        BoardChecker boardChecker = new CheckHorizontally(board,CONDITION_LENGTH);
+        BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
         boolean result1 = boardChecker.check(3,FIELD_STATUS_O);
@@ -56,11 +56,11 @@ public class TestCheckHorizontally {
     @Test
     public void shouldBoardBeInWinStateCaseThree() throws OutOfBoardException {
         //given
-        Board board = new Board(BOARD_SIZE);
+        Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
         board.insertBoardField(6,FIELD_STATUS_X);
         board.insertBoardField(8,FIELD_STATUS_X);
         board.insertBoardField(7,FIELD_STATUS_X);
-        BoardChecker boardChecker = new CheckHorizontally(board,CONDITION_LENGTH);
+        BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
         boolean result1 = boardChecker.check(7,FIELD_STATUS_X);
@@ -76,11 +76,11 @@ public class TestCheckHorizontally {
     @Test
     public void shouldBoardBeInNoWinStateCaseOne() throws OutOfBoardException {
         //given
-        Board board = new Board(BOARD_SIZE);
+        Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
         board.insertBoardField(2,FIELD_STATUS_X);
         board.insertBoardField(3,FIELD_STATUS_X);
         board.insertBoardField(4,FIELD_STATUS_X);
-        BoardChecker boardChecker = new CheckHorizontally(board,CONDITION_LENGTH);
+        BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
         boolean result1 = boardChecker.check(2,FIELD_STATUS_X);
@@ -96,11 +96,11 @@ public class TestCheckHorizontally {
     @Test
     public void shouldBoardBeInNoWinStateCaseDifferentMarks() throws OutOfBoardException {
         //given
-        Board board = new Board(BOARD_SIZE);
+        Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
         board.insertBoardField(2,FIELD_STATUS_O);
         board.insertBoardField(3,FIELD_STATUS_X);
         board.insertBoardField(4,FIELD_STATUS_O);
-        BoardChecker boardChecker = new CheckHorizontally(board,CONDITION_LENGTH);
+        BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
         boolean result1 = boardChecker.check(2,FIELD_STATUS_X);
@@ -123,13 +123,13 @@ public class TestCheckHorizontally {
     @Test
     public void shouldBoardBeInWinStateBoard7on7Condition5() throws OutOfBoardException {
         //given
-        Board board = new Board(BOARD_SIZE_7);
+        Board board = new Board(BOARD_SIZE_7,CONDITION_LENGTH_5);
         board.insertBoardField(31,FIELD_STATUS_X);
         board.insertBoardField(32,FIELD_STATUS_X);
         board.insertBoardField(33,FIELD_STATUS_X);
         board.insertBoardField(34,FIELD_STATUS_X);
         board.insertBoardField(35,FIELD_STATUS_X);
-        BoardChecker boardChecker = new CheckHorizontally(board,CONDITION_LENGTH_5);
+        BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
         boolean result1 = boardChecker.check(31,FIELD_STATUS_X);

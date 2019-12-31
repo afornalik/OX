@@ -16,16 +16,21 @@ public class Board {
     private final Map<Integer, FieldStatus> boardFields = new TreeMap<>();
     private final int borderSize;
     private final int maxValue;
+    private final int condition;
 
     /**
      * Default constructor to generate board.
      *
      * @param borderSize describe size of board. Prefer value are between 3 and 50.
+     * @param condition set a number of mark in row or column to win match. If condition is
+     *                  higher than borderSize than condition is set to borderSize
      */
-    public Board(int borderSize) {
+    public Board(int borderSize, int condition) {
         this.borderSize = borderSize;
         this.maxValue = borderSize * borderSize;
+        this.condition = Math.min(condition, borderSize);
     }
+
 
     /**
      * Method return board size.
@@ -71,6 +76,10 @@ public class Board {
      */
     public boolean isAllFieldTaken() {
         return (maxValue - boardFields.size() == 0);
+    }
+
+    public int getCondition() {
+        return condition;
     }
 
     private boolean checkIndexRange(int indexOfField) throws OutOfBoardException {

@@ -15,7 +15,7 @@ public class TestUIDrawBoardCellNumerate {
 
     public void shouldReturnStringWithDrawBoard3x3() {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
         UIDrawBoard uiDrawBoard = new UIDrawBoardCellNumerate(board);
 
         //when
@@ -29,7 +29,7 @@ public class TestUIDrawBoardCellNumerate {
 
     public void shouldReturnStringWithDrawBoard3x3Filled() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
         board.insertBoardField(0, FieldStatus.X);
         board.insertBoardField(1, FieldStatus.O);
         UIDrawBoard uiDrawBoard = new UIDrawBoardCellNumerate(board);

@@ -15,25 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Test
 public class TestMatchController {
 
-    private static final Board BOARD = new Board(5);
-    private static final Board BOARD_THREE = new Board(3);
+    private static final Board BOARD_THREE = new Board(3, 3);
     private static final PlayerContainer PLAYER_CONTAINER = new PlayerContainer();
-
-    public void shouldUserMakeAMove() throws OutOfBoardException {
-        //given
-        UIExtended uiConsole = Mockito.mock(UIExtended.class);
-        Mockito.when(uiConsole.readNumber()).thenReturn(1);
-        MatchController matchController = new MatchController(uiConsole, new Board(5), PLAYER_CONTAINER);
-
-        //when
-        Board result = matchController.doMove(FieldStatus.X);
-        BOARD.insertBoardField(1, FieldStatus.X);
-
-        //then
-        assertThat(result.receiveBoardField(0)).isEqualTo(FieldStatus.X);
-        assertThat(result.receiveBoardField(0)).isEqualTo(BOARD.receiveBoardField(1));
-    }
-
 
     @Test
     public void shouldAllFieldBeMarked() throws OutOfBoardException {
@@ -52,7 +35,7 @@ public class TestMatchController {
         Mockito.when(uiConsole.readNumber()).thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9);
         PLAYER_CONTAINER.createPlayer(playerInfo1);
         PLAYER_CONTAINER.createPlayer(playerInfo2);
-        MatchController matchController = new MatchController(uiConsole, new Board(3), PLAYER_CONTAINER);
+        MatchController matchController = new MatchController(uiConsole, new Board(3, 3), PLAYER_CONTAINER);
 
         //when
         Board result = matchController.doTurn();

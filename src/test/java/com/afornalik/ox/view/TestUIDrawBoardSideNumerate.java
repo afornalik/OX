@@ -20,7 +20,7 @@ public class TestUIDrawBoardSideNumerate {
 
     public void shouldReturnStringWithDrawBoard3x3() {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when
@@ -35,7 +35,7 @@ public class TestUIDrawBoardSideNumerate {
 
     public void shouldReturnStringWithTwoMarkDrawBoard3x3() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when
@@ -52,7 +52,7 @@ public class TestUIDrawBoardSideNumerate {
 
     public void shouldReturnStringWithFourMarkDrawBoard3x3() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
+        Board board = new Board(BOUND_THREE, 3);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when
@@ -71,7 +71,7 @@ public class TestUIDrawBoardSideNumerate {
 
     public void shouldReturnStringWithDrawBoard10x10() {
         //given
-        Board board = new Board(BOUND_TEN);
+        Board board = new Board(BOUND_TEN, 3);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when
@@ -93,7 +93,7 @@ public class TestUIDrawBoardSideNumerate {
 
     public void shouldReturnStringWithMarkedFieldBoard10x10() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_TEN);
+        Board board = new Board(BOUND_TEN, 3);
         UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
 
         //when

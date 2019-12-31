@@ -22,7 +22,7 @@ public class TestBoardController {
         Board result = boardController.createBoard();
 
         //then
-        Assertions.assertThat(result).isEqualTo(new Board(BOARD_SIZE));
+        Assertions.assertThat(result).isEqualTo(new Board(BOARD_SIZE, 3));
     }
 
 

@@ -13,6 +13,9 @@ class BoardController {
 
     Board createBoard() {
         ui.print("Select board size :");
-        return new Board(ui.readNumber());
+        int borderSize = ui.readNumber();
+        ui.print("Select condition size :");
+        int conditionSize = ui.readNumber();
+        return new Board(borderSize, conditionSize);
     }
 }

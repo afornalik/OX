@@ -1,8 +1,6 @@
 package com.afornalik.ox.controller;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.FieldStatus;
-import com.afornalik.ox.model.board.OutOfBoardException;
+import com.afornalik.ox.model.board.*;
 import com.afornalik.ox.model.player.Player;
 import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.UIExtended;
@@ -12,11 +10,13 @@ class MatchController {
     private final UIExtended uiExtended;
     private final Board board;
     private final PlayerContainer playerContainer;
+    private BoardChecker boardChecker;
 
     MatchController(UIExtended uiExtended, Board board, PlayerContainer playerContainer) {
         this.uiExtended = uiExtended;
         this.board = board;
         this.playerContainer = playerContainer;
+        boardChecker = new CheckHorizontally(board);
     }
 
     Board doTurn() {
@@ -27,15 +27,31 @@ class MatchController {
         return doTurn();
     }
 
-    Board doMove(FieldStatus fieldStatus) {
+    private boolean playerMove(String s, FieldStatus x) {
+        uiExtended.drawBoard();
+        if (board.isAllFieldTaken()) {
+            return true;
+        }
+        uiExtended.print(s);
+        if(doMove(x)){
+            return true;
+        }
+        return false;
+    }
+
+    boolean doMove(FieldStatus fieldStatus) {
         int index;
         try {
             index = getIndex();
             board.insertBoardField(index - 1, fieldStatus);
+            if(boardChecker.check(index,fieldStatus)){
+                uiExtended.print("Winner is  : "+fieldStatus);
+                return true;
+            }
         } catch (OutOfBoardException e) {
             uiExtended.print(e.getMessage());
         }
-        return board;
+        return false;
     }
 
     private int getIndex() throws OutOfBoardException {
@@ -49,15 +65,5 @@ class MatchController {
             }
         } while (checkStatus != FieldStatus.EMPTY);
         return index;
-    }
-
-    private boolean playerMove(String s, FieldStatus x) {
-        uiExtended.drawBoard();
-        if (board.isAllFieldTaken()) {
-            return true;
-        }
-        uiExtended.print(s);
-        doMove(x);
-        return false;
     }
 }
