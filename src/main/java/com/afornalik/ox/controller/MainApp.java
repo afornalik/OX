@@ -6,7 +6,6 @@ import com.afornalik.ox.view.DrawBoardType;
 import com.afornalik.ox.view.UIExtended;
 import com.afornalik.ox.view.UISimple;
 import com.afornalik.ox.view.print.UIConsoleOperations;
-import com.afornalik.ox.view.draw.UIDrawBoardCellNumerate;
 
 import java.util.Scanner;
 
@@ -19,11 +18,11 @@ class MainApp {
         PlayerController playerController = new PlayerController(uiSimple);
         BoardController boardController = new BoardController(uiSimple);
         headController.greetUser();
-        playerController.createTwoPlayer();
+        PlayerContainer playerContainer = playerController.createTwoPlayer();
         Board board = boardController.createBoard();
 
-        UIExtended uiExtended = new UIExtended(new UIConsoleOperations(scanner), DrawBoardType.CELL,board);
-        MatchController matchController = new MatchController(uiExtended,board,new PlayerContainer());
+        UIExtended uiExtended = new UIExtended(new UIConsoleOperations(scanner), DrawBoardType.CELL, board);
+        MatchController matchController = new MatchController(uiExtended, board, playerContainer);
         matchController.doTurn();
 
 

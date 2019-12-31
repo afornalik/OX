@@ -3,6 +3,7 @@ package com.afornalik.ox.controller;
 import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.model.board.FieldStatus;
 import com.afornalik.ox.model.board.OutOfBoardException;
+import com.afornalik.ox.model.player.Player;
 import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.UIExtended;
 
@@ -19,8 +20,10 @@ class MatchController {
     }
 
     Board doTurn() {
-        if (playerMove("Player 1 move : ", FieldStatus.X)) return board;
-        if (playerMove("Player 2 move : ", FieldStatus.O)) return board;
+        Player first = playerContainer.isFirst();
+        Player last = playerContainer.isLast();
+        if (playerMove(first.getName() + " move : ", first.getSign())) return board;
+        if (playerMove(last.getName() + " move : ", last.getSign())) return board;
         return doTurn();
     }
 
@@ -41,7 +44,7 @@ class MatchController {
         do {
             index = uiExtended.readNumber();
             checkStatus = board.receiveBoardField(index - 1);
-            if (checkStatus != FieldStatus.EMPTY){
+            if (checkStatus != FieldStatus.EMPTY) {
                 uiExtended.print("\nField already taken choose different number ");
             }
         } while (checkStatus != FieldStatus.EMPTY);

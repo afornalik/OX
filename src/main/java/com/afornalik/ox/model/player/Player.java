@@ -16,15 +16,15 @@ public class Player {
         this.first = playerBuilder.first;
     }
 
-    int getScore() {
+    public int getScore() {
         return score;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    FieldStatus getSign() {
+    public FieldStatus getSign() {
         return sign;
     }
 
@@ -39,12 +39,12 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "name='" + name + '\'' +
-                ", score=" + score +
-                ", sign=" + sign +
-                ", first=" + first +
-                '}';
+        return "Player " +
+                "name is " + name +
+                " ,has score = " + score +
+                " ,use sign = " + sign +
+                " , and is he first ? " + first +
+                "\n";
     }
 
     public static class PlayerBuilder {

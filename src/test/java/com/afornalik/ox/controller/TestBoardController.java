@@ -2,8 +2,6 @@ package com.afornalik.ox.controller;
 
 import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.view.UISimple;
-import com.afornalik.ox.view.print.UIConsoleOperations;
-import com.afornalik.ox.view.print.UIOperations;
 import org.assertj.core.api.Assertions;
 import org.mockito.BDDMockito;
 import org.mockito.Mockito;
@@ -13,6 +11,7 @@ import org.testng.annotations.Test;
 public class TestBoardController {
 
     private static final int BOARD_SIZE = 3;
+
     public void shouldCreateBoard() {
         //given
         UISimple uiOperations = Mockito.mock(UISimple.class);

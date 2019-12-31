@@ -3,7 +3,6 @@ package com.afornalik.ox.view;
 import com.afornalik.ox.model.board.Board;
 import com.afornalik.ox.model.board.FieldStatus;
 import com.afornalik.ox.model.board.OutOfBoardException;
-import com.afornalik.ox.model.board.OverrideFieldException;
 import com.afornalik.ox.view.draw.UIDrawBoard;
 import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
 import org.testng.annotations.Test;

@@ -1,6 +1,5 @@
 package com.afornalik.ox.model.board;
 
-import java.math.BigInteger;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
@@ -25,7 +24,7 @@ public class Board {
      */
     public Board(int borderSize) {
         this.borderSize = borderSize;
-        this.maxValue = borderSize*borderSize;
+        this.maxValue = borderSize * borderSize;
     }
 
     /**
@@ -70,14 +69,14 @@ public class Board {
      *
      * @return int number of empty field.
      */
-    public boolean isAllFieldTaken () {
-        return (maxValue  - boardFields.size()==0) ;
+    public boolean isAllFieldTaken() {
+        return (maxValue - boardFields.size() == 0);
     }
 
     private boolean checkIndexRange(int indexOfField) throws OutOfBoardException {
         int minValue = 0;
-        if (indexOfField < minValue || indexOfField > maxValue-1) {
-            throw new OutOfBoardException("Out of board - min value is : " + (minValue+1) + ", and max value is : " + maxValue);
+        if (indexOfField < minValue || indexOfField > maxValue - 1) {
+            throw new OutOfBoardException("Out of board - min value is : " + (minValue + 1) + ", and max value is : " + maxValue);
         }
         return true;
     }

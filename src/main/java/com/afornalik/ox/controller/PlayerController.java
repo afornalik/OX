@@ -10,7 +10,7 @@ import java.util.Map;
 class PlayerController {
 
     private final UIOperations uiOperations;
-    private PlayerContainer playerContainer = new PlayerContainer();
+    private final PlayerContainer playerContainer = new PlayerContainer();
 
     PlayerController(UIOperations uiOperations) {
         this.uiOperations = uiOperations;
@@ -18,30 +18,36 @@ class PlayerController {
 
     PlayerContainer createTwoPlayer() {
         uiOperations.print("\nPlayer 1");
-        Map<String,Object> player1Statistics = setPlayer();
+        Map<String, Object> player1Statistics = setPlayer(FieldStatus.EMPTY);
         uiOperations.print("\nPlayer 2");
-        Map<String,Object> player2Statistics = setPlayer();
+        Map<String, Object> player2Statistics = setPlayer((FieldStatus) player1Statistics.get("FieldStatus"));
         setFirstMove(player1Statistics);
-        if((boolean) player1Statistics.get("first")){
-            player2Statistics.put("first",false);
-        }else {
-            player2Statistics.put("first",true);
+        if ((boolean) player1Statistics.get("first")) {
+            player2Statistics.put("first", false);
+        } else {
+            player2Statistics.put("first", true);
         }
-
         playerContainer.createPlayer(player1Statistics);
         playerContainer.createPlayer(player2Statistics);
-
-
+        uiOperations.print(playerContainer.getPlayer(0));
+        uiOperations.print(playerContainer.getPlayer(1));
         return playerContainer;
     }
 
-    private Map<String, Object> setPlayer() {
+    private Map<String, Object> setPlayer(FieldStatus fieldStatus) {
         Map<String, Object> playerAttributes = new HashMap<>();
 
         setName(playerAttributes);
-        setMark(playerAttributes);
+        if (fieldStatus == FieldStatus.EMPTY) {
+            setMark(playerAttributes);
+        } else {
+            if (fieldStatus == FieldStatus.O) {
+                playerAttributes.put("FieldStatus", FieldStatus.X);
+            } else {
+                playerAttributes.put("FieldStatus", FieldStatus.O);
+            }
+        }
         setScore(playerAttributes);
-
         return playerAttributes;
     }
 
@@ -69,11 +75,9 @@ class PlayerController {
     private void setMark(Map<String, Object> playerAttributes) {
         do {
             uiOperations.print("Select X or O mark ");
-            String tempSymbol = uiOperations.read();
-            if (tempSymbol.equalsIgnoreCase(FieldStatus.X.toString())) {
-                playerAttributes.put("FieldStatus", FieldStatus.X);
-            } else if (tempSymbol.equalsIgnoreCase(FieldStatus.O.toString())) {
-                playerAttributes.put("FieldStatus", FieldStatus.O);
+            String tempSymbol = uiOperations.read().toUpperCase();
+            if (tempSymbol.equals(FieldStatus.X.toString()) || (tempSymbol.equals(FieldStatus.O.toString()))) {
+                playerAttributes.put("FieldStatus", FieldStatus.valueOf(tempSymbol));
             }
         } while (!playerAttributes.containsKey("FieldStatus"));
     }

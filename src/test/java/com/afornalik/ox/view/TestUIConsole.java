@@ -1,7 +1,5 @@
 package com.afornalik.ox.view;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
 import com.afornalik.ox.view.print.UIConsoleOperations;
 import com.afornalik.ox.view.print.UIOperations;
 import org.assertj.core.api.Assertions;
@@ -39,7 +37,7 @@ public class TestUIConsole {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
         Mockito.when(scanner.next()).thenReturn(DUMMY_STRING);
-        UIConsoleOperations uiConsole = new UIConsoleOperations( scanner);
+        UIConsoleOperations uiConsole = new UIConsoleOperations(scanner);
 
         //when
         String result = uiConsole.read();
@@ -53,7 +51,7 @@ public class TestUIConsole {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
         when(scanner.next()).thenReturn(NUMBER_VALUE);
-        UIOperations uiInput = new UIConsoleOperations( scanner);
+        UIOperations uiInput = new UIConsoleOperations(scanner);
 
         //when
         int result = uiInput.readNumber();

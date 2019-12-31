@@ -1,9 +1,9 @@
 package com.afornalik.ox.model.board;
 
-public class CheckHorizontally implements BoardChecker{
+public class CheckHorizontally implements BoardChecker {
 
-    public final Board board;
-    public final int conditionLength;
+    private final Board board;
+    private final int conditionLength;
 
     public CheckHorizontally(Board board, int conditionLength) {
         this.board = board;
@@ -18,7 +18,7 @@ public class CheckHorizontally implements BoardChecker{
         boolean leftFlag = true;
         boolean rightFlag = true;
         for (int i = 1; i <= conditionLength; i++) {
-            if(location-i % board.getBorderSize() >= 0) {
+            if (location - i % board.getBorderSize() >= 0) {
                 FieldStatus leftField = board.receiveBoardField(location - i);
                 if (leftField != null && (leftFlag)) {
                     if (leftField == fieldStatus) {
@@ -27,9 +27,9 @@ public class CheckHorizontally implements BoardChecker{
                 } else {
                     leftFlag = false;
                 }
-            }else {
-                leftFlag= false;
-                }
+            } else {
+                leftFlag = false;
+            }
             FieldStatus rightField = board.receiveBoardField(location + i);
             if (rightField != null && (rightFlag)) {
                 if (rightField == fieldStatus) {
@@ -41,7 +41,7 @@ public class CheckHorizontally implements BoardChecker{
             if (tempLength >= conditionLength) {
                 return true;
             }
-            if (!leftFlag && !rightFlag){
+            if (!leftFlag && !rightFlag) {
                 return false;
             }
         }

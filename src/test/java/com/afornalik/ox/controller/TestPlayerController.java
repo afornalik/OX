@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 @Test
 public class TestPlayerController {
 
-    private static final Player PLAYER1 =  new Player.PlayerBuilder(FieldStatus.O)
+    private static final Player PLAYER1 = new Player.PlayerBuilder(FieldStatus.O)
             .name("Kasia")
             .score(0)
             .first(true)
@@ -20,7 +20,7 @@ public class TestPlayerController {
     public void shouldCreateTwoPlayers() {
         //given
         UIConsoleOperations uiConsole = Mockito.mock(UIConsoleOperations.class);
-        Mockito.when(uiConsole.read()).thenReturn("Kasia","o","Kasia","o","1");
+        Mockito.when(uiConsole.read()).thenReturn("Kasia", "o", "Kasia", "x", "1");
         PlayerController playerController = new PlayerController(uiConsole);
 
         //when

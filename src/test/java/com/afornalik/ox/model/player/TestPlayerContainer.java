@@ -24,16 +24,16 @@ public class TestPlayerContainer {
 
     public void shouldCreateBothPlayers() {
         //given
-        Map<String,Object> playerInfo1 = Map.of(
-            "FieldStatus",FieldStatus.O,
-            "name","Kasia",
-            "score",0,
-            "first",true);
-        Map<String,Object> playerInfo2 = Map.of(
-            "FieldStatus",FieldStatus.X,
-            "name","Gosia",
-            "score",0,
-            "first",false);
+        Map<String, Object> playerInfo1 = Map.of(
+                "FieldStatus", FieldStatus.O,
+                "name", "Kasia",
+                "score", 0,
+                "first", true);
+        Map<String, Object> playerInfo2 = Map.of(
+                "FieldStatus", FieldStatus.X,
+                "name", "Gosia",
+                "score", 0,
+                "first", false);
 
         PlayerContainer playerContainer = new PlayerContainer();
 

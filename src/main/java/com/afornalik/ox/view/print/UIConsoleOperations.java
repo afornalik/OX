@@ -19,7 +19,7 @@ public class UIConsoleOperations implements UIOperations {
 
     @Override
     public int readNumber() {
-        String stringToParse ;
+        String stringToParse;
         int integerVal;
         do {
             stringToParse = scanner.next();

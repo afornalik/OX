@@ -11,8 +11,7 @@ class BoardController {
         this.ui = ui;
     }
 
-    Board createBoard(){
-
+    Board createBoard() {
         ui.print("Select board size :");
         return new Board(ui.readNumber());
     }

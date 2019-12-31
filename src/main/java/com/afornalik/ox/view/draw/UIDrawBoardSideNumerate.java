@@ -14,8 +14,8 @@ import com.afornalik.ox.model.board.OutOfBoardException;
 
 public class UIDrawBoardSideNumerate implements UIDrawBoard {
 
-    private Board board;
-    private int boardSize;
+    private final Board board;
+    private final int boardSize;
 
     /**
      * Constructor with parameter board.

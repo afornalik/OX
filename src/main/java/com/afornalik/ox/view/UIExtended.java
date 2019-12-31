@@ -12,9 +12,9 @@ public class UIExtended extends UISimple {
 
     public UIExtended(UIOperations uiOperations, DrawBoardType drawBoardType, Board board) {
         super(uiOperations);
-        if(drawBoardType == DrawBoardType.CELL){
+        if (drawBoardType == DrawBoardType.CELL) {
             uiDrawBoard = new UIDrawBoardCellNumerate(board);
-        }else {
+        } else {
             uiDrawBoard = new UIDrawBoardSideNumerate(board);
         }
     }
