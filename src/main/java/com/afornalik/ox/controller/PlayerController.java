@@ -1,6 +1,6 @@
 package com.afornalik.ox.controller;
 
-import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.Field;
 import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.print.UIOperations;
 
@@ -18,9 +18,9 @@ class PlayerController {
 
     PlayerContainer createTwoPlayer() {
         uiOperations.print("\nPlayer 1");
-        Map<String, Object> player1Statistics = setPlayer(FieldStatus.EMPTY);
+        Map<String, Object> player1Statistics = setPlayer(Field.EMPTY);
         uiOperations.print("\nPlayer 2");
-        Map<String, Object> player2Statistics = setPlayer((FieldStatus) player1Statistics.get("FieldStatus"));
+        Map<String, Object> player2Statistics = setPlayer((Field) player1Statistics.get("Field"));
         setFirstMove(player1Statistics);
         if ((boolean) player1Statistics.get("first")) {
             player2Statistics.put("first", false);
@@ -34,17 +34,17 @@ class PlayerController {
         return playerContainer;
     }
 
-    private Map<String, Object> setPlayer(FieldStatus fieldStatus) {
+    private Map<String, Object> setPlayer(Field field) {
         Map<String, Object> playerAttributes = new HashMap<>();
 
         setName(playerAttributes);
-        if (fieldStatus == FieldStatus.EMPTY) {
+        if (field == Field.EMPTY) {
             setMark(playerAttributes);
         } else {
-            if (fieldStatus == FieldStatus.O) {
-                playerAttributes.put("FieldStatus", FieldStatus.X);
+            if (field == Field.O) {
+                playerAttributes.put("Field", Field.X);
             } else {
-                playerAttributes.put("FieldStatus", FieldStatus.O);
+                playerAttributes.put("Field", Field.O);
             }
         }
         setScore(playerAttributes);
@@ -76,9 +76,9 @@ class PlayerController {
         do {
             uiOperations.print("Select X or O mark ");
             String tempSymbol = uiOperations.read().toUpperCase();
-            if (tempSymbol.equals(FieldStatus.X.toString()) || (tempSymbol.equals(FieldStatus.O.toString()))) {
-                playerAttributes.put("FieldStatus", FieldStatus.valueOf(tempSymbol));
+            if (tempSymbol.equals(Field.X.toString()) || (tempSymbol.equals(Field.O.toString()))) {
+                playerAttributes.put("Field", Field.valueOf(tempSymbol));
             }
-        } while (!playerAttributes.containsKey("FieldStatus"));
+        } while (!playerAttributes.containsKey("Field"));
     }
 }

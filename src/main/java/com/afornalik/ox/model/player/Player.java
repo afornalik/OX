@@ -1,12 +1,12 @@
 package com.afornalik.ox.model.player;
 
-import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.Field;
 
 public class Player {
 
     private final String name;
     private int score;
-    private final FieldStatus sign;
+    private final Field sign;
     private final boolean first;
 
     private Player(PlayerBuilder playerBuilder) {
@@ -24,7 +24,7 @@ public class Player {
         return name;
     }
 
-    public FieldStatus getSign() {
+    public Field getSign() {
         return sign;
     }
 
@@ -50,10 +50,10 @@ public class Player {
     public static class PlayerBuilder {
         private String name = "player";
         private int score = 0;
-        private final FieldStatus sign;
+        private final Field sign;
         private boolean first = true;
 
-        public PlayerBuilder(FieldStatus sign) {
+        public PlayerBuilder(Field sign) {
             this.sign = sign;
         }
 

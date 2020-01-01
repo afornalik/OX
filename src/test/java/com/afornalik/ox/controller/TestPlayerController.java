@@ -1,6 +1,6 @@
 package com.afornalik.ox.controller;
 
-import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.Field;
 import com.afornalik.ox.model.player.Player;
 import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.print.UIConsoleOperations;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 @Test
 public class TestPlayerController {
 
-    private static final Player PLAYER1 = new Player.PlayerBuilder(FieldStatus.O)
+    private static final Player PLAYER1 = new Player.PlayerBuilder(Field.O)
             .name("Kasia")
             .score(0)
             .first(true)

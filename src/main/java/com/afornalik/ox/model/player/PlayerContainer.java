@@ -1,6 +1,6 @@
 package com.afornalik.ox.model.player;
 
-import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.Field;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class PlayerContainer {
     }
 
     private Player convertMapToPlayer(Map<String, Object> playerInfo) {
-        return new Player.PlayerBuilder((FieldStatus) playerInfo.get("FieldStatus"))
+        return new Player.PlayerBuilder((Field) playerInfo.get("Field"))
                 .name((String) playerInfo.get("name"))
                 .score((int) playerInfo.get("score"))
                 .first((boolean) playerInfo.get("first"))

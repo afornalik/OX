@@ -13,7 +13,7 @@ import java.util.TreeMap;
  * @since 2019-12-20
  */
 public class Board {
-    private final Map<Integer, FieldStatus> boardFields = new TreeMap<>();
+    private final Map<Integer, Field> boardFields = new TreeMap<>();
     private final int borderSize;
     private final int maxValue;
     private final int condition;
@@ -45,28 +45,28 @@ public class Board {
      * Method to insert appropriate value into board.
      *
      * @param indexOfField int This is index of field where value will be insert.
-     * @param fieldStatus  FieldStatus This is enum value which determine what symbol will be inserted
+     * @param field  Field This is enum value which determine what symbol will be inserted
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      */
-    public void insertBoardField(int indexOfField, FieldStatus fieldStatus) throws OutOfBoardException {
+    public void insertBoardField(int indexOfField, Field field) throws OutOfBoardException {
         if (checkIndexRange(indexOfField))
-            boardFields.put(indexOfField, fieldStatus);
+            boardFields.put(indexOfField, field);
     }
 
     /**
      * Method to receive value from board.
      *
      * @param indexOfField int This is index of field from which value will be taken.
-     * @return FieldStatus This method return enum value corresponding to x or o.
+     * @return Field This method return enum value corresponding to x or o.
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      */
-    public FieldStatus receiveBoardField(int indexOfField) throws OutOfBoardException {
+    public Field receiveBoardField(int indexOfField) throws OutOfBoardException {
         if (checkIndexRange(indexOfField)) {
             if (boardFields.get(indexOfField) != null) {
                 return boardFields.get(indexOfField);
             }
         }
-        return FieldStatus.EMPTY;
+        return Field.EMPTY;
     }
 
     /**

@@ -1,7 +1,7 @@
 package com.afornalik.ox.view.draw;
 
 import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.Field;
 import com.afornalik.ox.model.board.OutOfBoardException;
 
 
@@ -59,14 +59,14 @@ public class UIDrawBoardSideNumerate implements UIDrawBoard {
             if (k % 2 == 0) {
                 sb.append("|");
             } else {
-                FieldStatus fieldStatus = null;
+                Field field = null;
                 try {
-                    fieldStatus = board.receiveBoardField(index);
+                    field = board.receiveBoardField(index);
                 } catch (OutOfBoardException e) {
                     //to do !
                 }
                 index++;
-                sb.append(fieldStatus);
+                sb.append(field);
             }
         }
         return index;

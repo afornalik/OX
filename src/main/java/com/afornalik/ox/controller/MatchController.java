@@ -27,7 +27,7 @@ class MatchController {
         return doTurn();
     }
 
-    private boolean playerMove(String s, FieldStatus x) {
+    private boolean playerMove(String s, Field x) {
         uiExtended.drawBoard();
         if (board.isAllFieldTaken()) {
             return true;
@@ -36,14 +36,14 @@ class MatchController {
         return doMove(x);
     }
 
-    boolean doMove(FieldStatus fieldStatus) {
+    boolean doMove(Field field) {
         int index;
         try {
             index = getIndex();
-            board.insertBoardField(index - 1, fieldStatus);
-            if (boardChecker.check(index - 1, fieldStatus)) {
+            board.insertBoardField(index - 1, field);
+            if (boardChecker.check(index - 1, field)) {
                 uiExtended.drawBoard();
-                uiExtended.print("Winner is  : " + fieldStatus);
+                uiExtended.print("Winner is  : " + field);
                 return true;
             }
         } catch (OutOfBoardException e) {
@@ -54,14 +54,14 @@ class MatchController {
 
     private int getIndex() throws OutOfBoardException {
         int index;
-        FieldStatus checkStatus;
+        Field checkStatus;
         do {
             index = uiExtended.readNumber();
             checkStatus = board.receiveBoardField(index - 1);
-            if (checkStatus != FieldStatus.EMPTY) {
+            if (checkStatus != Field.EMPTY) {
                 uiExtended.print("\nField already taken choose different number ");
             }
-        } while (checkStatus != FieldStatus.EMPTY);
+        } while (checkStatus != Field.EMPTY);
         return index;
     }
 }

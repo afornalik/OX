@@ -1,7 +1,7 @@
 package com.afornalik.ox.view;
 
 import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.Field;
 import com.afornalik.ox.model.board.OutOfBoardException;
 import com.afornalik.ox.view.draw.UIDrawBoard;
 import com.afornalik.ox.view.draw.UIDrawBoardCellNumerate;
@@ -30,8 +30,8 @@ public class TestUIDrawBoardCellNumerate {
     public void shouldReturnStringWithDrawBoard3x3Filled() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE, 3);
-        board.insertBoardField(0, FieldStatus.X);
-        board.insertBoardField(1, FieldStatus.O);
+        board.insertBoardField(0, Field.X);
+        board.insertBoardField(1, Field.O);
         UIDrawBoard uiDrawBoard = new UIDrawBoardCellNumerate(board);
 
         //when

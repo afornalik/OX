@@ -1,7 +1,7 @@
 package com.afornalik.ox.controller;
 
 import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.Field;
 import com.afornalik.ox.model.board.OutOfBoardException;
 import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.UIExtended;
@@ -22,12 +22,12 @@ public class TestMatchController {
     public void shouldAllFieldBeMarked() throws OutOfBoardException {
         //given
         Map<String, Object> playerInfo1 = Map.of(
-                "FieldStatus", FieldStatus.O,
+                "Field", Field.O,
                 "name", "Kasia",
                 "score", 0,
                 "first", false);
         Map<String, Object> playerInfo2 = Map.of(
-                "FieldStatus", FieldStatus.X,
+                "Field", Field.X,
                 "name", "Gosia",
                 "score", 0,
                 "first", true);
@@ -39,15 +39,15 @@ public class TestMatchController {
 
         //when
         Board result = matchController.doTurn();
-        BOARD_THREE.insertBoardField(0, FieldStatus.X);
-        BOARD_THREE.insertBoardField(1, FieldStatus.O);
-        BOARD_THREE.insertBoardField(2, FieldStatus.X);
-        BOARD_THREE.insertBoardField(3, FieldStatus.O);
-        BOARD_THREE.insertBoardField(4, FieldStatus.X);
-        BOARD_THREE.insertBoardField(5, FieldStatus.O);
-        BOARD_THREE.insertBoardField(6, FieldStatus.X);
-        BOARD_THREE.insertBoardField(7, FieldStatus.O);
-        BOARD_THREE.insertBoardField(8, FieldStatus.X);
+        BOARD_THREE.insertBoardField(0, Field.X);
+        BOARD_THREE.insertBoardField(1, Field.O);
+        BOARD_THREE.insertBoardField(2, Field.X);
+        BOARD_THREE.insertBoardField(3, Field.O);
+        BOARD_THREE.insertBoardField(4, Field.X);
+        BOARD_THREE.insertBoardField(5, Field.O);
+        BOARD_THREE.insertBoardField(6, Field.X);
+        BOARD_THREE.insertBoardField(7, Field.O);
+        BOARD_THREE.insertBoardField(8, Field.X);
 
         //then
         assertThat(result.receiveBoardField(0)).isEqualTo(BOARD_THREE.receiveBoardField(0));

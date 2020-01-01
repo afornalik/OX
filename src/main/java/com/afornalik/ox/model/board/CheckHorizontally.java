@@ -12,21 +12,21 @@ public class CheckHorizontally implements BoardChecker {
     }
 
     @Override
-    public boolean check(int location, FieldStatus fieldStatus) throws OutOfBoardException {
+    public boolean check(int location, Field field) throws OutOfBoardException {
         tempLength = 1;
-        getTempLengthLeft(location, fieldStatus);
-        getTempLengthRight(location, fieldStatus);
+        getTempLengthLeft(location, field);
+        getTempLengthRight(location, field);
         return tempLength >= conditionLength;
     }
 
-    private void getTempLengthLeft(int location, FieldStatus fieldStatus) throws OutOfBoardException {
-        FieldStatus tempStatusLeft;
+    private void getTempLengthLeft(int location, Field field) throws OutOfBoardException {
+        Field tempStatusLeft;
         boolean leftFlag = true;
         for (int range = 1; range < conditionLength; range++) {
             leftFlag = isEndOfLine(leftFlag, (location + 1) - range);
             if (leftFlag && (location - range) >= 0) {
                 tempStatusLeft = board.receiveBoardField(location - range);
-                if (tempStatusLeft.equals(fieldStatus)) {
+                if (tempStatusLeft.equals(field)) {
                     tempLength++;
                 } else {
                     leftFlag = false;
@@ -35,13 +35,13 @@ public class CheckHorizontally implements BoardChecker {
         }
     }
 
-    private void getTempLengthRight(int location, FieldStatus fieldStatus) throws OutOfBoardException {
-        FieldStatus tempStatusRight;
+    private void getTempLengthRight(int location, Field field) throws OutOfBoardException {
+        Field tempStatusRight;
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {
             if (rightFlag && (location + range) < (board.getBorderSize() * board.getBorderSize())) {
                 tempStatusRight = board.receiveBoardField(location + range);
-                if (tempStatusRight.equals(fieldStatus)) {
+                if (tempStatusRight.equals(field)) {
                     tempLength++;
                 } else {
                     rightFlag = false;

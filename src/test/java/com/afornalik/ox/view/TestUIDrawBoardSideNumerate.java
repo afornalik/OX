@@ -1,7 +1,7 @@
 package com.afornalik.ox.view;
 
 import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.FieldStatus;
+import com.afornalik.ox.model.board.Field;
 import com.afornalik.ox.model.board.OutOfBoardException;
 import com.afornalik.ox.view.draw.UIDrawBoard;
 import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
@@ -12,8 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Test
 public class TestUIDrawBoardSideNumerate {
 
-    private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
-    private static final FieldStatus FIELD_STATUS_O = FieldStatus.O;
+    private static final Field FIELD_STATUS_X = Field.X;
+    private static final Field FIELD_STATUS_O = Field.O;
     private static final int BOUND_THREE = 3;
     private static final int BOUND_TEN = 10;
     private static final int[] INDEX = {0, 1, 2, 3, 4, 5, 6, 7, 8};

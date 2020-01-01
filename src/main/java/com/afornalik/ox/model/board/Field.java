@@ -1,13 +1,13 @@
 package com.afornalik.ox.model.board;
 
-public enum FieldStatus {
+public enum Field {
     EMPTY("_"),
     X("X"),
     O("O");
 
     final String value;
 
-    FieldStatus(String value) {
+    Field(String value) {
         this.value = value;
     }
 

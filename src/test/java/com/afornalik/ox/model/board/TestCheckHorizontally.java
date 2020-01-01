@@ -10,8 +10,8 @@ public class TestCheckHorizontally {
     private static final int BOARD_SIZE_7 = 7;
     private static final int CONDITION_LENGTH = 3;
     private static final int CONDITION_LENGTH_5 = 5;
-    private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
-    private static final FieldStatus FIELD_STATUS_O = FieldStatus.O;
+    private static final Field FIELD_STATUS_X = Field.X;
+    private static final Field FIELD_STATUS_O = Field.O;
 
     @Test
     public void shouldBoardBeInWinStateCaseOne() throws OutOfBoardException {
