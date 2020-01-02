@@ -9,6 +9,9 @@ import java.util.Scanner;
 class MainApp {
 
     public static void main(String[] args) {
+        if(args != null) {
+
+        }
         Scanner scanner = new Scanner(System.in);
         UISimple uiSimple = new UISimple(scanner);
         Configuration configuration = new Configuration(uiSimple);
