@@ -16,12 +16,12 @@ class Match {
         boardChecker = new CheckHorizontally(board);
     }
 
-    Board doTurn() {
+    Board makeATurn() {
         Player first = playerContainer.isFirst();
         Player last = playerContainer.isLast();
         if (playerMove(first.getName() + " move : ", first.getSign())) return board;
         if (playerMove(last.getName() + " move : ", last.getSign())) return board;
-        return doTurn();
+        return makeATurn();
     }
 
     private boolean playerMove(String s, Field x) {
@@ -30,13 +30,13 @@ class Match {
             return true;
         }
         uiExtended.print(s);
-        return doMove(x);
+        return makeAMove(x);
     }
 
-    boolean doMove(Field field) {
+    boolean makeAMove(Field field) {
         int index;
         try {
-            index = getIndex();
+            index = receiveIndex();
             board.insertBoardField(index - 1, field);
             if (boardChecker.check(index - 1, field)) {
                 uiExtended.drawBoard();
@@ -49,7 +49,7 @@ class Match {
         return false;
     }
 
-    private int getIndex() throws OutOfBoardException {
+    private int receiveIndex() throws OutOfBoardException {
         int index;
         Field checkStatus;
         do {

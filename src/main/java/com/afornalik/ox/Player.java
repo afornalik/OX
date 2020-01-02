@@ -1,6 +1,6 @@
 package com.afornalik.ox;
 
-public class Player {
+class Player {
 
     private final String name;
     private int score;
@@ -14,15 +14,15 @@ public class Player {
         this.first = playerBuilder.first;
     }
 
-    public int getScore() {
+    int getScore() {
         return score;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public Field getSign() {
+    Field getSign() {
         return sign;
     }
 
@@ -30,7 +30,7 @@ public class Player {
         return first;
     }
 
-    public void setScore(int score) {
+    void setScore(int score) {
         this.score = score;
     }
 
@@ -45,33 +45,33 @@ public class Player {
                 "\n";
     }
 
-    public static class PlayerBuilder {
+    static class PlayerBuilder {
         private String name = "player";
         private int score = 0;
         private final Field sign;
         private boolean first = true;
 
-        public PlayerBuilder(Field sign) {
+        PlayerBuilder(Field sign) {
             this.sign = sign;
         }
 
-        public PlayerBuilder name(String name) {
+        PlayerBuilder name(String name) {
             this.name = name;
             return this;
         }
 
-        public PlayerBuilder score(int score) {
+        PlayerBuilder score(int score) {
             this.score = score;
             return this;
         }
 
 
-        public PlayerBuilder first(boolean first) {
+        PlayerBuilder first(boolean first) {
             this.first = first;
             return this;
         }
 
-        public Player build() {
+        Player build() {
             return new Player(this);
         }
     }

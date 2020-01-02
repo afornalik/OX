@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PlayerContainer {
+class PlayerContainer {
 
     private final List<Player> players = new ArrayList<>();
 
-    public void createPlayer(Map<String, Object> playerInfo) {
+    void createPlayer(Map<String, Object> playerInfo) {
         players.add(convertMapToPlayer(playerInfo));
     }
 
@@ -20,16 +20,15 @@ public class PlayerContainer {
                 .build();
     }
 
-    public String getPlayer(int index) {
+    String getPlayer(int index) {
         return players.get(index).toString();
     }
 
-    public Player isFirst() {
+    Player isFirst() {
         return players.stream().filter(Player::isFirst).findFirst().get();
     }
 
-    //to refactor
-    public Player isLast() {
+    Player isLast() {
         return players.stream().filter(player -> !player.isFirst()).findFirst().get();
     }
 }

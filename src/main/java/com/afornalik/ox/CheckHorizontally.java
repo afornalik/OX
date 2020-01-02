@@ -15,12 +15,12 @@ class CheckHorizontally implements BoardChecker {
     @Override
     public boolean check(int location, Field field) throws OutOfBoardException {
         tempLength = 1;
-        getTempLengthLeft(location, field);
-        getTempLengthRight(location, field);
+        checkTempLengthLeft(location, field);
+        checkTempLengthRight(location, field);
         return tempLength >= conditionLength;
     }
 
-    private void getTempLengthLeft(int location, Field field) throws OutOfBoardException {
+    private void checkTempLengthLeft(int location, Field field) throws OutOfBoardException {
         Field tempStatusLeft;
         boolean leftFlag = true;
         for (int range = 1; range < conditionLength; range++) {
@@ -36,7 +36,7 @@ class CheckHorizontally implements BoardChecker {
         }
     }
 
-    private void getTempLengthRight(int location, Field field) throws OutOfBoardException {
+    private void checkTempLengthRight(int location, Field field) throws OutOfBoardException {
         Field tempStatusRight;
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {

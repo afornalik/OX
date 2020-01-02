@@ -34,7 +34,7 @@ public class TestMatch {
         Match match = new Match(uiConsole, new Board(3, 3), PLAYER_CONTAINER);
 
         //when
-        Board result = match.doTurn();
+        Board result = match.makeATurn();
         BOARD_THREE.insertBoardField(0, Field.X);
         BOARD_THREE.insertBoardField(1, Field.O);
         BOARD_THREE.insertBoardField(2, Field.X);
