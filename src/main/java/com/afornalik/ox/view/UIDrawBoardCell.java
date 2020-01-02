@@ -1,8 +1,8 @@
-package com.afornalik.ox.view.draw;
+package com.afornalik.ox.view;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.Field;
-import com.afornalik.ox.model.board.OutOfBoardException;
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
 
 import java.util.Formatter;
 
@@ -13,7 +13,7 @@ import java.util.Formatter;
  * @author Andrzej Fornalik
  */
 
-public class UIDrawBoardCellNumerate implements UIDrawBoard {
+public class UIDrawBoardNumberCell implements UIDrawBoard {
 
     private final Board board;
     private final int boardSize;
@@ -24,7 +24,7 @@ public class UIDrawBoardCellNumerate implements UIDrawBoard {
      *
      * @param board Board This parameter represent board in OX game
      */
-    public UIDrawBoardCellNumerate(Board board) {
+    public UIDrawBoardNumberCell(Board board) {
         this.board = board;
         this.boardSize = board.getBorderSize() * board.getBorderSize();
     }

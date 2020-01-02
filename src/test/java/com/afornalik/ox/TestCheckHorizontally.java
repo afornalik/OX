@@ -1,5 +1,6 @@
 package com.afornalik.ox.model.board;
 
+import com.afornalik.ox.*;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 

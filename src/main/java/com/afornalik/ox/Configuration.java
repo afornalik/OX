@@ -1,25 +1,26 @@
-package com.afornalik.ox.controller;
+package com.afornalik.ox;
 
-import com.afornalik.ox.model.board.Field;
-import com.afornalik.ox.model.player.PlayerContainer;
-import com.afornalik.ox.view.print.UIOperations;
+import com.afornalik.ox.view.UISimple;
 
 import java.util.HashMap;
 import java.util.Map;
 
 class PlayerController {
 
-    private final UIOperations uiOperations;
+    private final UISimple uiSimple;
     private final PlayerContainer playerContainer = new PlayerContainer();
 
-    PlayerController(UIOperations uiOperations) {
-        this.uiOperations = uiOperations;
+    PlayerController(UISimple uiSimple) {
+        this.uiSimple = uiSimple;
     }
 
     PlayerContainer createTwoPlayer() {
-        uiOperations.print("\nPlayer 1");
+
+        greetUser();
+
+        uiSimple.print("\nPlayer 1");
         Map<String, Object> player1Statistics = setPlayer(Field.EMPTY);
-        uiOperations.print("\nPlayer 2");
+        uiSimple.print("\nPlayer 2");
         Map<String, Object> player2Statistics = setPlayer((Field) player1Statistics.get("Field"));
         setFirstMove(player1Statistics);
         if ((boolean) player1Statistics.get("first")) {
@@ -29,9 +30,22 @@ class PlayerController {
         }
         playerContainer.createPlayer(player1Statistics);
         playerContainer.createPlayer(player2Statistics);
-        uiOperations.print(playerContainer.getPlayer(0));
-        uiOperations.print(playerContainer.getPlayer(1));
+        uiSimple.print(playerContainer.getPlayer(0));
+        uiSimple.print(playerContainer.getPlayer(1));
         return playerContainer;
+    }
+
+    Board createBoard() {
+        uiSimple.print("Select board size :");
+        int borderSize = uiSimple.readNumber();
+        uiSimple.print("Select condition size :");
+        int conditionSize = uiSimple.readNumber();
+        return new Board(borderSize, conditionSize);
+    }
+
+
+    void greetUser() {
+        uiSimple.print("Welcome in game OX\n");
     }
 
     private Map<String, Object> setPlayer(Field field) {
@@ -56,14 +70,14 @@ class PlayerController {
     }
 
     private void setName(Map<String, Object> playerAttributes) {
-        uiOperations.print("  name : ");
-        playerAttributes.put("name", uiOperations.read());
+        uiSimple.print("  name : ");
+        playerAttributes.put("name", uiSimple.read());
     }
 
     private void setFirstMove(Map<String, Object> playerAttributes) {
         do {
-            uiOperations.print("Which player make first move ? (1/2) ");
-            String tempSymbol = uiOperations.read();
+            uiSimple.print("Which player make first move ? (1/2) ");
+            String tempSymbol = uiSimple.read();
             if (tempSymbol.equalsIgnoreCase("1")) {
                 playerAttributes.put("first", true);
             } else if (tempSymbol.equalsIgnoreCase("2")) {
@@ -74,11 +88,14 @@ class PlayerController {
 
     private void setMark(Map<String, Object> playerAttributes) {
         do {
-            uiOperations.print("Select X or O mark ");
-            String tempSymbol = uiOperations.read().toUpperCase();
+            uiSimple.print("Select X or O mark ");
+            String tempSymbol = uiSimple.read().toUpperCase();
             if (tempSymbol.equals(Field.X.toString()) || (tempSymbol.equals(Field.O.toString()))) {
                 playerAttributes.put("Field", Field.valueOf(tempSymbol));
             }
         } while (!playerAttributes.containsKey("Field"));
     }
+
+
+
 }

@@ -1,22 +1,20 @@
 package com.afornalik.ox.view;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.Field;
-import com.afornalik.ox.model.board.OutOfBoardException;
-import com.afornalik.ox.view.draw.UIDrawBoard;
-import com.afornalik.ox.view.draw.UIDrawBoardCellNumerate;
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-public class TestUIDrawBoardCellNumerate {
+public class TestUIDrawBoardNumberCell {
     private static final int BOUND_THREE = 3;
 
     public void shouldReturnStringWithDrawBoard3x3() {
         //given
         Board board = new Board(BOUND_THREE, 3);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardCellNumerate(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardNumberCell(board);
 
         //when
         String result = uiDrawBoard.drawBoard();
@@ -32,7 +30,7 @@ public class TestUIDrawBoardCellNumerate {
         Board board = new Board(BOUND_THREE, 3);
         board.insertBoardField(0, Field.X);
         board.insertBoardField(1, Field.O);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardCellNumerate(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardNumberCell(board);
 
         //when
         String result = uiDrawBoard.drawBoard();

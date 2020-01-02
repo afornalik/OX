@@ -1,8 +1,5 @@
-package com.afornalik.ox.controller;
+package com.afornalik.ox;
 
-import com.afornalik.ox.model.board.*;
-import com.afornalik.ox.model.player.Player;
-import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.UIExtended;
 
 class MatchController {

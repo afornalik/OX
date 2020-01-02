@@ -1,9 +1,10 @@
-package com.afornalik.ox.controller;
+package com.afornalik.ox;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.Field;
-import com.afornalik.ox.model.board.OutOfBoardException;
-import com.afornalik.ox.model.player.PlayerContainer;
+import com.afornalik.ox.MatchController;
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
+import com.afornalik.ox.PlayerContainer;
 import com.afornalik.ox.view.UIExtended;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;

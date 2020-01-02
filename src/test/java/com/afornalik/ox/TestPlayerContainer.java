@@ -1,6 +1,8 @@
 package com.afornalik.ox.model.player;
 
-import com.afornalik.ox.model.board.Field;
+import com.afornalik.ox.Player;
+import com.afornalik.ox.PlayerContainer;
+import com.afornalik.ox.Field;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 

@@ -1,8 +1,8 @@
-package com.afornalik.ox.view.draw;
+package com.afornalik.ox.view;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.Field;
-import com.afornalik.ox.model.board.OutOfBoardException;
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
 
 
 /**
