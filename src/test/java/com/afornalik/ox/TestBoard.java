@@ -1,4 +1,4 @@
-package com.afornalik.ox.model.board;
+package com.afornalik.ox;
 
 import com.afornalik.ox.Board;
 import com.afornalik.ox.Field;

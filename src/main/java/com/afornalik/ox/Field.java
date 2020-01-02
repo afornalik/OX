@@ -1,4 +1,4 @@
-package com.afornalik.ox.model.board;
+package com.afornalik.ox;
 
 public enum Field {
     EMPTY("_"),

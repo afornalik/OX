@@ -1,27 +1,26 @@
 package com.afornalik.ox.view;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.view.draw.UIDrawBoard;
-import com.afornalik.ox.view.draw.UIDrawBoardCellNumerate;
-import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
-import com.afornalik.ox.view.print.UIOperations;
+import com.afornalik.ox.Board;
+
+import java.util.Scanner;
 
 public class UIExtended extends UISimple {
 
     private final UIDrawBoard uiDrawBoard;
 
-    public UIExtended(UIOperations uiOperations, DrawBoardType drawBoardType, Board board) {
-        super(uiOperations);
+    public UIExtended(Scanner scanner,DrawBoardType drawBoardType, Board board) {
+        super(scanner);
         if (drawBoardType == DrawBoardType.CELL) {
-            uiDrawBoard = new UIDrawBoardCellNumerate(board);
+            uiDrawBoard = new UIDrawBoardCell(board);
         } else {
-            uiDrawBoard = new UIDrawBoardSideNumerate(board);
+            uiDrawBoard = new UIDrawBoardSide(board);
         }
     }
 
     public void drawBoard() {
         super.print(uiDrawBoard.drawBoard());
     }
+
 
     @Override
     public void print(String string) {

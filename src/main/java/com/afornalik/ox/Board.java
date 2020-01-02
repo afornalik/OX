@@ -1,4 +1,4 @@
-package com.afornalik.ox.model.board;
+package com.afornalik.ox;
 
 import java.util.Map;
 import java.util.Objects;
@@ -9,7 +9,6 @@ import java.util.TreeMap;
  * also this class make some basic operations.
  *
  * @author Andrzej Fornalik
- * @version 0.1
  * @since 2019-12-20
  */
 public class Board {

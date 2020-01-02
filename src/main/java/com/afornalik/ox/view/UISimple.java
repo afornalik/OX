@@ -1,27 +1,64 @@
 package com.afornalik.ox.view;
 
-import com.afornalik.ox.view.print.UIOperations;
+import java.util.Scanner;
 
-public class UISimple implements UIOperations {
+/**
+ *  Class responsible for communication with a user.
+ *  This implementation cover basic console interface.
+ *
+ * @author Andrzej Fornalik
+ */
 
-    private final UIOperations uiOperations;
+public class UISimple {
 
-    public UISimple(UIOperations uiOperations) {
-        this.uiOperations = uiOperations;
+    private final Scanner scanner;
+
+    /**
+     * Default constructor scanner need to be specified.
+     *
+     * @param scanner object hold input from a user.
+     */
+    public UISimple(Scanner scanner) {
+        this.scanner = scanner;
     }
 
-    @Override
+    /**
+     * Method print on the console given string.
+     *
+     * @param string String to be printed out by System.out.print() method
+     */
     public void print(String string) {
-        uiOperations.print(string);
+        System.out.print(string);
     }
 
-    @Override
-    public int readNumber() {
-        return uiOperations.readNumber();
+    /**
+     * Method read String from user and parse it to int.
+     * Inside is a loop which wait for number to be input.
+     * NumberFormatException is coughed inside that loop.
+     *
+     * @return int value
+     */
+    public  int readNumber() {
+        String stringToParse;
+        int integerVal;
+        do {
+            stringToParse = scanner.next();
+            try {
+                integerVal = Integer.parseInt(stringToParse);
+                break;
+            } catch (NumberFormatException e) {
+                this.print(" insert number ");
+            }
+        } while (true);
+        return integerVal;
     }
 
-    @Override
+    /**
+     * Simple read method which boxing scanner.next() method
+     *
+     * @return String value read by scanner
+     */
     public String read() {
-        return uiOperations.read();
+        return scanner.next();
     }
 }

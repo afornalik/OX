@@ -1,6 +1,4 @@
-package com.afornalik.ox.model.player;
-
-import com.afornalik.ox.model.board.Field;
+package com.afornalik.ox;
 
 public class Player {
 

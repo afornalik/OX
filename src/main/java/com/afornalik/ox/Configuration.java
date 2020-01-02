@@ -5,12 +5,12 @@ import com.afornalik.ox.view.UISimple;
 import java.util.HashMap;
 import java.util.Map;
 
-class PlayerController {
+class Configuration {
 
     private final UISimple uiSimple;
     private final PlayerContainer playerContainer = new PlayerContainer();
 
-    PlayerController(UISimple uiSimple) {
+    Configuration(UISimple uiSimple) {
         this.uiSimple = uiSimple;
     }
 

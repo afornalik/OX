@@ -13,7 +13,7 @@ import java.util.Formatter;
  * @author Andrzej Fornalik
  */
 
-public class UIDrawBoardNumberCell implements UIDrawBoard {
+class UIDrawBoardCell implements UIDrawBoard {
 
     private final Board board;
     private final int boardSize;
@@ -24,7 +24,7 @@ public class UIDrawBoardNumberCell implements UIDrawBoard {
      *
      * @param board Board This parameter represent board in OX game
      */
-    public UIDrawBoardNumberCell(Board board) {
+    UIDrawBoardCell(Board board) {
         this.board = board;
         this.boardSize = board.getBorderSize() * board.getBorderSize();
     }

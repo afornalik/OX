@@ -1,11 +1,8 @@
-package com.afornalik.ox.controller;
+package com.afornalik.ox;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.player.PlayerContainer;
 import com.afornalik.ox.view.DrawBoardType;
 import com.afornalik.ox.view.UIExtended;
 import com.afornalik.ox.view.UISimple;
-import com.afornalik.ox.view.print.UIConsoleOperations;
 
 import java.util.Scanner;
 
@@ -13,17 +10,16 @@ class MainApp {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        UISimple uiSimple = new UISimple(new UIConsoleOperations(scanner));
-        HeadController headController = new HeadController(uiSimple);
-        PlayerController playerController = new PlayerController(uiSimple);
-        BoardController boardController = new BoardController(uiSimple);
-        headController.greetUser();
-        PlayerContainer playerContainer = playerController.createTwoPlayer();
-        Board board = boardController.createBoard();
+        UISimple uiSimple = new UISimple(scanner);
+        Configuration configuration = new Configuration(uiSimple);
+        PlayerContainer playerContainer = configuration.createTwoPlayer();
 
-        UIExtended uiExtended = new UIExtended(new UIConsoleOperations(scanner), DrawBoardType.CELL, board);
-        MatchController matchController = new MatchController(uiExtended, board, playerContainer);
-        matchController.doTurn();
+
+        Board board = configuration.createBoard();
+
+        UIExtended uiExtended = new UIExtended(scanner, DrawBoardType.CELL, board);
+        Match match = new Match(uiExtended, board, playerContainer);
+        match.doTurn();
 
 
     }

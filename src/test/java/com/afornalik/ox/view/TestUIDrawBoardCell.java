@@ -8,13 +8,13 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-public class TestUIDrawBoardNumberCell {
+public class TestUIDrawBoardCell {
     private static final int BOUND_THREE = 3;
 
     public void shouldReturnStringWithDrawBoard3x3() {
         //given
         Board board = new Board(BOUND_THREE, 3);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardNumberCell(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardCell(board);
 
         //when
         String result = uiDrawBoard.drawBoard();
@@ -30,7 +30,7 @@ public class TestUIDrawBoardNumberCell {
         Board board = new Board(BOUND_THREE, 3);
         board.insertBoardField(0, Field.X);
         board.insertBoardField(1, Field.O);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardNumberCell(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardCell(board);
 
         //when
         String result = uiDrawBoard.drawBoard();

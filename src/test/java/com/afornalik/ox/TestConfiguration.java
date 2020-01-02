@@ -11,7 +11,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @Test
-public class TestPlayerController {
+public class TestConfiguration {
 
     private static final Player PLAYER1 = new Player.PlayerBuilder(Field.O)
             .name("Kasia")
@@ -23,10 +23,10 @@ public class TestPlayerController {
         //given
         UISimple uiConsole = Mockito.mock(UISimple.class);
         Mockito.when(uiConsole.read()).thenReturn("Kasia", "o", "Kasia", "x", "1");
-        PlayerController playerController = new PlayerController(uiConsole);
+        Configuration configuration = new Configuration(uiConsole);
 
         //when
-        PlayerContainer result = playerController.createTwoPlayer();
+        PlayerContainer result = configuration.createTwoPlayer();
 
         //then
         Assertions.assertThat(result.getPlayer(0)).isEqualTo(PLAYER1.toString());
@@ -35,7 +35,7 @@ public class TestPlayerController {
     public void shouldGreetUser() {
         //given
         UISimple uiSimple = Mockito.mock(UISimple.class);
-        PlayerController headController = new PlayerController(uiSimple);
+        Configuration headController = new Configuration(uiSimple);
 
         //when
         headController.greetUser();
@@ -48,7 +48,7 @@ public class TestPlayerController {
         //given
         UISimple uiOperations = Mockito.mock(UISimple.class);
         BDDMockito.when(uiOperations.readNumber()).thenReturn(3);
-        PlayerController boardController = new PlayerController(uiOperations);
+        Configuration boardController = new Configuration(uiOperations);
 
         //when
         Board result = boardController.createBoard();

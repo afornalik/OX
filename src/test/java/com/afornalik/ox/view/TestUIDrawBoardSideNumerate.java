@@ -1,10 +1,8 @@
 package com.afornalik.ox.view;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.Field;
-import com.afornalik.ox.model.board.OutOfBoardException;
-import com.afornalik.ox.view.draw.UIDrawBoard;
-import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,7 +19,7 @@ public class TestUIDrawBoardSideNumerate {
     public void shouldReturnStringWithDrawBoard3x3() {
         //given
         Board board = new Board(BOUND_THREE, 3);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
         String result = uiDrawBoard.drawBoard();
@@ -36,7 +34,7 @@ public class TestUIDrawBoardSideNumerate {
     public void shouldReturnStringWithTwoMarkDrawBoard3x3() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE, 3);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
         board.insertBoardField(INDEX[0], FIELD_STATUS_O);
@@ -53,7 +51,7 @@ public class TestUIDrawBoardSideNumerate {
     public void shouldReturnStringWithFourMarkDrawBoard3x3() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE, 3);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
         board.insertBoardField(INDEX[1], FIELD_STATUS_O);
@@ -72,7 +70,7 @@ public class TestUIDrawBoardSideNumerate {
     public void shouldReturnStringWithDrawBoard10x10() {
         //given
         Board board = new Board(BOUND_TEN, 3);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
         String result = uiDrawBoard.drawBoard();
@@ -94,7 +92,7 @@ public class TestUIDrawBoardSideNumerate {
     public void shouldReturnStringWithMarkedFieldBoard10x10() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_TEN, 3);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
         board.insertBoardField(6, FIELD_STATUS_X);

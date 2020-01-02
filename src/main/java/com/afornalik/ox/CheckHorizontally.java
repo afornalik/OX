@@ -1,15 +1,16 @@
-package com.afornalik.ox.model.board;
+package com.afornalik.ox;
 
-public class CheckHorizontally implements BoardChecker {
+class CheckHorizontally implements BoardChecker {
 
     private final Board board;
     private final int conditionLength;
     private int tempLength = 1;
 
-    public CheckHorizontally(Board board) {
+    CheckHorizontally(Board board) {
         this.board = board;
         this.conditionLength = board.getCondition();
     }
+
 
     @Override
     public boolean check(int location, Field field) throws OutOfBoardException {

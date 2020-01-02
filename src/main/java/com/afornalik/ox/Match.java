@@ -2,14 +2,14 @@ package com.afornalik.ox;
 
 import com.afornalik.ox.view.UIExtended;
 
-class MatchController {
+class Match {
 
     private final UIExtended uiExtended;
     private final Board board;
     private final PlayerContainer playerContainer;
     private BoardChecker boardChecker;
 
-    MatchController(UIExtended uiExtended, Board board, PlayerContainer playerContainer) {
+    Match(UIExtended uiExtended, Board board, PlayerContainer playerContainer) {
         this.uiExtended = uiExtended;
         this.board = board;
         this.playerContainer = playerContainer;

@@ -6,13 +6,13 @@ import com.afornalik.ox.OutOfBoardException;
 
 
 /**
- * Class responsible for print board on console.
- * board have two side numerated axis.
+ * Class responsible for print a board on a console.
+ * board have two side axis numbered.
  *
  * @author Andrzej Fornalik
  */
 
-public class UIDrawBoardSideNumerate implements UIDrawBoard {
+class UIDrawBoardSide implements UIDrawBoard {
 
     private final Board board;
     private final int boardSize;
@@ -24,7 +24,7 @@ public class UIDrawBoardSideNumerate implements UIDrawBoard {
      * @param board Board This parameter represent board in OX game
      */
 
-    public UIDrawBoardSideNumerate(Board board) {
+    UIDrawBoardSide(Board board) {
         this.board = board;
         this.boardSize = (board.getBorderSize() * 2) + 1;
     }

@@ -1,13 +1,14 @@
-package com.afornalik.ox.view.draw;
+package com.afornalik.ox.view;
 
 
 /**
- * This Interface is responsible for draw the board
+ * Responsible for draw the board.
+ *
  *
  * @author Andrzej Fornalik
  */
 
-public interface UIDrawBoard {
+interface UIDrawBoard {
 
     String drawBoard();
 

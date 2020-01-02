@@ -1,10 +1,5 @@
 package com.afornalik.ox;
 
-import com.afornalik.ox.MatchController;
-import com.afornalik.ox.Board;
-import com.afornalik.ox.Field;
-import com.afornalik.ox.OutOfBoardException;
-import com.afornalik.ox.PlayerContainer;
 import com.afornalik.ox.view.UIExtended;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
@@ -14,7 +9,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-public class TestMatchController {
+public class TestMatch {
 
     private static final Board BOARD_THREE = new Board(3, 3);
     private static final PlayerContainer PLAYER_CONTAINER = new PlayerContainer();
@@ -36,10 +31,10 @@ public class TestMatchController {
         Mockito.when(uiConsole.readNumber()).thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9);
         PLAYER_CONTAINER.createPlayer(playerInfo1);
         PLAYER_CONTAINER.createPlayer(playerInfo2);
-        MatchController matchController = new MatchController(uiConsole, new Board(3, 3), PLAYER_CONTAINER);
+        Match match = new Match(uiConsole, new Board(3, 3), PLAYER_CONTAINER);
 
         //when
-        Board result = matchController.doTurn();
+        Board result = match.doTurn();
         BOARD_THREE.insertBoardField(0, Field.X);
         BOARD_THREE.insertBoardField(1, Field.O);
         BOARD_THREE.insertBoardField(2, Field.X);

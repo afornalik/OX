@@ -1,4 +1,4 @@
-package com.afornalik.ox.model.player;
+package com.afornalik.ox;
 
 import com.afornalik.ox.Player;
 import com.afornalik.ox.Field;
