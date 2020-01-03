@@ -1,7 +1,5 @@
 package com.afornalik.ox;
 
-import com.afornalik.ox.Player;
-import com.afornalik.ox.Field;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -10,7 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 public class TestPlayer {
 
 
-    public void shouldCreatePlayerUsingBuilder() {
+    public void shouldBuildPlayer() {
         //when
         Player player = new Player.PlayerBuilder(Field.O)
                 .name("player")

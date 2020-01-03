@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-public class TestUIDrawBoardSideNumerate {
+public class TestUIDrawBoardSide {
 
     private static final Field FIELD_STATUS_X = Field.X;
     private static final Field FIELD_STATUS_O = Field.O;

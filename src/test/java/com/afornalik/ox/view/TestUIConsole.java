@@ -14,10 +14,10 @@ import static org.mockito.Mockito.when;
 @Test
 public class TestUIConsole {
 
-    private static final String DUMMY_STRING = "Some dummy string to print";
     private static final String NUMBER_VALUE = "42";
+    private static final String DUMMY_STRING = "Some dummy string to print";
 
-    public void shouldPrintOutGivenString() {
+    public void shouldPrintString() {
         //given
         Scanner scanner = new Scanner(System.in);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();

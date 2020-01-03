@@ -9,7 +9,7 @@ import java.util.Scanner;
 class MainApp {
 
     public static void main(String[] args) {
-        args = new String[16];
+   /*     args = new String[16];
         args[0] = "Kuba";
         args[1] = "x";
         args[2] = "Karolina";
@@ -26,7 +26,7 @@ class MainApp {
         args[13] = "18";
         args[14] = "11";
         args[15] = "25";
-
+*/
         ArgumentConverter argumentConverter = new ArgumentConverter(args);
 
         Scanner scanner = new Scanner(System.in);

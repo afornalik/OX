@@ -2,6 +2,7 @@ package com.afornalik.ox;
 
 import com.afornalik.ox.view.UIExtended;
 import org.mockito.Mockito;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Map;
@@ -13,37 +14,29 @@ public class TestMatch {
 
     private static final Board BOARD_THREE = new Board(3, 3);
     private static final PlayerContainer PLAYER_CONTAINER = new PlayerContainer();
+    private static final Map<String, Object> PLAYER_INFO_1 = Map.of(
+            "Field", Field.O,
+            "name", "Kasia",
+            "score", 0,
+            "first", false);
+    private static final Map<String, Object> PLAYER_INFO_2 = Map.of(
+            "Field", Field.X,
+            "name", "Gosia",
+            "score", 0,
+            "first", true);
 
-    @Test
+    @Test()
     public void shouldAllFieldBeMarked() throws OutOfBoardException {
         //given
-        Map<String, Object> playerInfo1 = Map.of(
-                "Field", Field.O,
-                "name", "Kasia",
-                "score", 0,
-                "first", false);
-        Map<String, Object> playerInfo2 = Map.of(
-                "Field", Field.X,
-                "name", "Gosia",
-                "score", 0,
-                "first", true);
         UIExtended uiConsole = Mockito.mock(UIExtended.class);
         Mockito.when(uiConsole.readNumber()).thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        PLAYER_CONTAINER.createPlayer(playerInfo1);
-        PLAYER_CONTAINER.createPlayer(playerInfo2);
+        PLAYER_CONTAINER.createPlayer(PLAYER_INFO_1);
+        PLAYER_CONTAINER.createPlayer(PLAYER_INFO_2);
         Match match = new Match(uiConsole, new Board(3, 3), PLAYER_CONTAINER, null);
 
         //when
         Board result = match.makeATurn(0);
-        BOARD_THREE.insertBoardField(0, Field.X);
-        BOARD_THREE.insertBoardField(1, Field.O);
-        BOARD_THREE.insertBoardField(2, Field.X);
-        BOARD_THREE.insertBoardField(3, Field.O);
-        BOARD_THREE.insertBoardField(4, Field.X);
-        BOARD_THREE.insertBoardField(5, Field.O);
-        BOARD_THREE.insertBoardField(6, Field.X);
-        BOARD_THREE.insertBoardField(7, Field.O);
-        BOARD_THREE.insertBoardField(8, Field.X);
+        fillBoard();
 
         //then
         assertThat(result.receiveBoardField(0)).isEqualTo(BOARD_THREE.receiveBoardField(0));
@@ -56,6 +49,19 @@ public class TestMatch {
         assertThat(result.receiveBoardField(7)).isEqualTo(BOARD_THREE.receiveBoardField(7));
         assertThat(result.receiveBoardField(8)).isEqualTo(BOARD_THREE.receiveBoardField(8));
         assertThat(result.isAllFieldTaken()).isEqualTo(true);
+    }
+
+
+    private void fillBoard() throws OutOfBoardException {
+        BOARD_THREE.insertBoardField(0, Field.X);
+        BOARD_THREE.insertBoardField(1, Field.O);
+        BOARD_THREE.insertBoardField(2, Field.X);
+        BOARD_THREE.insertBoardField(3, Field.O);
+        BOARD_THREE.insertBoardField(4, Field.X);
+        BOARD_THREE.insertBoardField(5, Field.O);
+        BOARD_THREE.insertBoardField(6, Field.X);
+        BOARD_THREE.insertBoardField(7, Field.O);
+        BOARD_THREE.insertBoardField(8, Field.X);
     }
 
 }

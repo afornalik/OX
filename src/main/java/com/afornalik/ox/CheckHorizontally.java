@@ -48,12 +48,19 @@ class CheckHorizontally implements BoardChecker {
                     rightFlag = false;
                 }
             }
-            rightFlag = isEndOfLine(rightFlag, (location) + range);
+            rightFlag = isEndOfLineRight(rightFlag, (location) + range);
         }
     }
 
     private boolean isEndOfLine(boolean rightFlag, int i) {
         if ((i) % board.getBorderSize() == 0) {
+            rightFlag = false;
+        }
+        return rightFlag;
+    }
+
+    private boolean isEndOfLineRight(boolean rightFlag, int i) {
+        if ((i) % (board.getBorderSize()) == 0) {
             rightFlag = false;
         }
         return rightFlag;
