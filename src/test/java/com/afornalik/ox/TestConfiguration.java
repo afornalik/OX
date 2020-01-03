@@ -25,10 +25,10 @@ public class TestConfiguration {
         //given
         UISimple uiConsole = Mockito.mock(UISimple.class);
         Mockito.when(uiConsole.read()).thenReturn("Kasia", "o", "Kasia", "x", "1");
-        Configuration configuration = new Configuration(uiConsole);
+        Configuration configuration = new Configuration(uiConsole, null);
 
         //when
-        PlayerContainer result = configuration.createTwoPlayer(new HashMap<>());
+        PlayerContainer result = configuration.createTwoPlayer();
 
         //then
         Assertions.assertThat(result.getPlayer(0)).isEqualTo(PLAYER1.toString());
@@ -37,7 +37,7 @@ public class TestConfiguration {
     public void shouldGreetUser() {
         //given
         UISimple uiSimple = Mockito.mock(UISimple.class);
-        Configuration headController = new Configuration(uiSimple);
+        Configuration headController = new Configuration(uiSimple, null);
 
         //when
         headController.greetUser();
@@ -50,7 +50,7 @@ public class TestConfiguration {
         //given
         UISimple uiOperations = Mockito.mock(UISimple.class);
         BDDMockito.when(uiOperations.readNumber()).thenReturn(3);
-        Configuration boardController = new Configuration(uiOperations);
+        Configuration boardController = new Configuration(uiOperations, null);
 
         //when
         Board result = boardController.createBoard();

@@ -13,31 +13,18 @@ class ArgumentConverter {
         this.args = Arrays.asList(args);
     }
 
-    Map<String,String> convertToPlayers() {
-        Map<String, String> players = new HashMap<>();
-        players.put("name",args.get(0));
-        players.put("Field",args.get(1));
-        players.put("name2",args.get(2));
-        players.put("first",args.get(3));
-
-        /*players.put("name",args.get(0));
-        if(args.get(1).equalsIgnoreCase("x")) {
-            players.put("Field", Field.X);
-        }else if(args.get(1).equalsIgnoreCase("o")){
-            players.put("Field",Field.O);
+    Map<String, String> convertToConfiguration() {
+        if (args.size() >0) {
+            Map<String, String> configuration = new HashMap<>();
+            configuration.put("name", args.get(0));
+            configuration.put("Field", args.get(1));
+            configuration.put("name2", args.get(2));
+            configuration.put("first", args.get(3));
+            configuration.put("size", args.get(4));
+            configuration.put("condition", args.get(5));
+            return configuration;
         }
-        if(args.get(2).equals("1")) {
-            players.put("first",true);
-        }else if*/
-
-        return players;
+        return null;
     }
-        private Player convertMapToPlayer(Map<String, Object> playerInfo) {
-            return new Player.PlayerBuilder((Field) playerInfo.get("Field"))
-                    .name((String) playerInfo.get("name"))
-                    .score((int) playerInfo.get("score"))
-                    .first((boolean) playerInfo.get("first"))
-                    .build();
 
-    }
 }
