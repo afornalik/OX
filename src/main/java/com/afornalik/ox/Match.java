@@ -33,7 +33,7 @@ class Match {
         return makeAMove(x);
     }
 
-    boolean makeAMove(Field field) {
+    private boolean makeAMove(Field field) {
         int index;
         try {
             index = receiveIndex();

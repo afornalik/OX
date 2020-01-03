@@ -6,6 +6,8 @@ import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -26,7 +28,7 @@ public class TestConfiguration {
         Configuration configuration = new Configuration(uiConsole);
 
         //when
-        PlayerContainer result = configuration.createTwoPlayer();
+        PlayerContainer result = configuration.createTwoPlayer(new HashMap<>());
 
         //then
         Assertions.assertThat(result.getPlayer(0)).isEqualTo(PLAYER1.toString());

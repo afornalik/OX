@@ -14,15 +14,21 @@ class Configuration {
         this.uiSimple = uiSimple;
     }
 
-    PlayerContainer createTwoPlayer() {
+    PlayerContainer createTwoPlayer(Map<String, String> args) {
+
 
         greetUser();
 
+        String argsName = args.get("name");
+        String argsNameSecondPlayer = args.get("name2");
+        String argsField = args.get("Field");
+        String argsFirstMove = args.get("first");
+
         uiSimple.print("\nPlayer 1");
-        Map<String, Object> player1Statistics = setPlayer(Field.EMPTY);
+        Map<String, Object> player1Statistics = createPlayer(Field.EMPTY, argsName, argsField);
         uiSimple.print("\nPlayer 2");
-        Map<String, Object> player2Statistics = setPlayer((Field) player1Statistics.get("Field"));
-        setFirstMove(player1Statistics);
+        Map<String, Object> player2Statistics = createPlayer((Field) player1Statistics.get("Field"), argsNameSecondPlayer, argsField);
+        createFirstMove(player1Statistics,argsFirstMove);
         if ((boolean) player1Statistics.get("first")) {
             player2Statistics.put("first", false);
         } else {
@@ -48,12 +54,12 @@ class Configuration {
         uiSimple.print("Welcome in game OX\n");
     }
 
-    private Map<String, Object> setPlayer(Field field) {
+    private Map<String, Object> createPlayer(Field field, String argsName, String argsField) {
         Map<String, Object> playerAttributes = new HashMap<>();
 
-        setName(playerAttributes);
+        createName(playerAttributes, argsName);
         if (field == Field.EMPTY) {
-            setMark(playerAttributes);
+            createMark(playerAttributes, argsField);
         } else {
             if (field == Field.O) {
                 playerAttributes.put("Field", Field.X);
@@ -61,23 +67,34 @@ class Configuration {
                 playerAttributes.put("Field", Field.O);
             }
         }
-        setScore(playerAttributes);
+        createScore(playerAttributes);
         return playerAttributes;
     }
 
-    private void setScore(Map<String, Object> playerAttributes) {
+    private void createScore(Map<String, Object> playerAttributes) {
         playerAttributes.put("score", 0);
     }
 
-    private void setName(Map<String, Object> playerAttributes) {
+    private void createName(Map<String, Object> playerAttributes, String argsName) {
         uiSimple.print("  name : ");
-        playerAttributes.put("name", uiSimple.read());
+        if (argsName != null) {
+            playerAttributes.put("name", argsName);
+            uiSimple.print(argsName+"\n");
+        } else {
+            playerAttributes.put("name", uiSimple.read());
+        }
     }
 
-    private void setFirstMove(Map<String, Object> playerAttributes) {
+    private void createFirstMove(Map<String, Object> playerAttributes, String argsFirstMove) {
         do {
             uiSimple.print("Which player make first move ? (1/2) ");
-            String tempSymbol = uiSimple.read();
+            String tempSymbol;
+            if(argsFirstMove != null) {
+                tempSymbol = argsFirstMove;
+                uiSimple.print(argsFirstMove+"\n");
+            }else {
+                tempSymbol = uiSimple.read();
+            }
             if (tempSymbol.equalsIgnoreCase("1")) {
                 playerAttributes.put("first", true);
             } else if (tempSymbol.equalsIgnoreCase("2")) {
@@ -86,10 +103,16 @@ class Configuration {
         } while (!playerAttributes.containsKey("first"));
     }
 
-    private void setMark(Map<String, Object> playerAttributes) {
+    private void createMark(Map<String, Object> playerAttributes, String argsField) {
         do {
-            uiSimple.print("Select X or O mark ");
-            String tempSymbol = uiSimple.read().toUpperCase();
+            uiSimple.print("Select X or O mark : ");
+            String tempSymbol;
+            if (argsField != null) {
+                tempSymbol = argsField.toUpperCase();
+                uiSimple.print(argsField+"\n");
+            } else {
+                tempSymbol = uiSimple.read().toUpperCase();
+            }
             if (tempSymbol.equals(Field.X.toString()) || (tempSymbol.equals(Field.O.toString()))) {
                 playerAttributes.put("Field", Field.valueOf(tempSymbol));
             }
