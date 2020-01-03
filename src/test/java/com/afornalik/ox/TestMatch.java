@@ -31,10 +31,10 @@ public class TestMatch {
         Mockito.when(uiConsole.readNumber()).thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9);
         PLAYER_CONTAINER.createPlayer(playerInfo1);
         PLAYER_CONTAINER.createPlayer(playerInfo2);
-        Match match = new Match(uiConsole, new Board(3, 3), PLAYER_CONTAINER);
+        Match match = new Match(uiConsole, new Board(3, 3), PLAYER_CONTAINER, null);
 
         //when
-        Board result = match.makeATurn();
+        Board result = match.makeATurn(0);
         BOARD_THREE.insertBoardField(0, Field.X);
         BOARD_THREE.insertBoardField(1, Field.O);
         BOARD_THREE.insertBoardField(2, Field.X);

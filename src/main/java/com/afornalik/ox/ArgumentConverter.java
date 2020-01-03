@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 class ArgumentConverter {
 
@@ -23,6 +24,16 @@ class ArgumentConverter {
             configuration.put("size", args.get(4));
             configuration.put("condition", args.get(5));
             return configuration;
+        }
+        return null;
+    }
+
+    List<Integer> convertToMove() {
+        if (args.size() >6) {
+            List<String> tempList = args.subList(6,args.size());
+            return tempList.stream()
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
         }
         return null;
     }

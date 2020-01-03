@@ -30,10 +30,6 @@ class Player {
         return first;
     }
 
-    void setScore(int score) {
-        this.score = score;
-    }
-
 
     @Override
     public String toString() {
@@ -41,7 +37,7 @@ class Player {
                 "name is " + name +
                 " ,has score = " + score +
                 " ,use sign = " + sign +
-                " , and is he first ? " + first +
+                " , first ? " + first +
                 "\n";
     }
 

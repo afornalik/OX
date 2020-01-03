@@ -19,8 +19,8 @@ class Configuration {
 
     PlayerContainer createTwoPlayer() {
 
-
         greetUser();
+
         String argsName = null;
         String argsNameSecondPlayer = null;
         String argsField = null;
@@ -49,11 +49,11 @@ class Configuration {
     }
 
     Board createBoard() {
-        uiSimple.print("Select board size : ");
+        uiSimple.print("\nSelect board size : ");
         int borderSize;
         if (args != null && args.get("size") != null) {
             borderSize = Integer.parseInt(args.get("size"));
-            uiSimple.print(borderSize+"\n");
+            uiSimple.print(borderSize + "\n");
         } else {
             borderSize = uiSimple.readNumber();
         }
@@ -61,7 +61,7 @@ class Configuration {
         int conditionSize;
         if (args != null && args.get("condition") != null) {
             conditionSize = Integer.parseInt(args.get("condition"));
-            uiSimple.print(conditionSize+"\n");
+            uiSimple.print(conditionSize + "\n");
         } else {
             conditionSize = uiSimple.readNumber();
         }
@@ -110,7 +110,7 @@ class Configuration {
             String tempSymbol;
             if (argsFirstMove != null) {
                 tempSymbol = argsFirstMove;
-                uiSimple.print(argsFirstMove + "\n");
+                uiSimple.print(argsFirstMove + "\n\n");
             } else {
                 tempSymbol = uiSimple.read();
             }
