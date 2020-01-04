@@ -2,9 +2,9 @@ package com.afornalik.ox;
 
 import com.afornalik.ox.view.UIExtended;
 import org.mockito.Mockito;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -13,26 +13,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestMatch {
 
     private static final Board BOARD_THREE = new Board(3, 3);
-    private static final PlayerContainer PLAYER_CONTAINER = new PlayerContainer();
-    private static final Map<String, Object> PLAYER_INFO_1 = Map.of(
-            "Field", Field.O,
-            "name", "Kasia",
-            "score", 0,
-            "first", false);
-    private static final Map<String, Object> PLAYER_INFO_2 = Map.of(
-            "Field", Field.X,
-            "name", "Gosia",
-            "score", 0,
-            "first", true);
+    private static final Player PLAYER_1 = new Player.PlayerBuilder(Field.O).name("name1").first(false).score(0).build();
+    private static final Player PLAYER_2 = new Player.PlayerBuilder(Field.X).name("name2").first(true).score(0).build();
 
     @Test()
     public void shouldAllFieldBeMarked() throws OutOfBoardException {
         //given
         UIExtended uiConsole = Mockito.mock(UIExtended.class);
         Mockito.when(uiConsole.readNumber()).thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        PLAYER_CONTAINER.createPlayer(PLAYER_INFO_1);
-        PLAYER_CONTAINER.createPlayer(PLAYER_INFO_2);
-        Match match = new Match(uiConsole, new Board(3, 3), PLAYER_CONTAINER, null);
+        Players players = new Players(List.of(PLAYER_1,PLAYER_2));
+        Match match = new Match(uiConsole, new Board(3, 3), players, null);
 
         //when
         Board result = match.makeATurn(0);

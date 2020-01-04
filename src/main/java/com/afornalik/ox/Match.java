@@ -9,14 +9,14 @@ class Match {
 
     private final UIExtended uiExtended;
     private final Board board;
-    private final PlayerContainer playerContainer;
+    private final Players players;
     private final List<Integer> argsIndex;
     private BoardChecker boardChecker;
 
-    Match(UIExtended uiExtended, Board board, PlayerContainer playerContainer, List<Integer> argsIndex) {
+    Match(UIExtended uiExtended, Board board, Players players, List<Integer> argsIndex) {
         this.uiExtended = uiExtended;
         this.board = board;
-        this.playerContainer = playerContainer;
+        this.players = players;
         boardChecker = new CheckHorizontally(board);
         if (argsIndex == null) {
             this.argsIndex = new ArrayList<>();
@@ -27,8 +27,8 @@ class Match {
     }
 
     Board makeATurn(int index) {
-        Player first = playerContainer.isFirst();
-        Player last = playerContainer.isLast();
+        Player first = players.isFirst();
+        Player last = players.isLast();
         if (playerMove(first.getName() + " move : ", first.getSign(), argsIndex.get(index))) return board;
         if (index < argsIndex.size() - 1) {
             index++;

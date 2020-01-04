@@ -33,11 +33,11 @@ class MainApp {
         UISimple uiSimple = new UISimple(scanner);
         Configuration configuration = new Configuration(uiSimple,argumentConverter.convertToConfiguration());
 
-        PlayerContainer playerContainer = configuration.createTwoPlayer();
+        Players players = configuration.createTwoPlayer();
         Board board = configuration.createBoard();
 
         UIExtended uiExtended = new UIExtended(scanner, DrawBoardType.CELL, board);
-        Match match = new Match(uiExtended, board, playerContainer, argumentConverter.convertToMove());
+        Match match = new Match(uiExtended, board, players, argumentConverter.convertToMove());
         match.makeATurn(0);
     }
 }

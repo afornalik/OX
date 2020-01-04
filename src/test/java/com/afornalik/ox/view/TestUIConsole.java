@@ -17,20 +17,6 @@ public class TestUIConsole {
     private static final String NUMBER_VALUE = "42";
     private static final String DUMMY_STRING = "Some dummy string to print";
 
-    public void shouldPrintString() {
-        //given
-        Scanner scanner = new Scanner(System.in);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(byteArrayOutputStream));
-        UISimple uiConsole = new UISimple(scanner);
-
-        //when
-        uiConsole.print(DUMMY_STRING);
-
-        //then
-        assertThat(byteArrayOutputStream.toString()).isEqualTo(DUMMY_STRING);
-    }
-
     public void shouldReceiveConsoleInputFromUser() {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
