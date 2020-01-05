@@ -11,7 +11,7 @@ public class CheckDiagonallyLeft implements BoardChecker {
     }
 
     @Override
-    public boolean check(int location, Field field) throws OutOfBoardException {
+    public boolean check(int location, Field field)  {
         tempLength = 1;
         checkTempLengthLeftUp(location, field);
         checkTempLengthRightDown(location, field);

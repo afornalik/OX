@@ -1,12 +1,12 @@
 package com.afornalik.ox;
 
-class CheckVertically implements BoardChecker {
+public class CheckDiagonallyRight implements BoardChecker {
 
     private final Board board;
     private final int conditionLength;
     private int tempLength = 1;
 
-    CheckVertically(Board board) {
+    CheckDiagonallyRight(Board board) {
         this.board = board;
         this.conditionLength = board.getCondition();
     }
@@ -14,23 +14,23 @@ class CheckVertically implements BoardChecker {
     @Override
     public boolean check(int location, Field field) {
         tempLength = 1;
-        checkTempLengthUp(location, field);
-        checkTempLengthDown(location, field);
+        checkTempLengthLeftDown(location, field);
+        checkTempLengthRightUp(location, field);
         return tempLength >= conditionLength;
     }
 
-    private void checkTempLengthDown(int location, Field field) {
-        Field tempStatusUp = Field.EMPTY;
+    private void checkTempLengthRightUp(int location, Field field) {
+        Field tempStatusLeftDown = Field.EMPTY;
         boolean leftFlag = true;
         for (int range = 1; range < conditionLength; range++) {
 
-            if (leftFlag && (location - (range*board.getBorderSize())) >= 0) {
+            if (leftFlag && ((location - (range * board.getBorderSize())) + range) >= 0) {
                 try {
-                    tempStatusUp = board.receiveField(location - (range*board.getBorderSize()));
+                    tempStatusLeftDown = board.receiveField((location - (range * board.getBorderSize())) + range);
                 } catch (OutOfBoardException e) {
-                    leftFlag =false;
+                    leftFlag = false;
                 }
-                if (tempStatusUp.equals(field)) {
+                if (tempStatusLeftDown.equals(field)) {
                     tempLength++;
                 } else {
                     leftFlag = false;
@@ -39,17 +39,17 @@ class CheckVertically implements BoardChecker {
         }
     }
 
-    private void checkTempLengthUp(int location, Field field) {
-        Field tempStatusDown = Field.EMPTY;
+    private void checkTempLengthLeftDown(int location, Field field) {
+        Field tempStatusRightUp = Field.EMPTY;
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {
-            if (rightFlag && (location + (range*board.getBorderSize()) < (board.getBorderSize() * board.getBorderSize()))) {
+            if (rightFlag && (location + ((range * board.getBorderSize()) - range) < (board.getBorderSize() * board.getBorderSize()))) {
                 try {
-                    tempStatusDown = board.receiveField(location + (range*board.getBorderSize()));
+                    tempStatusRightUp = board.receiveField((location + (range * board.getBorderSize())) - range);
                 } catch (OutOfBoardException e) {
                     rightFlag = false;
                 }
-                if (tempStatusDown.equals(field)) {
+                if (tempStatusRightUp.equals(field)) {
                     tempLength++;
                 } else {
                     rightFlag = false;
@@ -58,6 +58,6 @@ class CheckVertically implements BoardChecker {
 
         }
     }
-
-
 }
+
+
