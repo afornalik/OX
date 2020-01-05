@@ -4,7 +4,7 @@ class CheckHorizontally implements BoardChecker {
 
     private final Board board;
     private final int conditionLength;
-    private int tempLength = 1;
+    private int tempLength;
 
     CheckHorizontally(Board board) {
         this.board = board;
