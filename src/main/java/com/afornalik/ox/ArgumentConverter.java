@@ -19,8 +19,8 @@ class ArgumentConverter {
             Map<String, String> configuration = new HashMap<>();
             configuration.put("name", args.get(0));
             configuration.put("Field", args.get(1));
-            configuration.put("name2", args.get(2));
-            configuration.put("first", args.get(3));
+            configuration.put("first", args.get(2));
+            configuration.put("name2", args.get(3));
             configuration.put("size", args.get(4));
             configuration.put("condition", args.get(5));
             return configuration;

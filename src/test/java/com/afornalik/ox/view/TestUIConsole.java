@@ -4,11 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Scanner;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @Test
@@ -21,7 +18,7 @@ public class TestUIConsole {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
         Mockito.when(scanner.next()).thenReturn(DUMMY_STRING);
-        UISimple uiConsole = new UISimple(scanner);
+        UI uiConsole = new UI(scanner);
 
         //when
         String result = uiConsole.read();
@@ -35,7 +32,7 @@ public class TestUIConsole {
         //given
         Scanner scanner = Mockito.mock(Scanner.class);
         when(scanner.next()).thenReturn(NUMBER_VALUE);
-        UISimple uiInput = new UISimple(scanner);
+        UI uiInput = new UI(scanner);
 
         //when
         int result = uiInput.readNumber();

@@ -28,8 +28,8 @@ public class TestUIDrawBoardCell {
     public void shouldReturnStringWithDrawBoard3x3Filled() throws OutOfBoardException {
         //given
         Board board = new Board(BOUND_THREE, 3);
-        board.insertBoardField(0, Field.X);
-        board.insertBoardField(1, Field.O);
+        board.insertField(0, Field.X);
+        board.insertField(1, Field.O);
         UIDrawBoard uiDrawBoard = new UIDrawBoardCell(board);
 
         //when

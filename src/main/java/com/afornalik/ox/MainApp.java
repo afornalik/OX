@@ -1,9 +1,8 @@
 package com.afornalik.ox;
 
-import com.afornalik.ox.view.DrawBoardType;
-import com.afornalik.ox.view.UIExtended;
-import com.afornalik.ox.view.UISimple;
+import com.afornalik.ox.view.UI;
 
+import java.util.List;
 import java.util.Scanner;
 
 class MainApp {
@@ -30,14 +29,13 @@ class MainApp {
         ArgumentConverter argumentConverter = new ArgumentConverter(args);
 
         Scanner scanner = new Scanner(System.in);
-        UISimple uiSimple = new UISimple(scanner);
-        Configuration configuration = new Configuration(uiSimple,argumentConverter.convertToConfiguration());
+        UI ui = new UI(scanner);
+        GameBuilder gameBuilder = new GameBuilder(ui, argumentConverter.convertToConfiguration());
 
-        Players players = configuration.createTwoPlayer();
-        Board board = configuration.createBoard();
+        List<Player> players = gameBuilder.createTwoPlayer();
+        Board board = gameBuilder.createBoard();
 
-        UIExtended uiExtended = new UIExtended(scanner, DrawBoardType.CELL, board);
-        Match match = new Match(uiExtended, board, players, argumentConverter.convertToMove());
-        match.makeATurn(0);
+        Match match = new Match(ui, board, players, argumentConverter.convertToMove());
+        match.nextRound(0);
     }
 }

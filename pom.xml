@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>academy</groupId>
+    <groupId>java.academy</groupId>
     <artifactId>OX</artifactId>
     <version>0.5</version>
     <name>OX</name>
@@ -13,42 +13,54 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>11</maven.compiler.release>
+        <!--  dependencies -->
+        <maven.checkstyle.version>3.1.0</maven.checkstyle.version>
+        <testng.version>7.1.0</testng.version>
+        <mockito.core.version>3.2.4</mockito.core.version>
+        <assertj.core.version>3.14.0</assertj.core.version>
+        <spotbugs.version>3.1.12</spotbugs.version>
+        <maven.project.info.reports.version>3.0.0</maven.project.info.reports.version>
+        <!--  plugins -->
+        <jacoco.version>0.8.5</jacoco.version>
+        <maven.compiler.version>3.8.0</maven.compiler.version>
+        <maven.jar.version>3.2.0</maven.jar.version>
+        <maven.project.info.plugin.version>2.7</maven.project.info.plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>3.1.0</version>
+            <version>${maven.checkstyle.version}</version>
             <type>maven-plugin</type>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.1.0</version>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>3.2.4</version>
+            <version>${mockito.core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.14.0</version>
+            <version>${assertj.core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.github.spotbugs</groupId>
             <artifactId>spotbugs</artifactId>
-            <version>3.1.12</version>
+            <version>${spotbugs.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-project-info-reports-plugin</artifactId>
-            <version>3.0.0</version>
+            <version>${maven.project.info.reports.version}</version>
             <type>maven-plugin</type>
         </dependency>
     </dependencies>
@@ -58,12 +70,12 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.5</version>
+                <version>${jacoco.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${maven.compiler.version}</version>
                 <configuration>
                     <release>${maven.compiler.release}</release>
                 </configuration>
@@ -71,7 +83,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${maven.jar.version}</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -84,7 +96,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.7</version>
+                <version>${maven.project.info.plugin.version}</version>
             </plugin>
         </plugins>
         <pluginManagement>
@@ -92,7 +104,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>${maven.checkstyle.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -3,13 +3,13 @@ package com.afornalik.ox.view;
 import java.util.Scanner;
 
 /**
- *  Class responsible for communication with a user.
- *  This implementation cover basic console interface.
+ * Class responsible for communication with a user.
+ * This implementation cover basic console interface.
  *
  * @author Andrzej Fornalik
  */
 
-public class UISimple {
+public class UI {
 
     private final Scanner scanner;
 
@@ -18,7 +18,7 @@ public class UISimple {
      *
      * @param scanner object hold input from a user.
      */
-    public UISimple(Scanner scanner) {
+    public UI(Scanner scanner) {
         this.scanner = scanner;
     }
 
@@ -38,7 +38,7 @@ public class UISimple {
      *
      * @return int value
      */
-    public  int readNumber() {
+    public int readNumber() {
         String stringToParse;
         int integerVal;
         do {

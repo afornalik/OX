@@ -68,9 +68,9 @@ public class TestCheckHorizontally {
     public void shouldBoardBeInWinState(int[] index, Field field) throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
-        board.insertBoardField(index[0], field);
-        board.insertBoardField(index[1], field);
-        board.insertBoardField(index[2], field);
+        board.insertField(index[0], field);
+        board.insertField(index[1], field);
+        board.insertField(index[2], field);
         BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
@@ -88,9 +88,9 @@ public class TestCheckHorizontally {
     public void shouldBoardBeInNoWinState(int[] index, Field field) throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
-        board.insertBoardField(index[0], field);
-        board.insertBoardField(index[1], field);
-        board.insertBoardField(index[2], field);
+        board.insertField(index[0], field);
+        board.insertField(index[1], field);
+        board.insertField(index[2], field);
         BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
@@ -108,9 +108,9 @@ public class TestCheckHorizontally {
     public void shouldBoardBeInNoWinStateCaseTwo(int[] index, Field[] fields) throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
-        board.insertBoardField(index[0], fields[1]);
-        board.insertBoardField(index[1], fields[0]);
-        board.insertBoardField(index[2], fields[0]);
+        board.insertField(index[0], fields[1]);
+        board.insertField(index[1], fields[0]);
+        board.insertField(index[2], fields[0]);
         BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
@@ -134,11 +134,11 @@ public class TestCheckHorizontally {
     public void shouldBoardBeInWinStateBoard7on7Condition5(int[] index, Field[] fields) throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE_7, CONDITION_LENGTH_5);
-        board.insertBoardField(index[0], fields[0]);
-        board.insertBoardField(index[1], fields[0]);
-        board.insertBoardField(index[2], fields[0]);
-        board.insertBoardField(index[3], fields[0]);
-        board.insertBoardField(index[4], fields[0]);
+        board.insertField(index[0], fields[0]);
+        board.insertField(index[1], fields[0]);
+        board.insertField(index[2], fields[0]);
+        board.insertField(index[3], fields[0]);
+        board.insertField(index[4], fields[0]);
         BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when

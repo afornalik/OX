@@ -26,7 +26,7 @@ class CheckHorizontally implements BoardChecker {
         for (int range = 1; range < conditionLength; range++) {
             leftFlag = isEndOfLine(leftFlag, (location + 1) - range);
             if (leftFlag && (location - range) >= 0) {
-                tempStatusLeft = board.receiveBoardField(location - range);
+                tempStatusLeft = board.receiveField(location - range);
                 if (tempStatusLeft.equals(field)) {
                     tempLength++;
                 } else {
@@ -41,7 +41,7 @@ class CheckHorizontally implements BoardChecker {
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {
             if (rightFlag && (location + range) < (board.getBorderSize() * board.getBorderSize())) {
-                tempStatusRight = board.receiveBoardField(location + range);
+                tempStatusRight = board.receiveField(location + range);
                 if (tempStatusRight.equals(field)) {
                     tempLength++;
                 } else {

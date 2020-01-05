@@ -37,8 +37,8 @@ public class TestUIDrawBoardSide {
         UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
-        board.insertBoardField(INDEX[0], FIELD_STATUS_O);
-        board.insertBoardField(INDEX[1], FIELD_STATUS_O);
+        board.insertField(INDEX[0], FIELD_STATUS_O);
+        board.insertField(INDEX[1], FIELD_STATUS_O);
         String result = uiDrawBoard.drawBoard();
 
         //then
@@ -54,10 +54,10 @@ public class TestUIDrawBoardSide {
         UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
-        board.insertBoardField(INDEX[1], FIELD_STATUS_O);
-        board.insertBoardField(INDEX[3], FIELD_STATUS_X);
-        board.insertBoardField(INDEX[4], FIELD_STATUS_O);
-        board.insertBoardField(INDEX[5], FIELD_STATUS_X);
+        board.insertField(INDEX[1], FIELD_STATUS_O);
+        board.insertField(INDEX[3], FIELD_STATUS_X);
+        board.insertField(INDEX[4], FIELD_STATUS_O);
+        board.insertField(INDEX[5], FIELD_STATUS_X);
         String result = uiDrawBoard.drawBoard();
 
         //then
@@ -95,10 +95,10 @@ public class TestUIDrawBoardSide {
         UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
-        board.insertBoardField(6, FIELD_STATUS_X);
-        board.insertBoardField(8, FIELD_STATUS_X);
-        board.insertBoardField(15, FIELD_STATUS_O);
-        board.insertBoardField(18, FIELD_STATUS_X);
+        board.insertField(6, FIELD_STATUS_X);
+        board.insertField(8, FIELD_STATUS_X);
+        board.insertField(15, FIELD_STATUS_O);
+        board.insertField(18, FIELD_STATUS_X);
         String result = uiDrawBoard.drawBoard();
 
         //then

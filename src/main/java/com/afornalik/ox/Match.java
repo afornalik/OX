@@ -1,23 +1,27 @@
 package com.afornalik.ox;
 
-import com.afornalik.ox.view.UIExtended;
+import com.afornalik.ox.view.UI;
+import com.afornalik.ox.view.UIDrawBoard;
+import com.afornalik.ox.view.UIDrawBoardCell;
 
 import java.util.ArrayList;
 import java.util.List;
 
 class Match {
 
-    private final UIExtended uiExtended;
+    private UIDrawBoard uiDrawBoard;
+    private final UI ui;
     private final Board board;
-    private final Players players;
     private final List<Integer> argsIndex;
+    private final List<Player> players;
     private BoardChecker boardChecker;
 
-    Match(UIExtended uiExtended, Board board, Players players, List<Integer> argsIndex) {
-        this.uiExtended = uiExtended;
+    Match(UI ui, Board board, List<Player> players, List<Integer> argsIndex) {
+        this.ui = ui;
         this.board = board;
         this.players = players;
         boardChecker = new CheckHorizontally(board);
+        uiDrawBoard = new UIDrawBoardCell(board);
         if (argsIndex == null) {
             this.argsIndex = new ArrayList<>();
             this.argsIndex.add(0);
@@ -26,50 +30,45 @@ class Match {
         }
     }
 
-    Board makeATurn(int index) {
-        Player first = players.isFirst();
-        Player last = players.isLast();
-        if (playerMove(first.getName() + " move : ", first.getSign(), argsIndex.get(index))) return board;
-        if (index < argsIndex.size() - 1) {
-            index++;
-        } else if (index == argsIndex.size() - 1 && argsIndex.get(0) != 0) {
-            uiExtended.drawBoard();
+    Board nextRound(Integer index) {
+        if (returnBoard(players.get(0), index) || returnBoard(players.get(1), index)) {
             return board;
         }
-        if (playerMove(last.getName() + " move : ", last.getSign(), argsIndex.get(index))) return board;
-        if (index < argsIndex.size() - 1) {
-            index++;
-        } else if (index == argsIndex.size() - 1 && argsIndex.get(0) != 0) {
-            uiExtended.drawBoard();
-            return board;
-        }
-        return makeATurn(index);
+        return nextRound(index);
     }
 
-    private boolean playerMove(String s, Field x, int index) {
-        uiExtended.drawBoard();
+    private boolean returnBoard(Player player, Integer index) {
+        if (playerMove(player.getName() + " move : ", player.getSign(), argsIndex.get(index)))
+            if (index >= argsIndex.size() - 1) {
+                if (index == argsIndex.size() - 1 || argsIndex.get(0) != 0) {
+                    //ui.print("\nMatch draw");
+                    return true;
+                }
+            }
+        return false;
+    }
+
+    private boolean playerMove(String s, Field field, int index2) {
+        ui.print(uiDrawBoard.drawBoard());
+        ui.print(s);
+        int index;
         if (board.isAllFieldTaken()) {
             return true;
         }
-        uiExtended.print(s);
-        return makeAMove(x, index);
-    }
-
-    private boolean makeAMove(Field field, int argsIndex) {
-        int index;
         try {
-            index = receiveIndex(argsIndex);
-            board.insertBoardField(index - 1, field);
+            index = receiveIndex(index2);
+            board.insertField(index - 1, field);
             if (boardChecker.check(index - 1, field)) {
-                uiExtended.drawBoard();
-                uiExtended.print("Winner is  : " + field);
+                ui.print(uiDrawBoard.drawBoard());
+                ui.print("Winner is  : " + field);
                 return true;
             }
         } catch (OutOfBoardException e) {
-            uiExtended.print(e.getMessage());
+            ui.print(e.getMessage());
         }
         return false;
     }
+
 
     private int receiveIndex(int argsIndex) throws OutOfBoardException {
         int index;
@@ -77,13 +76,13 @@ class Match {
         do {
             if (argsIndex != 0) {
                 index = argsIndex;
-                uiExtended.print(index + "\n");
+                ui.print(index + "\n");
             } else {
-                index = uiExtended.readNumber();
+                index = ui.readNumber();
             }
-            checkStatus = board.receiveBoardField(index - 1);
+            checkStatus = board.receiveField(index - 1);
             if (checkStatus != Field.EMPTY) {
-                uiExtended.print("\nField already taken choose different number ");
+                ui.print("\nField already taken choose different number ");
             }
         } while (checkStatus != Field.EMPTY);
         return index;
