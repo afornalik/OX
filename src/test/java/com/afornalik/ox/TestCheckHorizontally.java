@@ -50,7 +50,7 @@ public class TestCheckHorizontally {
     }
 
     @DataProvider
-    public Object[][] notWinningCombinationDifferent5x5() {
+    public Object[][] winningCombinationDifferent5x5() {
         return new Object[][]{
                 {new int[]{2, 3, 4, 5, 6}, new Field[]{Field.O, Field.X}},
                 {new int[]{7, 8, 9, 10, 11}, new Field[]{Field.O, Field.X}},
@@ -130,7 +130,7 @@ public class TestCheckHorizontally {
         Assertions.assertThat(result6).isFalse();
     }
 
-    @Test(dataProvider = "notWinningCombinationDifferent5x5")
+    @Test(dataProvider = "winningCombinationDifferent5x5")
     public void shouldBoardBeInWinStateBoard7on7Condition5(int[] index, Field[] fields) throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE_7, CONDITION_LENGTH_5);
