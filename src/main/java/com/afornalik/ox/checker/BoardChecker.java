@@ -1,4 +1,6 @@
-package com.afornalik.ox;
+package com.afornalik.ox.checker;
+
+import com.afornalik.ox.Field;
 
 /**
  * Responsible for check the condition of the game.
@@ -14,7 +16,6 @@ interface BoardChecker {
      * @param location int location of put sign.
      * @param field Field enum define type of sign.
      * @return boolean result of checking the condition.
-     * @throws OutOfBoardException if mark location points outside the board (greater than max number or lesser than zero).
      */
-    boolean check(int location, Field field) throws OutOfBoardException;
+    boolean check(int location, Field field);
 }

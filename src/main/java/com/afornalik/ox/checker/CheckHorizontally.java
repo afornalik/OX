@@ -1,10 +1,14 @@
-package com.afornalik.ox;
+package com.afornalik.ox.checker;
+
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
 
 class CheckHorizontally implements BoardChecker {
 
     private final Board board;
     private final int conditionLength;
-    private int tempLength = 1;
+    private int tempLength;
 
     CheckHorizontally(Board board) {
         this.board = board;
@@ -13,20 +17,24 @@ class CheckHorizontally implements BoardChecker {
 
 
     @Override
-    public boolean check(int location, Field field) throws OutOfBoardException {
+    public boolean check(int location, Field field) {
         tempLength = 1;
         checkTempLengthLeft(location, field);
         checkTempLengthRight(location, field);
         return tempLength >= conditionLength;
     }
 
-    private void checkTempLengthLeft(int location, Field field) throws OutOfBoardException {
-        Field tempStatusLeft;
+    private void checkTempLengthLeft(int location, Field field) {
+        Field tempStatusLeft = Field.EMPTY;
         boolean leftFlag = true;
         for (int range = 1; range < conditionLength; range++) {
             leftFlag = isEndOfLine(leftFlag, (location + 1) - range);
             if (leftFlag && (location - range) >= 0) {
-                tempStatusLeft = board.receiveField(location - range);
+                try {
+                    tempStatusLeft = board.receiveField(location - range);
+                } catch (OutOfBoardException e) {
+                    leftFlag = false;
+                }
                 if (tempStatusLeft.equals(field)) {
                     tempLength++;
                 } else {
@@ -36,12 +44,16 @@ class CheckHorizontally implements BoardChecker {
         }
     }
 
-    private void checkTempLengthRight(int location, Field field) throws OutOfBoardException {
-        Field tempStatusRight;
+    private void checkTempLengthRight(int location, Field field) {
+        Field tempStatusRight = Field.EMPTY;
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {
             if (rightFlag && (location + range) < (board.getBorderSize() * board.getBorderSize())) {
-                tempStatusRight = board.receiveField(location + range);
+                try {
+                    tempStatusRight = board.receiveField(location + range);
+                } catch (OutOfBoardException e) {
+                    e.printStackTrace();
+                }
                 if (tempStatusRight.equals(field)) {
                     tempLength++;
                 } else {

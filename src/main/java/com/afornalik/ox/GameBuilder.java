@@ -7,38 +7,27 @@ import java.util.*;
 class GameBuilder {
 
     private final UI ui;
-    private final Map<String, String> args;
 
-    GameBuilder(UI ui, Map<String, String> args) {
+
+    GameBuilder(UI ui) {
         this.ui = ui;
-        this.args = args;
+
     }
 
     List<Player> createTwoPlayer() {
 
         greetUser();
 
-        String argsName = null;
-        String argsNameSecondPlayer = null;
-        String argsField = null;
-        String argsFirstMove = "0";
-
-        if (args != null && args.size() > 0) {
-            argsName = args.get("name");
-            argsNameSecondPlayer = args.get("name2");
-            argsField = args.get("Field");
-            argsFirstMove = args.get("first");
-        }
 
         ui.print("\nPlayer 1\n");
-        Player player1 = createPlayer(Field.EMPTY, argsName, argsField, Integer.valueOf(argsFirstMove));
+        Player player1 = createPlayer(Field.EMPTY,0);
         ui.print("\nPlayer 2\n");
-        Player player2 = createPlayer(player1.getSign(), argsNameSecondPlayer, argsField, player1.getOrder());
+        Player player2 = createPlayer(player1.getSign(), player1.getSequence());
 
         List<Player> players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
-        players.sort(Comparator.comparing(Player::getOrder));
+        players.sort(Comparator.comparing(Player::getSequence));
 
         return players;
     }
@@ -47,12 +36,12 @@ class GameBuilder {
         ui.print("Welcome in game OX\n");
     }
 
-    private Player createPlayer(Field field, String argsName, String argsField, int argsFirstMove) {
-        String name = createName(argsName);
+    private Player createPlayer(Field field, int sequence) {
+        String name = createName();
         Field playerMark;
-        int mark = 0;
+        int playerSequence = 0;
         if (field == Field.EMPTY) {
-            playerMark = createMark(argsField);
+            playerMark = createMark(field);
         } else {
             if (field == Field.O) {
                 playerMark = Field.X;
@@ -60,24 +49,20 @@ class GameBuilder {
                 playerMark = Field.O;
             }
         }
-        if (argsFirstMove == 0) {
-            mark = whoMakeFirstMove(argsFirstMove);
+        if(sequence == 0) {
+            playerSequence = whoMakeFirstMove(sequence);
         }
         return new Player.PlayerBuilder(playerMark)
-                .order(mark)
+                .sequence(playerSequence)
                 .name(name)
                 .score(0)
                 .build();
     }
 
-    private String createName(String argsName) {
+    private String createName() {
         ui.print("  name : ");
-        if (argsName != null) {
-            ui.print(argsName + "\n");
-            return argsName;
-        } else {
-            return ui.read();
-        }
+        return ui.read();
+
     }
 
     private int whoMakeFirstMove(int argsFirstMove) {
@@ -90,14 +75,13 @@ class GameBuilder {
 
     }
 
-    private Field createMark(String argsField) {
+    private Field createMark(Field field) {
         Field playerField;
         do {
             ui.print("Select X or O mark : ");
             String tempSymbol;
-            if (argsField != null) {
-                ui.print(argsField + "\n");
-                tempSymbol = argsField.toUpperCase();
+            if (field != Field.EMPTY) {
+                tempSymbol = field.toString();
             } else {
                 tempSymbol = ui.read().toUpperCase();
             }
@@ -114,24 +98,12 @@ class GameBuilder {
     }
 
     Board createBoard() {
-        ui.print("\nSelect board size : ");
+        ui.print("Select board size : ");
         int borderSize;
-        if (args != null && args.get("size") != null) {
-            borderSize = Integer.parseInt(args.get("size"));
-            ui.print(borderSize + "\n");
-        } else {
-            borderSize = ui.readNumber();
-        }
+        borderSize = ui.readNumber();
         ui.print("Select condition size : ");
         int conditionSize;
-        if (args != null && args.get("condition") != null) {
-            conditionSize = Integer.parseInt(args.get("condition"));
-            ui.print(conditionSize + "\n");
-        } else {
-            conditionSize = ui.readNumber();
-        }
+        conditionSize = ui.readNumber();
         return new Board(borderSize, conditionSize);
     }
-
-
 }

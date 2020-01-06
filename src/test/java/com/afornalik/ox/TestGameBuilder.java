@@ -15,17 +15,16 @@ import static org.mockito.Mockito.verify;
 @Test
 public class TestGameBuilder {
 
-    private static final Player PLAYER1 = new Player.PlayerBuilder(Field.O)
-            .name("Kasia")
-            .score(0)
-            .order(0)
-            .build();
-
     public void shouldCreateTwoPlayers() {
         //given
+        Player PLAYER1 = new Player.PlayerBuilder(Field.O)
+                .name("Kasia")
+                .score(0)
+                .sequence(0)
+                .build();
         UI uiConsole = Mockito.mock(UI.class);
         Mockito.when(uiConsole.read()).thenReturn("Kasia", "o", "Kasia", "x", "1");
-        GameBuilder gameBuilder = new GameBuilder(uiConsole, null);
+        GameBuilder gameBuilder = new GameBuilder(uiConsole);
 
         //when
         List<Player> result = gameBuilder.createTwoPlayer();
@@ -37,7 +36,7 @@ public class TestGameBuilder {
     public void shouldGreetUser() {
         //given
         UI ui = Mockito.mock(UI.class);
-        GameBuilder headController = new GameBuilder(ui, null);
+        GameBuilder headController = new GameBuilder(ui);
 
         //when
         headController.greetUser();
@@ -50,7 +49,7 @@ public class TestGameBuilder {
         //given
         UI uiOperations = Mockito.mock(UI.class);
         BDDMockito.when(uiOperations.readNumber()).thenReturn(3);
-        GameBuilder boardController = new GameBuilder(uiOperations, null);
+        GameBuilder boardController = new GameBuilder(uiOperations);
 
         //when
         Board result = boardController.createBoard();
