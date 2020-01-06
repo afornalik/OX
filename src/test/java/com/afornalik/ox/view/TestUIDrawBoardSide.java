@@ -1,27 +1,25 @@
 package com.afornalik.ox.view;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.FieldStatus;
-import com.afornalik.ox.model.board.OutOfBoardException;
-import com.afornalik.ox.view.draw.UIDrawBoard;
-import com.afornalik.ox.view.draw.UIDrawBoardSideNumerate;
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-public class TestUIDrawBoardSideNumerate {
+public class TestUIDrawBoardSide {
 
-    private static final FieldStatus FIELD_STATUS_X = FieldStatus.X;
-    private static final FieldStatus FIELD_STATUS_O = FieldStatus.O;
+    private static final Field FIELD_STATUS_X = Field.X;
+    private static final Field FIELD_STATUS_O = Field.O;
     private static final int BOUND_THREE = 3;
     private static final int BOUND_TEN = 10;
     private static final int[] INDEX = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
     public void shouldReturnStringWithDrawBoard3x3() {
         //given
-        Board board = new Board(BOUND_THREE);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        Board board = new Board(BOUND_THREE, 3);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
         String result = uiDrawBoard.drawBoard();
@@ -35,12 +33,12 @@ public class TestUIDrawBoardSideNumerate {
 
     public void shouldReturnStringWithTwoMarkDrawBoard3x3() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        Board board = new Board(BOUND_THREE, 3);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
-        board.insertBoardField(INDEX[0], FIELD_STATUS_O);
-        board.insertBoardField(INDEX[1], FIELD_STATUS_O);
+        board.insertField(INDEX[0], FIELD_STATUS_O);
+        board.insertField(INDEX[1], FIELD_STATUS_O);
         String result = uiDrawBoard.drawBoard();
 
         //then
@@ -52,14 +50,14 @@ public class TestUIDrawBoardSideNumerate {
 
     public void shouldReturnStringWithFourMarkDrawBoard3x3() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        Board board = new Board(BOUND_THREE, 3);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
-        board.insertBoardField(INDEX[1], FIELD_STATUS_O);
-        board.insertBoardField(INDEX[3], FIELD_STATUS_X);
-        board.insertBoardField(INDEX[4], FIELD_STATUS_O);
-        board.insertBoardField(INDEX[5], FIELD_STATUS_X);
+        board.insertField(INDEX[1], FIELD_STATUS_O);
+        board.insertField(INDEX[3], FIELD_STATUS_X);
+        board.insertField(INDEX[4], FIELD_STATUS_O);
+        board.insertField(INDEX[5], FIELD_STATUS_X);
         String result = uiDrawBoard.drawBoard();
 
         //then
@@ -71,8 +69,8 @@ public class TestUIDrawBoardSideNumerate {
 
     public void shouldReturnStringWithDrawBoard10x10() {
         //given
-        Board board = new Board(BOUND_TEN);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        Board board = new Board(BOUND_TEN, 3);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
         String result = uiDrawBoard.drawBoard();
@@ -93,14 +91,14 @@ public class TestUIDrawBoardSideNumerate {
 
     public void shouldReturnStringWithMarkedFieldBoard10x10() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_TEN);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardSideNumerate(board);
+        Board board = new Board(BOUND_TEN, 3);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardSide(board);
 
         //when
-        board.insertBoardField(6, FIELD_STATUS_X);
-        board.insertBoardField(8, FIELD_STATUS_X);
-        board.insertBoardField(15, FIELD_STATUS_O);
-        board.insertBoardField(18, FIELD_STATUS_X);
+        board.insertField(6, FIELD_STATUS_X);
+        board.insertField(8, FIELD_STATUS_X);
+        board.insertField(15, FIELD_STATUS_O);
+        board.insertField(18, FIELD_STATUS_X);
         String result = uiDrawBoard.drawBoard();
 
         //then

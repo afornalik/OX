@@ -1,4 +1,4 @@
-package com.afornalik.ox.model.board;
+package com.afornalik.ox;
 
 import java.util.Map;
 import java.util.Objects;
@@ -9,22 +9,25 @@ import java.util.TreeMap;
  * also this class make some basic operations.
  *
  * @author Andrzej Fornalik
- * @version 0.1
  * @since 2019-12-20
  */
 public class Board {
-    private final Map<Integer, FieldStatus> boardFields = new TreeMap<>();
+    private final Map<Integer, Field> boardFields = new TreeMap<>();
     private final int borderSize;
     private final int maxValue;
+    private final int condition;
 
     /**
      * Default constructor to generate board.
      *
      * @param borderSize describe size of board. Prefer value are between 3 and 50.
+     * @param condition  set a number of mark in row or column to win match. If condition is
+     *                   higher than borderSize than condition is set to borderSize
      */
-    public Board(int borderSize) {
+    public Board(int borderSize, int condition) {
         this.borderSize = borderSize;
         this.maxValue = borderSize * borderSize;
+        this.condition = Math.min(condition, borderSize);
     }
 
     /**
@@ -40,28 +43,28 @@ public class Board {
      * Method to insert appropriate value into board.
      *
      * @param indexOfField int This is index of field where value will be insert.
-     * @param fieldStatus  FieldStatus This is enum value which determine what symbol will be inserted
+     * @param field        Field This is enum value which determine what symbol will be inserted
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      */
-    public void insertBoardField(int indexOfField, FieldStatus fieldStatus) throws OutOfBoardException {
+    public void insertField(int indexOfField, Field field) throws OutOfBoardException {
         if (checkIndexRange(indexOfField))
-            boardFields.put(indexOfField, fieldStatus);
+            boardFields.put(indexOfField, field);
     }
 
     /**
      * Method to receive value from board.
      *
      * @param indexOfField int This is index of field from which value will be taken.
-     * @return FieldStatus This method return enum value corresponding to x or o.
+     * @return Field This method return enum value corresponding to x or o.
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      */
-    public FieldStatus receiveBoardField(int indexOfField) throws OutOfBoardException {
+    public Field receiveField(int indexOfField) throws OutOfBoardException {
         if (checkIndexRange(indexOfField)) {
             if (boardFields.get(indexOfField) != null) {
                 return boardFields.get(indexOfField);
             }
         }
-        return FieldStatus.EMPTY;
+        return Field.EMPTY;
     }
 
     /**
@@ -69,8 +72,12 @@ public class Board {
      *
      * @return int number of empty field.
      */
-    public boolean isAllFieldTaken() {
+    boolean isAllFieldTaken() {
         return (maxValue - boardFields.size() == 0);
+    }
+
+    int getCondition() {
+        return condition;
     }
 
     private boolean checkIndexRange(int indexOfField) throws OutOfBoardException {

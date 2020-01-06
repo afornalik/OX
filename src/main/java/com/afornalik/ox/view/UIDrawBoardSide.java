@@ -1,18 +1,18 @@
-package com.afornalik.ox.view.draw;
+package com.afornalik.ox.view;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.FieldStatus;
-import com.afornalik.ox.model.board.OutOfBoardException;
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
 
 
 /**
- * Class responsible for print board on console.
- * board have two side numerated axis.
+ * Class responsible for print a board on a console.
+ * board have two side axis numbered.
  *
  * @author Andrzej Fornalik
  */
 
-public class UIDrawBoardSideNumerate implements UIDrawBoard {
+class UIDrawBoardSide implements UIDrawBoard {
 
     private final Board board;
     private final int boardSize;
@@ -24,7 +24,7 @@ public class UIDrawBoardSideNumerate implements UIDrawBoard {
      * @param board Board This parameter represent board in OX game
      */
 
-    public UIDrawBoardSideNumerate(Board board) {
+    UIDrawBoardSide(Board board) {
         this.board = board;
         this.boardSize = (board.getBorderSize() * 2) + 1;
     }
@@ -59,14 +59,14 @@ public class UIDrawBoardSideNumerate implements UIDrawBoard {
             if (k % 2 == 0) {
                 sb.append("|");
             } else {
-                FieldStatus fieldStatus = null;
+                Field field = null;
                 try {
-                    fieldStatus = board.receiveBoardField(index);
+                    field = board.receiveField(index);
                 } catch (OutOfBoardException e) {
                     //to do !
                 }
                 index++;
-                sb.append(fieldStatus);
+                sb.append(field);
             }
         }
         return index;

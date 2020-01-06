@@ -1,6 +1,5 @@
-package com.afornalik.ox.model.player;
+package com.afornalik.ox;
 
-import com.afornalik.ox.model.board.FieldStatus;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -9,19 +8,19 @@ import static org.assertj.core.api.Assertions.*;
 public class TestPlayer {
 
 
-    public void shouldCreatePlayerUsingBuilder() {
+    public void shouldBuildPlayer() {
         //when
-        Player player = new Player.PlayerBuilder(FieldStatus.O)
+        Player player = new Player.PlayerBuilder(Field.O)
                 .name("player")
                 .score(0)
-                .first(true)
+                .order(0)
                 .build();
 
         //then
         assertThat(player.getName()).isEqualTo("player");
         assertThat(player.getScore()).isEqualTo(0);
-        assertThat(player.getSign()).isEqualTo(FieldStatus.O);
-        assertThat(player.isFirst()).isEqualTo(true);
+        assertThat(player.getSign()).isEqualTo(Field.O);
+        assertThat(player.getOrder()).isEqualTo(0);
     }
 
 }

@@ -1,22 +1,20 @@
 package com.afornalik.ox.view;
 
-import com.afornalik.ox.model.board.Board;
-import com.afornalik.ox.model.board.FieldStatus;
-import com.afornalik.ox.model.board.OutOfBoardException;
-import com.afornalik.ox.view.draw.UIDrawBoard;
-import com.afornalik.ox.view.draw.UIDrawBoardCellNumerate;
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-public class TestUIDrawBoardCellNumerate {
+public class TestUIDrawBoardCell {
     private static final int BOUND_THREE = 3;
 
     public void shouldReturnStringWithDrawBoard3x3() {
         //given
-        Board board = new Board(BOUND_THREE);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardCellNumerate(board);
+        Board board = new Board(BOUND_THREE, 3);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardCell(board);
 
         //when
         String result = uiDrawBoard.drawBoard();
@@ -29,10 +27,10 @@ public class TestUIDrawBoardCellNumerate {
 
     public void shouldReturnStringWithDrawBoard3x3Filled() throws OutOfBoardException {
         //given
-        Board board = new Board(BOUND_THREE);
-        board.insertBoardField(0, FieldStatus.X);
-        board.insertBoardField(1, FieldStatus.O);
-        UIDrawBoard uiDrawBoard = new UIDrawBoardCellNumerate(board);
+        Board board = new Board(BOUND_THREE, 3);
+        board.insertField(0, Field.X);
+        board.insertField(1, Field.O);
+        UIDrawBoard uiDrawBoard = new UIDrawBoardCell(board);
 
         //when
         String result = uiDrawBoard.drawBoard();
