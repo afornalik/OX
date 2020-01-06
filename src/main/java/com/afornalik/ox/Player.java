@@ -8,13 +8,13 @@ class Player implements Comparable<Player> {
     private final String name;
     private int score;
     private final Field sign;
-    private int order;
+    private int sequence;
 
-    private Player(String name, int score, Field sign, int order) {
+    private Player(String name, int score, Field sign, int sequence) {
         this.name = name;
         this.score = score;
         this.sign = sign;
-        this.order = order;
+        this.sequence = sequence;
     }
 
     int getScore() {
@@ -29,8 +29,8 @@ class Player implements Comparable<Player> {
         return sign;
     }
 
-    int getOrder() {
-        return order;
+    int getSequence() {
+        return sequence;
     }
 
     @Override
@@ -39,13 +39,13 @@ class Player implements Comparable<Player> {
                 "name is " + name +
                 " ,has score = " + score +
                 " ,use sign = " + sign +
-                " , order ? " + order +
+                " , sequence ? " + sequence +
                 "\n";
     }
 
     @Override
     public int compareTo(Player o) {
-        return this.getOrder() - o.getOrder();
+        return this.getSequence() - o.getSequence();
     }
 
 
@@ -53,7 +53,7 @@ class Player implements Comparable<Player> {
         private String name = "player";
         private int score = 0;
         private final Field sign;
-        private int order;
+        private int sequence;
 
         PlayerBuilder(Field sign) {
             this.sign = sign;
@@ -70,13 +70,13 @@ class Player implements Comparable<Player> {
         }
 
 
-        PlayerBuilder order(int order) {
-            this.order = order;
+        PlayerBuilder sequence(int sequence) {
+            this.sequence = sequence;
             return this;
         }
 
         Player build() {
-            return new Player(this.name, this.score, this.sign, this.order);
+            return new Player(this.name, this.score, this.sign, this.sequence);
         }
     }
 
@@ -86,13 +86,13 @@ class Player implements Comparable<Player> {
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
         return score == player.score &&
-                order == player.order &&
+                sequence == player.sequence &&
                 Objects.equals(name, player.name) &&
                 sign == player.sign;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, score, sign, order);
+        return Objects.hash(name, score, sign, sequence);
     }
 }
