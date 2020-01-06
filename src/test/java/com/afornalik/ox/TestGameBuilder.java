@@ -15,14 +15,13 @@ import static org.mockito.Mockito.verify;
 @Test
 public class TestGameBuilder {
 
-    private static final Player PLAYER1 = new Player.PlayerBuilder(Field.O)
-            .name("Kasia")
-            .score(0)
-            .sequence(0)
-            .build();
-
     public void shouldCreateTwoPlayers() {
         //given
+        Player PLAYER1 = new Player.PlayerBuilder(Field.O)
+                .name("Kasia")
+                .score(0)
+                .sequence(0)
+                .build();
         UI uiConsole = Mockito.mock(UI.class);
         Mockito.when(uiConsole.read()).thenReturn("Kasia", "o", "Kasia", "x", "1");
         GameBuilder gameBuilder = new GameBuilder(uiConsole);

@@ -6,9 +6,9 @@ import java.util.Objects;
 class Player implements Comparable<Player> {
 
     private final String name;
-    private int score;
+    private final int score;
     private final Field sign;
-    private int sequence;
+    private final int sequence;
 
     private Player(String name, int score, Field sign, int sequence) {
         this.name = name;

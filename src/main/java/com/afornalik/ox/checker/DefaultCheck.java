@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DefaultCheck {
 
-    private List<BoardChecker> boardCheckers = new ArrayList<>();
+    private final List<BoardChecker> boardCheckers = new ArrayList<>();
 
     public DefaultCheck(Board board) {
         boardCheckers.add(new CheckDiagonallyLeft(board));

@@ -12,8 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestMatch {
 
     private static final Board BOARD_THREE = new Board(3, 3);
-    private static final Player PLAYER_1 = new Player.PlayerBuilder(Field.O).name("name1").sequence(1).score(0).build();
-    private static final Player PLAYER_2 = new Player.PlayerBuilder(Field.X).name("name2").sequence(0).score(0).build();
+    private final Player PLAYER_1 = new Player.PlayerBuilder(Field.O).name("name1").sequence(1).score(0).build();
+    private final Player PLAYER_2 = new Player.PlayerBuilder(Field.X).name("name2").sequence(0).score(0).build();
 
     @Test()
     public void shouldAllFieldBeMarked() throws OutOfBoardException {

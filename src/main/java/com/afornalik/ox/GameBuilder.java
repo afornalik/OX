@@ -66,7 +66,7 @@ class GameBuilder {
     }
 
     private int whoMakeFirstMove(int argsFirstMove) {
-        ui.print("\nWhich player make first move ? (1/2) ");
+        ui.print("Which player make first move ? (1/2) ");
         if (argsFirstMove != 0) {
             ui.print(argsFirstMove + "\n\n");
             return argsFirstMove;
@@ -78,7 +78,7 @@ class GameBuilder {
     private Field createMark(Field field) {
         Field playerField;
         do {
-            ui.print("\nSelect X or O mark : ");
+            ui.print("Select X or O mark : ");
             String tempSymbol;
             if (field != Field.EMPTY) {
                 tempSymbol = field.toString();
@@ -98,10 +98,10 @@ class GameBuilder {
     }
 
     Board createBoard() {
-        ui.print("\nSelect board size : ");
+        ui.print("Select board size : ");
         int borderSize;
         borderSize = ui.readNumber();
-        ui.print("\nSelect condition size : ");
+        ui.print("Select condition size : ");
         int conditionSize;
         conditionSize = ui.readNumber();
         return new Board(borderSize, conditionSize);

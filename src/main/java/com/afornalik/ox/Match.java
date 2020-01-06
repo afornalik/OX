@@ -9,11 +9,11 @@ import java.util.List;
 
 class Match {
 
-    private UIDrawBoard uiDrawBoard;
+    private final UIDrawBoard uiDrawBoard;
     private final UI ui;
     private final Board board;
     private final List<Player> players;
-    private DefaultCheck defaultCheck;
+    private final DefaultCheck defaultCheck;
 
     Match(UI ui, Board board, List<Player> players) {
         this.ui = ui;
@@ -34,10 +34,7 @@ class Match {
     }
 
     private boolean checkIfLastMove(Player player) {
-        if (playerMove(player.getName() + " move : ", player.getSign())) {
-            return true;
-        }
-        return false;
+        return playerMove(player.getName() + " move : ", player.getSign());
     }
 
     private boolean playerMove(String s, Field field) {
@@ -45,7 +42,7 @@ class Match {
         ui.print(s);
         int index;
         if (board.isAllFieldTaken()) {
-            ui.print(uiDrawBoard.drawBoard());
+            ui.print("Match draw ");
             return true;
         }
         try {
