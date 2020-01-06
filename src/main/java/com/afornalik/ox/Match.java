@@ -1,14 +1,17 @@
 package com.afornalik.ox;
 
+
 import com.afornalik.ox.checker.DefaultCheck;
+
 import com.afornalik.ox.view.UI;
 import com.afornalik.ox.view.UIDrawBoard;
 import com.afornalik.ox.view.UIDrawBoardCell;
 
+
+
 import java.util.List;
 
 class Match {
-
     private final UIDrawBoard uiDrawBoard;
     private final UI ui;
     private final Board board;
@@ -38,10 +41,12 @@ class Match {
     }
 
     private boolean playerMove(String s, Field field) {
+
         ui.print(uiDrawBoard.drawBoard());
         ui.print(s);
         int index;
         if (board.isAllFieldTaken()) {
+
             ui.print("Match draw ");
             return true;
         }
@@ -49,6 +54,7 @@ class Match {
             index = receiveIndex();
             board.insertField(index - 1, field);
             if (defaultCheck.checkBoard(index - 1, field)) {
+
                 ui.print(uiDrawBoard.drawBoard());
                 ui.print("Winner is  : " + field);
                 return true;
@@ -60,11 +66,13 @@ class Match {
     }
 
 
+
     private int receiveIndex() throws OutOfBoardException {
         int index;
         Field checkStatus;
         do {
             index = ui.readNumber();
+
             checkStatus = board.receiveField(index - 1);
             if (checkStatus != Field.EMPTY) {
                 ui.print("\nField already taken choose different number ");

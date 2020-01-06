@@ -15,6 +15,7 @@ import static org.mockito.Mockito.verify;
 @Test
 public class TestGameBuilder {
 
+
     public void shouldCreateTwoPlayers() {
         //given
         Player PLAYER1 = new Player.PlayerBuilder(Field.O)
@@ -38,6 +39,7 @@ public class TestGameBuilder {
         UI ui = Mockito.mock(UI.class);
         GameBuilder headController = new GameBuilder(ui);
 
+
         //when
         headController.greetUser();
 
@@ -50,6 +52,7 @@ public class TestGameBuilder {
         UI uiOperations = Mockito.mock(UI.class);
         BDDMockito.when(uiOperations.readNumber()).thenReturn(3);
         GameBuilder boardController = new GameBuilder(uiOperations);
+
 
         //when
         Board result = boardController.createBoard();

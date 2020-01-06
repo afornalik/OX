@@ -1,16 +1,17 @@
 package com.afornalik.ox;
 
 import com.afornalik.ox.view.UI;
+
 import com.afornalik.ox.view.UIFromFile;
 
 import java.io.File;
+
 import java.util.List;
 import java.util.Scanner;
 
 class MainApp {
 
     public static void main(String[] args) {
-
         UI ui = getUi(args);
         GameBuilder gameBuilder = new GameBuilder(ui);
 
@@ -24,8 +25,6 @@ class MainApp {
             ((UIFromFile) ui).getWriter().close();
         }
     }
-
-
 
     private static UI getUi(String[] args) {
         String file = "test.txt";
@@ -46,5 +45,6 @@ class MainApp {
             ui = new UI(scanner);
         }
         return ui;
+
     }
 }

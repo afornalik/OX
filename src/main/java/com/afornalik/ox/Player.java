@@ -6,6 +6,7 @@ import java.util.Objects;
 class Player implements Comparable<Player> {
 
     private final String name;
+
     private final int score;
     private final Field sign;
     private final int sequence;
@@ -15,6 +16,7 @@ class Player implements Comparable<Player> {
         this.score = score;
         this.sign = sign;
         this.sequence = sequence;
+
     }
 
     int getScore() {
@@ -29,8 +31,10 @@ class Player implements Comparable<Player> {
         return sign;
     }
 
+
     int getSequence() {
         return sequence;
+
     }
 
     @Override
@@ -39,13 +43,17 @@ class Player implements Comparable<Player> {
                 "name is " + name +
                 " ,has score = " + score +
                 " ,use sign = " + sign +
+
                 " , sequence ? " + sequence +
+
                 "\n";
     }
 
     @Override
     public int compareTo(Player o) {
+
         return this.getSequence() - o.getSequence();
+
     }
 
 
@@ -68,7 +76,6 @@ class Player implements Comparable<Player> {
             this.score = score;
             return this;
         }
-
 
         PlayerBuilder sequence(int sequence) {
             this.sequence = sequence;
@@ -94,5 +101,6 @@ class Player implements Comparable<Player> {
     @Override
     public int hashCode() {
         return Objects.hash(name, score, sign, sequence);
+
     }
 }

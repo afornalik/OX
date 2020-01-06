@@ -8,26 +8,25 @@ class GameBuilder {
 
     private final UI ui;
 
-
     GameBuilder(UI ui) {
         this.ui = ui;
-
-    }
 
     List<Player> createTwoPlayer() {
 
         greetUser();
-
 
         ui.print("\nPlayer 1\n");
         Player player1 = createPlayer(Field.EMPTY,0);
         ui.print("\nPlayer 2\n");
         Player player2 = createPlayer(player1.getSign(), player1.getSequence());
 
+
         List<Player> players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
+
         players.sort(Comparator.comparing(Player::getSequence));
+
 
         return players;
     }
@@ -42,6 +41,7 @@ class GameBuilder {
         int playerSequence = 0;
         if (field == Field.EMPTY) {
             playerMark = createMark(field);
+
         } else {
             if (field == Field.O) {
                 playerMark = Field.X;
@@ -49,6 +49,7 @@ class GameBuilder {
                 playerMark = Field.O;
             }
         }
+
         if(sequence == 0) {
             playerSequence = whoMakeFirstMove(sequence);
         }
@@ -59,10 +60,10 @@ class GameBuilder {
                 .build();
     }
 
+
     private String createName() {
         ui.print("  name : ");
         return ui.read();
-
     }
 
     private int whoMakeFirstMove(int argsFirstMove) {
@@ -76,12 +77,14 @@ class GameBuilder {
     }
 
     private Field createMark(Field field) {
+
         Field playerField;
         do {
             ui.print("Select X or O mark : ");
             String tempSymbol;
             if (field != Field.EMPTY) {
                 tempSymbol = field.toString();
+
             } else {
                 tempSymbol = ui.read().toUpperCase();
             }
@@ -94,7 +97,7 @@ class GameBuilder {
         if (tempSymbol.equals(Field.X.toString()) || (tempSymbol.equals(Field.O.toString()))) {
             return Field.valueOf(tempSymbol);
         }
-        return Field.EMPTY;
+        return Field.EMPTY;ł
     }
 
     Board createBoard() {
@@ -106,4 +109,5 @@ class GameBuilder {
         conditionSize = ui.readNumber();
         return new Board(borderSize, conditionSize);
     }
+
 }

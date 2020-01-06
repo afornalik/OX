@@ -12,19 +12,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestMatch {
 
     private static final Board BOARD_THREE = new Board(3, 3);
+
     private final Player PLAYER_1 = new Player.PlayerBuilder(Field.O).name("name1").sequence(1).score(0).build();
     private final Player PLAYER_2 = new Player.PlayerBuilder(Field.X).name("name2").sequence(0).score(0).build();
+
 
     @Test()
     public void shouldAllFieldBeMarked() throws OutOfBoardException {
         //given
         UI uiConsole = Mockito.mock(UI.class);
+
         Mockito.when(uiConsole.readNumber()).thenReturn(1,2,3,5,4,7,6,9,8);
         List<Player> players = (List.of(PLAYER_2, PLAYER_1));
         Match match = new Match(uiConsole, new Board(3, 3), players);
 
         //when
         Board result = match.nextRound();
+
         fillBoard();
 
         //then
@@ -45,12 +49,14 @@ public class TestMatch {
         BOARD_THREE.insertField(0, Field.X);
         BOARD_THREE.insertField(1, Field.O);
         BOARD_THREE.insertField(2, Field.X);
+
         BOARD_THREE.insertField(3, Field.X);
         BOARD_THREE.insertField(4, Field.O);
         BOARD_THREE.insertField(5, Field.X);
         BOARD_THREE.insertField(6, Field.O);
         BOARD_THREE.insertField(7, Field.X);
         BOARD_THREE.insertField(8, Field.O);
+
     }
 
 }
