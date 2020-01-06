@@ -1,4 +1,9 @@
-package com.afornalik.ox;
+package com.afornalik.ox.checker;
+
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
+import com.afornalik.ox.checker.BoardChecker;
 
 class CheckVertically implements BoardChecker {
 

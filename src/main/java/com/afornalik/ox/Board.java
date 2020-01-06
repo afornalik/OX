@@ -76,7 +76,12 @@ public class Board {
         return (maxValue - boardFields.size() == 0);
     }
 
-    int getCondition() {
+    /**
+     * Method return length of condition which need to be fulfilled to win the match.
+     *
+     * @return int length of winning condition
+     */
+    public int getCondition() {
         return condition;
     }
 

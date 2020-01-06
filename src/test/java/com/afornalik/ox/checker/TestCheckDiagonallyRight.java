@@ -1,11 +1,16 @@
-package com.afornalik.ox;
+package com.afornalik.ox.checker;
 
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
+import com.afornalik.ox.checker.BoardChecker;
+import com.afornalik.ox.checker.CheckDiagonallyRight;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-@Test
-public class TestCheckDiagonallyLeft {
+public class TestCheckDiagonallyRight {
+
 
     private static final int BOARD_SIZE = 3;
     private static final int BOARD_SIZE_7 = 7;
@@ -15,14 +20,14 @@ public class TestCheckDiagonallyLeft {
     @DataProvider
     public Object[][] winningCombination5x5() {
         return new Object[][]{
-                {new int[]{0, 8, 16, 24, 32}, new Field[]{Field.O, Field.X}},
-                {new int[]{8, 16, 24, 32, 40}, new Field[]{Field.O, Field.X}},
-                {new int[]{16, 24, 32, 40, 48}, new Field[]{Field.O, Field.X}},
-                {new int[]{2, 10, 18, 26, 34}, new Field[]{Field.O, Field.X}},
-                {new int[]{9, 17, 25, 33, 41}, new Field[]{Field.O, Field.X}},
-                {new int[]{7, 15, 23, 31, 39}, new Field[]{Field.O, Field.X}},
-                {new int[]{15, 23, 31, 39, 47}, new Field[]{Field.O, Field.X}},
-                {new int[]{14, 22, 30, 38, 46}, new Field[]{Field.O, Field.X}},
+                {new int[]{4, 10, 16, 22, 28}, new Field[]{Field.O, Field.X}},
+                {new int[]{5, 11, 17, 23, 29}, new Field[]{Field.O, Field.X}},
+               {new int[]{11, 17, 23, 29, 35}, new Field[]{Field.O, Field.X}},
+                {new int[]{6, 12, 18, 24, 30}, new Field[]{Field.O, Field.X}},
+                {new int[]{12, 18, 24, 30, 36}, new Field[]{Field.O, Field.X}},
+                {new int[]{18, 24, 30, 36, 42}, new Field[]{Field.O, Field.X}},
+                {new int[]{13, 19, 25, 31, 37}, new Field[]{Field.O, Field.X}},
+                {new int[]{20, 26, 32, 38, 44}, new Field[]{Field.O, Field.X}},
         };
     }
 
@@ -30,15 +35,15 @@ public class TestCheckDiagonallyLeft {
     public void shouldBoardBeInWinState() throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
-        board.insertField(0, Field.O);
+        board.insertField(2, Field.O);
         board.insertField(4, Field.O);
-        board.insertField(8, Field.O);
-        BoardChecker boardChecker = new CheckDiagonallyLeft(board);
+        board.insertField(6, Field.O);
+        BoardChecker boardChecker = new CheckDiagonallyRight(board);
 
         //when
-        boolean result1 = boardChecker.check(0, Field.O);
+        boolean result1 = boardChecker.check(2, Field.O);
         boolean result2 = boardChecker.check(4, Field.O);
-        boolean result3 = boardChecker.check(8, Field.O);
+        boolean result3 = boardChecker.check(6, Field.O);
 
         //then
         Assertions.assertThat(result1).isTrue();
@@ -55,7 +60,7 @@ public class TestCheckDiagonallyLeft {
         board.insertField(index[2], fields[0]);
         board.insertField(index[3], fields[0]);
         board.insertField(index[4], fields[0]);
-        BoardChecker boardChecker = new CheckDiagonallyLeft(board);
+        BoardChecker boardChecker = new CheckDiagonallyRight(board);
 
         //when
         boolean result1 = boardChecker.check(index[0], fields[0]);
@@ -72,3 +77,5 @@ public class TestCheckDiagonallyLeft {
         Assertions.assertThat(result5).isTrue();
     }
 }
+
+

@@ -1,4 +1,8 @@
-package com.afornalik.ox;
+package com.afornalik.ox.checker;
+
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
 
 public class CheckDiagonallyLeft implements BoardChecker {
     private final Board board;
@@ -22,7 +26,7 @@ public class CheckDiagonallyLeft implements BoardChecker {
         Field tempStatusLeftUp = Field.EMPTY;
         boolean leftFlag = true;
         for (int range = 1; range < conditionLength; range++) {
-
+            leftFlag = isEndOfLine(leftFlag, (location + 1) - range);
             if (leftFlag && ((location - (range * board.getBorderSize())) - range) >= 0) {
                 try {
                     tempStatusLeftUp = board.receiveField((location - (range * board.getBorderSize())) - range);
@@ -42,6 +46,7 @@ public class CheckDiagonallyLeft implements BoardChecker {
         Field tempStatusRightDown = Field.EMPTY;
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {
+
             if (rightFlag && (location + ((range * board.getBorderSize()) + range) < (board.getBorderSize() * board.getBorderSize()))) {
                 try {
                     tempStatusRightDown = board.receiveField((location + (range * board.getBorderSize())) + range);
@@ -54,7 +59,21 @@ public class CheckDiagonallyLeft implements BoardChecker {
                     rightFlag = false;
                 }
             }
-
+            rightFlag = isEndOfLineRight(rightFlag,range);
         }
+    }
+
+    private boolean isEndOfLine(boolean rightFlag, int i) {
+        if ((i) % board.getBorderSize() == 0) {
+            rightFlag = false;
+        }
+        return rightFlag;
+    }
+
+    private boolean isEndOfLineRight(boolean rightFlag, int i) {
+        if ((i) % (board.getBorderSize()) == 0) {
+            rightFlag = false;
+        }
+        return rightFlag;
     }
 }

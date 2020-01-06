@@ -19,7 +19,7 @@ public class TestMatch {
     public void shouldAllFieldBeMarked() throws OutOfBoardException {
         //given
         UI uiConsole = Mockito.mock(UI.class);
-        Mockito.when(uiConsole.readNumber()).thenReturn(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        Mockito.when(uiConsole.readNumber()).thenReturn(1,2,3,5,4,7,6,9,8);
         List<Player> players = (List.of(PLAYER_2, PLAYER_1));
         Match match = new Match(uiConsole, new Board(3, 3), players, null);
 
@@ -45,12 +45,12 @@ public class TestMatch {
         BOARD_THREE.insertField(0, Field.X);
         BOARD_THREE.insertField(1, Field.O);
         BOARD_THREE.insertField(2, Field.X);
-        BOARD_THREE.insertField(3, Field.O);
-        BOARD_THREE.insertField(4, Field.X);
-        BOARD_THREE.insertField(5, Field.O);
-        BOARD_THREE.insertField(6, Field.X);
-        BOARD_THREE.insertField(7, Field.O);
-        BOARD_THREE.insertField(8, Field.X);
+        BOARD_THREE.insertField(3, Field.X);
+        BOARD_THREE.insertField(4, Field.O);
+        BOARD_THREE.insertField(5, Field.X);
+        BOARD_THREE.insertField(6, Field.O);
+        BOARD_THREE.insertField(7, Field.X);
+        BOARD_THREE.insertField(8, Field.O);
     }
 
 }

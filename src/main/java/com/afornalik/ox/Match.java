@@ -1,5 +1,6 @@
 package com.afornalik.ox;
 
+import com.afornalik.ox.checker.DefaultCheck;
 import com.afornalik.ox.view.UI;
 import com.afornalik.ox.view.UIDrawBoard;
 import com.afornalik.ox.view.UIDrawBoardCell;
@@ -14,13 +15,13 @@ class Match {
     private final Board board;
     private final List<Integer> argsIndex;
     private final List<Player> players;
-    private BoardChecker boardChecker;
+    private DefaultCheck defaultCheck;
 
     Match(UI ui, Board board, List<Player> players, List<Integer> argsIndex) {
         this.ui = ui;
         this.board = board;
         this.players = players;
-        boardChecker = new CheckHorizontally(board);
+        defaultCheck = new DefaultCheck(board);
         uiDrawBoard = new UIDrawBoardCell(board);
         if (argsIndex == null) {
             this.argsIndex = new ArrayList<>();
@@ -58,7 +59,7 @@ class Match {
         try {
             index = receiveIndex(index2);
             board.insertField(index - 1, field);
-            if (boardChecker.check(index - 1, field)) {
+            if (defaultCheck.checkBoard(index - 1, field)) {
                 ui.print(uiDrawBoard.drawBoard());
                 ui.print("Winner is  : " + field);
                 return true;

@@ -1,5 +1,10 @@
-package com.afornalik.ox;
+package com.afornalik.ox.checker;
 
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
+import com.afornalik.ox.checker.BoardChecker;
+import com.afornalik.ox.checker.CheckHorizontally;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

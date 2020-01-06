@@ -38,7 +38,7 @@ class GameBuilder {
         List<Player> players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
-        players.sort(Comparator.comparing(Player::getOrder));
+        players.sort(Comparator.comparing(Player::getOrder).reversed());
 
         return players;
     }
@@ -132,6 +132,7 @@ class GameBuilder {
         }
         return new Board(borderSize, conditionSize);
     }
+
 
 
 }
