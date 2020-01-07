@@ -66,7 +66,6 @@ public class CheckDiagonallyRight implements BoardChecker {
     }
 
 
-
     private boolean isEndOfLine(boolean rightFlag, int i) {
         if ((i) % board.getBorderSize() == 0) {
             rightFlag = false;
@@ -75,7 +74,7 @@ public class CheckDiagonallyRight implements BoardChecker {
     }
 
     private boolean isEndOfLineRight(boolean rightFlag, int i) {
-        if ((i+1) % (board.getBorderSize()) == 0) {
+        if ((i + 1) % (board.getBorderSize()) == 0) {
             rightFlag = false;
         }
         return rightFlag;

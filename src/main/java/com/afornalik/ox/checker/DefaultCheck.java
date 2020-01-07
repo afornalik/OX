@@ -18,6 +18,6 @@ public class DefaultCheck {
     }
 
     public boolean checkBoard(int location, Field field) {
-        return boardCheckers.stream().anyMatch(boardChecker -> boardChecker.check(location,field));
+        return boardCheckers.stream().anyMatch(boardChecker -> boardChecker.check(location, field));
     }
 }

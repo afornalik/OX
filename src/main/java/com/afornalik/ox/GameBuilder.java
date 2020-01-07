@@ -8,7 +8,6 @@ class GameBuilder {
 
     private final UI ui;
 
-
     GameBuilder(UI ui) {
         this.ui = ui;
 
@@ -17,7 +16,6 @@ class GameBuilder {
     List<Player> createTwoPlayer() {
 
         greetUser();
-
 
         ui.print("\nPlayer 1\n");
         Player player1 = createPlayer(Field.EMPTY,0);
