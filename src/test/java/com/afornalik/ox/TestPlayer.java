@@ -13,14 +13,14 @@ public class TestPlayer {
         Player player = new Player.PlayerBuilder(Field.O)
                 .name("player")
                 .score(0)
-                .first(true)
+                .sequence(0)
                 .build();
 
         //then
         assertThat(player.getName()).isEqualTo("player");
         assertThat(player.getScore()).isEqualTo(0);
         assertThat(player.getSign()).isEqualTo(Field.O);
-        assertThat(player.isFirst()).isEqualTo(true);
+        assertThat(player.getSequence()).isEqualTo(0);
     }
 
 }

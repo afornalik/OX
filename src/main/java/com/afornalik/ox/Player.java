@@ -1,17 +1,20 @@
 package com.afornalik.ox;
 
-class Player {
+
+import java.util.Objects;
+
+class Player implements Comparable<Player> {
 
     private final String name;
-    private int score;
+    private final int score;
     private final Field sign;
-    private final boolean first;
+    private final int sequence;
 
-    private Player(PlayerBuilder playerBuilder) {
-        this.name = playerBuilder.name;
-        this.score = playerBuilder.score;
-        this.sign = playerBuilder.sign;
-        this.first = playerBuilder.first;
+    private Player(String name, int score, Field sign, int sequence) {
+        this.name = name;
+        this.score = score;
+        this.sign = sign;
+        this.sequence = sequence;
     }
 
     int getScore() {
@@ -26,10 +29,9 @@ class Player {
         return sign;
     }
 
-    boolean isFirst() {
-        return first;
+    int getSequence() {
+        return sequence;
     }
-
 
     @Override
     public String toString() {
@@ -37,15 +39,21 @@ class Player {
                 "name is " + name +
                 " ,has score = " + score +
                 " ,use sign = " + sign +
-                " , first ? " + first +
+                " , sequence ? " + sequence +
                 "\n";
     }
+
+    @Override
+    public int compareTo(Player o) {
+        return this.getSequence() - o.getSequence();
+    }
+
 
     static class PlayerBuilder {
         private String name = "player";
         private int score = 0;
         private final Field sign;
-        private boolean first = true;
+        private int sequence;
 
         PlayerBuilder(Field sign) {
             this.sign = sign;
@@ -62,13 +70,29 @@ class Player {
         }
 
 
-        PlayerBuilder first(boolean first) {
-            this.first = first;
+        PlayerBuilder sequence(int sequence) {
+            this.sequence = sequence;
             return this;
         }
 
         Player build() {
-            return new Player(this);
+            return new Player(this.name, this.score, this.sign, this.sequence);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return score == player.score &&
+                sequence == player.sequence &&
+                Objects.equals(name, player.name) &&
+                sign == player.sign;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, score, sign, sequence);
     }
 }

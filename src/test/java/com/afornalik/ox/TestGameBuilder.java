@@ -1,56 +1,55 @@
 package com.afornalik.ox;
 
-import com.afornalik.ox.view.UISimple;
+import com.afornalik.ox.view.UI;
 import org.assertj.core.api.Assertions;
 import org.mockito.BDDMockito;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
 
-import java.util.HashMap;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @Test
-public class TestConfiguration {
-
-    private static final Player PLAYER1 = new Player.PlayerBuilder(Field.O)
-            .name("Kasia")
-            .score(0)
-            .first(true)
-            .build();
+public class TestGameBuilder {
 
     public void shouldCreateTwoPlayers() {
         //given
-        UISimple uiConsole = Mockito.mock(UISimple.class);
+        Player PLAYER1 = new Player.PlayerBuilder(Field.O)
+                .name("Kasia")
+                .score(0)
+                .sequence(0)
+                .build();
+        UI uiConsole = Mockito.mock(UI.class);
         Mockito.when(uiConsole.read()).thenReturn("Kasia", "o", "Kasia", "x", "1");
-        Configuration configuration = new Configuration(uiConsole, null);
+        GameBuilder gameBuilder = new GameBuilder(uiConsole);
 
         //when
-        PlayerContainer result = configuration.createTwoPlayer();
+        List<Player> result = gameBuilder.createTwoPlayer();
 
         //then
-        Assertions.assertThat(result.getPlayer(0)).isEqualTo(PLAYER1.toString());
+        Assertions.assertThat(result.get(0).toString()).isEqualTo(PLAYER1.toString());
     }
 
     public void shouldGreetUser() {
         //given
-        UISimple uiSimple = Mockito.mock(UISimple.class);
-        Configuration headController = new Configuration(uiSimple, null);
+        UI ui = Mockito.mock(UI.class);
+        GameBuilder headController = new GameBuilder(ui);
 
         //when
         headController.greetUser();
 
         //then
-        verify(uiSimple, times(1)).print(any());
+        verify(ui, times(1)).print(any());
     }
 
     public void shouldCreateBoard() {
         //given
-        UISimple uiOperations = Mockito.mock(UISimple.class);
+        UI uiOperations = Mockito.mock(UI.class);
         BDDMockito.when(uiOperations.readNumber()).thenReturn(3);
-        Configuration boardController = new Configuration(uiOperations, null);
+        GameBuilder boardController = new GameBuilder(uiOperations);
 
         //when
         Board result = boardController.createBoard();

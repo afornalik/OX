@@ -61,7 +61,7 @@ class UIDrawBoardSide implements UIDrawBoard {
             } else {
                 Field field = null;
                 try {
-                    field = board.receiveBoardField(index);
+                    field = board.receiveField(index);
                 } catch (OutOfBoardException e) {
                     //to do !
                 }

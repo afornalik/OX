@@ -30,7 +30,6 @@ public class Board {
         this.condition = Math.min(condition, borderSize);
     }
 
-
     /**
      * Method return board size.
      *
@@ -44,10 +43,10 @@ public class Board {
      * Method to insert appropriate value into board.
      *
      * @param indexOfField int This is index of field where value will be insert.
-     * @param field  Field This is enum value which determine what symbol will be inserted
+     * @param field        Field This is enum value which determine what symbol will be inserted
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      */
-    public void insertBoardField(int indexOfField, Field field) throws OutOfBoardException {
+    public void insertField(int indexOfField, Field field) throws OutOfBoardException {
         if (checkIndexRange(indexOfField))
             boardFields.put(indexOfField, field);
     }
@@ -59,7 +58,7 @@ public class Board {
      * @return Field This method return enum value corresponding to x or o.
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      */
-    public Field receiveBoardField(int indexOfField) throws OutOfBoardException {
+    public Field receiveField(int indexOfField) throws OutOfBoardException {
         if (checkIndexRange(indexOfField)) {
             if (boardFields.get(indexOfField) != null) {
                 return boardFields.get(indexOfField);
@@ -73,10 +72,15 @@ public class Board {
      *
      * @return int number of empty field.
      */
-    public boolean isAllFieldTaken() {
+    boolean isAllFieldTaken() {
         return (maxValue - boardFields.size() == 0);
     }
 
+    /**
+     * Method return length of condition which need to be fulfilled to win the match.
+     *
+     * @return int length of winning condition
+     */
     public int getCondition() {
         return condition;
     }

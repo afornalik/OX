@@ -21,7 +21,7 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE, 3);
 
         //when
-        Field result = board.receiveBoardField(3);
+        Field result = board.receiveField(3);
 
         //then
         assertThat(result).isEqualTo(Field.EMPTY);
@@ -34,7 +34,7 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE, 3);
 
         //when
-        Field result1 = board.receiveBoardField(-1);
+        Field result1 = board.receiveField(-1);
     }
 
     @Test(expectedExceptions = OutOfBoardException.class)
@@ -43,7 +43,7 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE, 3);
 
         //when
-        Field result1 = board.receiveBoardField(9);
+        Field result1 = board.receiveField(9);
     }
 
     public void shouldInsertMarkXIntoBoard() throws OutOfBoardException {
@@ -51,8 +51,8 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE, 3);
 
         //when
-        board.insertBoardField(INDEX_1, FIELD_STATUS_X);
-        Field result = board.receiveBoardField(INDEX_1);
+        board.insertField(INDEX_1, FIELD_STATUS_X);
+        Field result = board.receiveField(INDEX_1);
 
         //then
         assertThat(result).isEqualTo(FIELD_STATUS_X);
@@ -64,7 +64,7 @@ public class TestBoard {
         Board board = new Board(BOUND_THREE, 3);
 
         //when
-        board.insertBoardField(MINUS_INDEX, FIELD_STATUS_X);
+        board.insertField(MINUS_INDEX, FIELD_STATUS_X);
 
     }
 }

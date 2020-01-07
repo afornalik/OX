@@ -1,0 +1,20 @@
+* Project name : OX
+* Java version : 11
+* Maven version : 3.6.0
+
+
+== To run test
+
+* Create test file witch contains parameters separated with space :
+
+player1name mark(XorO) playerSequence(1or2) player2name boardSize boardCondition move1(first) move2(second) move3(first) move4(second) …
+
+e.g.:
+Wojtek x 2 Rysiek 3 3 1 5 2 3 7 4 6 8 9
+
+* Run jar file wit flag -t and specified file (default same folder)
+
+e.g.:
+java -jar OX-0.5.jar -t test.txt
+
+* Test will produce file result.txt

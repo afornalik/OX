@@ -1,5 +1,10 @@
-package com.afornalik.ox;
+package com.afornalik.ox.checker;
 
+import com.afornalik.ox.Board;
+import com.afornalik.ox.Field;
+import com.afornalik.ox.OutOfBoardException;
+import com.afornalik.ox.checker.BoardChecker;
+import com.afornalik.ox.checker.CheckHorizontally;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -50,7 +55,7 @@ public class TestCheckHorizontally {
     }
 
     @DataProvider
-    public Object[][] notWinningCombinationDifferent5x5() {
+    public Object[][] winningCombinationDifferent5x5() {
         return new Object[][]{
                 {new int[]{2, 3, 4, 5, 6}, new Field[]{Field.O, Field.X}},
                 {new int[]{7, 8, 9, 10, 11}, new Field[]{Field.O, Field.X}},
@@ -68,9 +73,9 @@ public class TestCheckHorizontally {
     public void shouldBoardBeInWinState(int[] index, Field field) throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
-        board.insertBoardField(index[0], field);
-        board.insertBoardField(index[1], field);
-        board.insertBoardField(index[2], field);
+        board.insertField(index[0], field);
+        board.insertField(index[1], field);
+        board.insertField(index[2], field);
         BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
@@ -88,9 +93,9 @@ public class TestCheckHorizontally {
     public void shouldBoardBeInNoWinState(int[] index, Field field) throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
-        board.insertBoardField(index[0], field);
-        board.insertBoardField(index[1], field);
-        board.insertBoardField(index[2], field);
+        board.insertField(index[0], field);
+        board.insertField(index[1], field);
+        board.insertField(index[2], field);
         BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
@@ -108,9 +113,9 @@ public class TestCheckHorizontally {
     public void shouldBoardBeInNoWinStateCaseTwo(int[] index, Field[] fields) throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE, CONDITION_LENGTH);
-        board.insertBoardField(index[0], fields[1]);
-        board.insertBoardField(index[1], fields[0]);
-        board.insertBoardField(index[2], fields[0]);
+        board.insertField(index[0], fields[1]);
+        board.insertField(index[1], fields[0]);
+        board.insertField(index[2], fields[0]);
         BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
@@ -130,15 +135,15 @@ public class TestCheckHorizontally {
         Assertions.assertThat(result6).isFalse();
     }
 
-    @Test(dataProvider = "notWinningCombinationDifferent5x5")
+    @Test(dataProvider = "winningCombinationDifferent5x5")
     public void shouldBoardBeInWinStateBoard7on7Condition5(int[] index, Field[] fields) throws OutOfBoardException {
         //given
         Board board = new Board(BOARD_SIZE_7, CONDITION_LENGTH_5);
-        board.insertBoardField(index[0], fields[0]);
-        board.insertBoardField(index[1], fields[0]);
-        board.insertBoardField(index[2], fields[0]);
-        board.insertBoardField(index[3], fields[0]);
-        board.insertBoardField(index[4], fields[0]);
+        board.insertField(index[0], fields[0]);
+        board.insertField(index[1], fields[0]);
+        board.insertField(index[2], fields[0]);
+        board.insertField(index[3], fields[0]);
+        board.insertField(index[4], fields[0]);
         BoardChecker boardChecker = new CheckHorizontally(board);
 
         //when
