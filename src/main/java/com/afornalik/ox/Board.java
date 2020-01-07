@@ -30,11 +30,6 @@ public class Board {
         this.condition = Math.min(condition, borderSize);
     }
 
-    /**
-     * Method return board size.
-     *
-     * @return int This method return board size
-     */
     public int getBorderSize() {
         return borderSize;
     }
@@ -86,7 +81,7 @@ public class Board {
     private boolean checkIndexRange(int indexOfField) throws OutOfBoardException {
         int minValue = 0;
         if (indexOfField < minValue || indexOfField > maxValue - 1) {
-            throw new OutOfBoardException("Out of board - min value is : " + (minValue + 1) + ", and max value is : " + maxValue);
+            throw new OutOfBoardException("Out of board - min value is : " + (minValue + 1) + ", and max value is : " + maxValue+ " tried : "+indexOfField+1);
         }
         return true;
     }

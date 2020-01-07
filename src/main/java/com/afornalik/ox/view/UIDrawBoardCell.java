@@ -3,6 +3,8 @@ package com.afornalik.ox.view;
 import com.afornalik.ox.Board;
 import com.afornalik.ox.Field;
 import com.afornalik.ox.OutOfBoardException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Formatter;
 
@@ -15,6 +17,7 @@ import java.util.Formatter;
 
 public class UIDrawBoardCell implements UIDrawBoard {
 
+    private Logger logger = LogManager.getLogger(UIDrawBoardCell.class);
     private final Board board;
     private final int boardSize;
 
@@ -48,6 +51,7 @@ public class UIDrawBoardCell implements UIDrawBoard {
             try {
                 field = board.receiveField(index);
             } catch (OutOfBoardException e) {
+                logger.error(e.getMessage() + " field : "+ field +" index : "+index);
                 return e.getMessage();
             }
             if (field != Field.EMPTY) {

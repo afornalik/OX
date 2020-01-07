@@ -15,11 +15,13 @@
         <maven.compiler.release>11</maven.compiler.release>
         <!--  dependencies -->
         <maven.checkstyle.version>3.1.0</maven.checkstyle.version>
+        <log4j.version>2.11.2</log4j.version>
         <testng.version>7.1.0</testng.version>
         <mockito.core.version>3.2.4</mockito.core.version>
         <assertj.core.version>3.14.0</assertj.core.version>
         <spotbugs.version>3.1.12</spotbugs.version>
         <maven.project.info.reports.version>3.0.0</maven.project.info.reports.version>
+        <maven.versions.version>2.7</maven.versions.version>
         <!--  plugins -->
         <jacoco.version>0.8.5</jacoco.version>
         <maven.compiler.version>3.8.0</maven.compiler.version>
@@ -28,6 +30,21 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>versions-maven-plugin</artifactId>
+            <version>${maven.versions.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
@@ -68,9 +85,37 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>3.1.12.2</version>
+                <dependencies>
+                    <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
+                    <dependency>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs</artifactId>
+                        <version>${spotbugs.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

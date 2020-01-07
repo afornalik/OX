@@ -33,17 +33,6 @@ public class TestGameBuilder {
         Assertions.assertThat(result.get(0).toString()).isEqualTo(PLAYER1.toString());
     }
 
-    public void shouldGreetUser() {
-        //given
-        UI ui = Mockito.mock(UI.class);
-        GameBuilder headController = new GameBuilder(ui);
-
-        //when
-        headController.greetUser();
-
-        //then
-        verify(ui, times(1)).print(any());
-    }
 
     public void shouldCreateBoard() {
         //given

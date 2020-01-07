@@ -4,6 +4,8 @@ import com.afornalik.ox.checker.DefaultCheck;
 import com.afornalik.ox.view.UI;
 import com.afornalik.ox.view.UIDrawBoard;
 import com.afornalik.ox.view.UIDrawBoardCell;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ class Match {
     private final Board board;
     private final List<Player> players;
     private final DefaultCheck defaultCheck;
+    private final Logger logger = LogManager.getLogger(Match.class);
 
     Match(UI ui, Board board, List<Player> players) {
         this.ui = ui;
@@ -40,7 +43,7 @@ class Match {
     private boolean playerMove(String s, Field field) {
         ui.print(uiDrawBoard.drawBoard());
         ui.print(s);
-        int index;
+        int index = 0;
         if (board.isAllFieldTaken()) {
             ui.print("Match draw ");
             return true;
@@ -54,6 +57,7 @@ class Match {
                 return true;
             }
         } catch (OutOfBoardException e) {
+            logger.error(e.getMessage());
             ui.print(e.getMessage());
         }
         return false;

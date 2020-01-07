@@ -1,21 +1,23 @@
 package com.afornalik.ox;
 
 import com.afornalik.ox.view.UI;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
 class GameBuilder {
 
+    private final Logger logger = LogManager.getLogger(GameBuilder.class);
     private final UI ui;
 
     GameBuilder(UI ui) {
         this.ui = ui;
-
     }
 
     List<Player> createTwoPlayer() {
 
-        greetUser();
+        ui.print("Welcome in game OX\n");
 
         ui.print("\nPlayer 1\n");
         Player player1 = createPlayer(Field.EMPTY,0);
@@ -28,10 +30,6 @@ class GameBuilder {
         players.sort(Comparator.comparing(Player::getSequence));
 
         return players;
-    }
-
-    void greetUser() {
-        ui.print("Welcome in game OX\n");
     }
 
     private Player createPlayer(Field field, int sequence) {
@@ -60,7 +58,6 @@ class GameBuilder {
     private String createName() {
         ui.print("  name : ");
         return ui.read();
-
     }
 
     private int whoMakeFirstMove(int argsFirstMove) {
@@ -96,12 +93,13 @@ class GameBuilder {
     }
 
     Board createBoard() {
-        ui.print("Select board size : ");
-        int borderSize;
-        borderSize = ui.readNumber();
-        ui.print("Select condition size : ");
+        return new Board(receiveSize("Select board size : "), receiveSize("Select condition size : "));
+    }
+
+    private int receiveSize(String s) {
+        ui.print(s);
         int conditionSize;
         conditionSize = ui.readNumber();
-        return new Board(borderSize, conditionSize);
+        return conditionSize;
     }
 }
