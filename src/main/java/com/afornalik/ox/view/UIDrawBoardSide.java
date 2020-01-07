@@ -26,7 +26,7 @@ class UIDrawBoardSide implements UIDrawBoard {
 
     UIDrawBoardSide(Board board) {
         this.board = board;
-        this.boardSize = (board.getBorderSize() * 2) + 1;
+        this.boardSize = board.getBorderSize() * 2 + 1;
     }
 
     /**
@@ -41,7 +41,7 @@ class UIDrawBoardSide implements UIDrawBoard {
         StringBuilder sb = new StringBuilder();
         sb.append("\n  ");
         for (int i = 1; i < boardSize; i++) {
-            if (i % 2 == 0) sb.append((i / 2));
+            if (i % 2 == 0) sb.append(i / 2);
             else if (i < 19) sb.append(" ");
         }
         sb.append("\n");
@@ -63,7 +63,7 @@ class UIDrawBoardSide implements UIDrawBoard {
                 try {
                     field = board.receiveField(index);
                 } catch (OutOfBoardException e) {
-                    //to do !
+                    e.getMessage();
                 }
                 index++;
                 sb.append(field);

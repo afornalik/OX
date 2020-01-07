@@ -89,7 +89,7 @@ class GameBuilder {
     }
 
     private Field checkSymbolIsXOrO(String tempSymbol) {
-        if (tempSymbol.equals(Field.X.toString()) || (tempSymbol.equals(Field.O.toString()))) {
+        if (tempSymbol.equals(Field.X.toString()) || tempSymbol.equals(Field.O.toString())) {
             return Field.valueOf(tempSymbol);
         }
         return Field.EMPTY;

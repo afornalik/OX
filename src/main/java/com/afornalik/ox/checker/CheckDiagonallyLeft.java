@@ -26,8 +26,8 @@ public class CheckDiagonallyLeft implements BoardChecker {
         Field tempStatusLeftUp = Field.EMPTY;
         boolean leftFlag = true;
         for (int range = 1; range < conditionLength; range++) {
-            leftFlag = isEndOfLine(leftFlag, (location + 1) - range);
-            if (leftFlag && ((location - (range * board.getBorderSize())) - range) >= 0) {
+            leftFlag = isEndOfLine(leftFlag, location + 1 - range);
+            if (leftFlag && (location - (range * board.getBorderSize()) - range) >= 0) {
                 try {
                     tempStatusLeftUp = board.receiveField((location - (range * board.getBorderSize())) - range);
                 } catch (OutOfBoardException e) {
@@ -47,9 +47,9 @@ public class CheckDiagonallyLeft implements BoardChecker {
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {
 
-            if (rightFlag && (location + ((range * board.getBorderSize()) + range) < (board.getBorderSize() * board.getBorderSize()))) {
+            if (rightFlag && location + (range * board.getBorderSize()) + range < (board.getBorderSize() * board.getBorderSize())) {
                 try {
-                    tempStatusRightDown = board.receiveField((location + (range * board.getBorderSize())) + range);
+                    tempStatusRightDown = board.receiveField(location + (range * board.getBorderSize())+ range);
                 } catch (OutOfBoardException e) {
                     rightFlag = false;
                 }

@@ -48,7 +48,7 @@ public class UIDrawBoardCell implements UIDrawBoard {
             try {
                 field = board.receiveField(index);
             } catch (OutOfBoardException e) {
-                //to do
+                return e.getMessage();
             }
             if (field != Field.EMPTY) {
                 formatter.format("%2s |", field.toString());

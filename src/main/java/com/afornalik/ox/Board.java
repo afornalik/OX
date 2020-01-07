@@ -59,10 +59,8 @@ public class Board {
      * @throws OutOfBoardException throw if index is lower than 0 and higher than maxValue ( borderSize * borderSize )
      */
     public Field receiveField(int indexOfField) throws OutOfBoardException {
-        if (checkIndexRange(indexOfField)) {
-            if (boardFields.get(indexOfField) != null) {
+        if (checkIndexRange(indexOfField) && boardFields.get(indexOfField) != null) {
                 return boardFields.get(indexOfField);
-            }
         }
         return Field.EMPTY;
     }
@@ -73,7 +71,7 @@ public class Board {
      * @return int number of empty field.
      */
     boolean isAllFieldTaken() {
-        return (maxValue - boardFields.size() == 0);
+        return maxValue - boardFields.size() == 0;
     }
 
     /**

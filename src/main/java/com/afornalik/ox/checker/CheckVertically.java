@@ -3,7 +3,6 @@ package com.afornalik.ox.checker;
 import com.afornalik.ox.Board;
 import com.afornalik.ox.Field;
 import com.afornalik.ox.OutOfBoardException;
-import com.afornalik.ox.checker.BoardChecker;
 
 class CheckVertically implements BoardChecker {
 
@@ -48,7 +47,7 @@ class CheckVertically implements BoardChecker {
         Field tempStatusDown = Field.EMPTY;
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {
-            if (rightFlag && (location + (range*board.getBorderSize()) < (board.getBorderSize() * board.getBorderSize()))) {
+            if (rightFlag && location + (range*board.getBorderSize()) < board.getBorderSize() * board.getBorderSize()) {
                 try {
                     tempStatusDown = board.receiveField(location + (range*board.getBorderSize()));
                 } catch (OutOfBoardException e) {

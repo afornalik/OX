@@ -28,7 +28,7 @@ public class CheckDiagonallyRight implements BoardChecker {
         boolean leftFlag = true;
         for (int range = 1; range < conditionLength; range++) {
             leftFlag = isEndOfLine(leftFlag, location - (range * board.getBorderSize()) + range);
-            if (leftFlag && ((location - (range * board.getBorderSize())) + range) > 0) {
+            if (leftFlag && location - (range * board.getBorderSize()) + range > 0) {
                 try {
                     tempStatusLeftDown = board.receiveField((location - (range * board.getBorderSize())) + range);
                 } catch (OutOfBoardException e) {
@@ -49,9 +49,9 @@ public class CheckDiagonallyRight implements BoardChecker {
         Field tempStatusRightUp = Field.EMPTY;
         boolean rightFlag = true;
         for (int range = 1; range < conditionLength; range++) {
-            if (rightFlag && (location + ((range * board.getBorderSize()) - range) < (board.getBorderSize() * board.getBorderSize()))) {
+            if (rightFlag && location + (range * board.getBorderSize()) - range < (board.getBorderSize() * board.getBorderSize())) {
                 try {
-                    tempStatusRightUp = board.receiveField((location + (range * board.getBorderSize())) - range);
+                    tempStatusRightUp = board.receiveField(location + (range * board.getBorderSize()) - range);
                 } catch (OutOfBoardException e) {
                     rightFlag = false;
                 }
@@ -61,7 +61,7 @@ public class CheckDiagonallyRight implements BoardChecker {
                     rightFlag = false;
                 }
             }
-            rightFlag = isEndOfLineRight(rightFlag, (location + (range * board.getBorderSize())) - range);
+            rightFlag = isEndOfLineRight(rightFlag, location + (range * board.getBorderSize()) - range);
         }
     }
 
