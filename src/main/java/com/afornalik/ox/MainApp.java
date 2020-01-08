@@ -4,47 +4,72 @@ import com.afornalik.ox.view.UI;
 import com.afornalik.ox.view.UIFromFile;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 
 class MainApp {
 
+    private static int counter;
+
     public static void main(String[] args) {
 
-        UI ui = getUi(args);
-        GameBuilder gameBuilder = new GameBuilder(ui);
+        args = new String[1];
+        args[0] = "-t";
 
-        List<Player> players = gameBuilder.createTwoPlayer();
-        Board board = gameBuilder.createBoard();
+        UI ui;
+        PrintWriter writer;
 
-        Match match = new Match(ui, board, players);
-        match.nextRound();
 
-        if (ui instanceof UIFromFile) {
-            ((UIFromFile) ui).getWriter().close();
-        }
+
+
+        int counter = 0;
+        do {
+            ui = getUi(args, counter);
+            GameBuilder gameBuilder = new GameBuilder(ui);
+
+            List<Player> players = gameBuilder.createTwoPlayer();
+            Board board = gameBuilder.createBoard();
+
+            Match match = new Match(ui, board, players);
+            match.nextRound();
+            counter++;
+            if (ui instanceof UIFromFile) {
+                try {
+                    ((UIFromFile) ui).getWriter().close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        } while (ui.getAllLines().size() > 0);
+
+
     }
 
 
-
-    private static UI getUi(String[] args) {
-        String file = "test.txt";
+    private static UI getUi(String[] args, int counter) {
+        String file = "horizontal.txt";
         Scanner scanner = new Scanner(System.in);
         UI ui;
-        if(args.length > 0 && args[0].equalsIgnoreCase("-t")){
-            if(args.length > 1 && args[1] != null) {
+        if (args.length > 0 && args[0].equalsIgnoreCase("-t")) {
+            if (args.length > 1 && args[1] != null) {
                 File fileToLoad = new File(args[1]);
                 if (fileToLoad.exists()) {
-                    ui = new UIFromFile(scanner, fileToLoad);
-                }else {
-                    ui = new UIFromFile(scanner, new File(file));
+                    ui = new UIFromFile(scanner, fileToLoad, counter);
+                } else {
+                    ui = new UIFromFile(scanner, new File(file), counter);
                 }
-            }else {
-                ui = new UIFromFile(scanner, new File(file));
+            } else {
+                ui = new UIFromFile(scanner, new File(file), counter);
             }
-        }else {
+
+        } else {
             ui = new UI(scanner);
         }
         return ui;
     }
 }
+
