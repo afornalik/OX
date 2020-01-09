@@ -14,7 +14,9 @@ class MainApp {
     public static void main(String[] args) {
 
         UI ui;
-
+        args = new String[2];
+        args[0] = "-t";
+        args[1] = "horizontal.txt";
         if (args.length > 0 && args[0].equalsIgnoreCase("-h")){
             Generator generator = new Generator();
             generator.horizontal();
