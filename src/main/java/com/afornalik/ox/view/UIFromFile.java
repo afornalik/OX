@@ -1,9 +1,6 @@
 package com.afornalik.ox.view;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.*;
 
@@ -13,7 +10,8 @@ import java.util.*;
 public class UIFromFile extends UI {
 
     private final List<String> allLines;
-    private PrintWriter writer;
+    private final int counter;
+    private BufferedWriter writer;
     private Iterator<String> stringIterator;
 
     /**
@@ -22,24 +20,30 @@ public class UIFromFile extends UI {
      * @param scanner object hold input from a user.
      * @param file    file holding arguments
      */
-    public UIFromFile(Scanner scanner, File file) {
+    public UIFromFile(Scanner scanner, File file,int counter) {
         super(scanner);
         allLines = readFile(file);
+        this.counter = counter;
         splitLine();
-        createFileToWrite();
-    }
-
-    private void createFileToWrite() {
         try {
-            writer = new PrintWriter("result.txt", StandardCharsets.UTF_8);
+            writer = new BufferedWriter(new FileWriter("result.txt",true));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+
+
+    public List<String> getAllLines() {
+        return allLines;
+    }
+
     private List<String> readFile(File file) {
         try {
-            return Files.readAllLines(file.toPath());
+            if (writer == null){
+                return Files.readAllLines(file.toPath());
+            }
         } catch (IOException e) {
             print("File '" + file.getName() + "' does not exist\n\n");
         }
@@ -47,6 +51,9 @@ public class UIFromFile extends UI {
     }
 
     private void splitLine() {
+        if (counter > 0) {
+            allLines.subList(0, counter).clear();
+        }
         List<String> lineArguments = Arrays.asList(allLines.get(0).split(" "));
         stringIterator = lineArguments.iterator();
     }
@@ -54,7 +61,7 @@ public class UIFromFile extends UI {
     /**
      * @return return PrintWriter generally to close this writer.
      */
-    public PrintWriter getWriter() {
+    public BufferedWriter getWriter() {
         return writer;
     }
 
@@ -67,7 +74,11 @@ public class UIFromFile extends UI {
     @Override
     public void print(String string) {
         super.print(string);
-        writer.print(string);
+        try {
+            writer.write(string);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

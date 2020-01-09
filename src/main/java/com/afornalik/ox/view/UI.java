@@ -1,5 +1,7 @@
 package com.afornalik.ox.view;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,6 +13,7 @@ import java.util.Scanner;
 
 public class UI {
 
+    private final List<String> allLines = Collections.emptyList();
     private final Scanner scanner;
 
     /**
@@ -60,5 +63,9 @@ public class UI {
      */
     public String read() {
         return scanner.next();
+    }
+
+    public List<String> getAllLines() {
+        return allLines;
     }
 }

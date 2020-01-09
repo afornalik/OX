@@ -5,6 +5,7 @@
 
 == To run test
 
+* To generate horizontal cases run: java -jar OX-0.5.jar -h
 * Create test file witch contains parameters separated with space :
 
 player1name mark(XorO) playerSequence(1or2) player2name boardSize boardCondition move1(first) move2(second) move3(first) move4(second) …
@@ -18,3 +19,4 @@ e.g.:
 java -jar OX-0.5.jar -t test.txt
 
 * Test will produce file result.txt
+
