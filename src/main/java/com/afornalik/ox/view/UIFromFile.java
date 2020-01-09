@@ -1,7 +1,6 @@
 package com.afornalik.ox.view;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
 
@@ -28,6 +27,7 @@ public class UIFromFile extends UI {
         splitLine();
         try {
             writer = new BufferedWriter(new FileWriter("result.txt",true));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,8 +51,8 @@ public class UIFromFile extends UI {
     }
 
     private void splitLine() {
-        for(int i = 0 ; i< counter; i++) {
-            allLines.remove(0);
+        if (counter > 0) {
+            allLines.subList(0, counter).clear();
         }
         List<String> lineArguments = Arrays.asList(allLines.get(0).split(" "));
         stringIterator = lineArguments.iterator();

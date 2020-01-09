@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
-public class Generator {
-    public static void main(String[] args) {
+class Generator {
+
 
 
        /* StringBuilder stringBuilder= new StringBuilder();
@@ -41,11 +41,7 @@ public class Generator {
 */
 
 
-        horizontal();
-
-    }
-
-    private static void horizontal() {
+     void horizontal() {
         PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter("horizontal.txt", StandardCharsets.UTF_8);
@@ -53,7 +49,7 @@ public class Generator {
             e.printStackTrace();
         }
         StringBuilder stringBuilder = new StringBuilder();
-        for(int board = 3; board <=30; board++) {
+        for (int board = 3; board <= 30; board++) {
             for (int condition = 3; condition <= board; condition++) {
                 int borderSize = board;
                 int index = 0;
@@ -61,7 +57,7 @@ public class Generator {
                 int borderMax = borderSize * borderSize;
                 for (int y = 0; y <= (borderSize - condition); y++) {
                     for (int j = 1; j <= borderSize; j++) {
-                        stringBuilder.append("gracz1 x 1 gracz2 "+borderSize+" "+condition);
+                        stringBuilder.append("gracz1 x 1 gracz2 " + borderSize + " " + condition);
                         for (int i = 0; i <= borderMax; i++) {
                             if (i % 2 == 0) {
                                 stringBuilder.append(" " + (y + index + counter));

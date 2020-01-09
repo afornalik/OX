@@ -31,7 +31,7 @@ class GameBuilder {
     }
 
     void greetUser() {
-        ui.print("Welcome in game OX\n");
+        ui.print("\nWelcome in game OX\n");
     }
 
     private Player createPlayer(Field field, int sequence) {
