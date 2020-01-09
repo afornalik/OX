@@ -25,7 +25,7 @@ class GameBuilder {
         List<Player> players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
-        players.sort(Comparator.comparing(Player::getSequence));
+        players.sort(Comparator.comparing(Player::getSequence).reversed());
 
         return players;
     }
