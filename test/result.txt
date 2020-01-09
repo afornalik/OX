@@ -3,19 +3,19 @@ Welcome in game OX
 
 Player 1
 
-  name : Wojtek
+  name : gracz1
 
 
 Select X or O mark : x
 
 
-Which player make first move ? (1/2) 2
+Which player make first move ? (1/2) 1
 
 
 
 Player 2
 
-  name : Ryszard
+  name : gracz2
 
 
 Select board size : 3
@@ -29,7 +29,7 @@ Select condition size : 3
 |  4|  5|  6|
 |  7|  8|  9|
 
-Ryszard move : 1
+gracz2 move : 1
 
 
 
@@ -37,68 +37,36 @@ Ryszard move : 1
 |  4|  5|  6|
 |  7|  8|  9|
 
-Wojtek move : 5
+gracz1 move : 3
 
 
 
-| O |  2|  3|
-|  4| X |  6|
+| O |  2| X |
+|  4|  5|  6|
 |  7|  8|  9|
 
-Ryszard move : 2
+gracz2 move : 5
 
 
 
-| O | O |  3|
-|  4| X |  6|
+| O |  2| X |
+|  4| O |  6|
 |  7|  8|  9|
 
-Wojtek move : 3
+gracz1 move : 6
 
 
 
-| O | O | X |
-|  4| X |  6|
+| O |  2| X |
+|  4| O | X |
 |  7|  8|  9|
 
-Ryszard move : 7
+gracz2 move : 9
 
 
 
-| O | O | X |
-|  4| X |  6|
-| O |  8|  9|
+| O |  2| X |
+|  4| O | X |
+|  7|  8| O |
 
-Wojtek move : 4
-
-
-
-| O | O | X |
-| X | X |  6|
-| O |  8|  9|
-
-Ryszard move : 6
-
-
-
-| O | O | X |
-| X | X | O |
-| O |  8|  9|
-
-Wojtek move : 8
-
-
-
-| O | O | X |
-| X | X | O |
-| O | X |  9|
-
-Ryszard move : 9
-
-
-
-| O | O | X |
-| X | X | O |
-| O | X | O |
-
-Wojtek move : Match draw 
+Winner is  : O

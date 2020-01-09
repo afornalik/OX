@@ -7,12 +7,147 @@ import java.nio.charset.StandardCharsets;
 class Generator {
 
     public static void main(String[] args) {
+      /*  PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter("draw.txt", StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int board = 3; board <= 3; board++) {
+            for (int condition = 3; condition <= board; condition++) {
+                int borderSize = board;
+                int index = 0;
+                int counter = 1;
+                int borderMax = borderSize * borderSize;
+                for (int y = 0; y <= (borderSize - condition); y++) {
+
+                    for (int j = 0; j <= borderSize-condition; j++) {
+                        stringBuilder.append("gracz1 x 1 gracz2 " + borderSize + " " + condition);
+                        int diagonal = 0;
+                        for (int i = 1; i <= borderMax; i++) {
+                            if(i > 2 * borderSize){
+                                if(i % 2 == 0) {
+                                    stringBuilder.append(" " + (i - 1));
+                                }else{
+                                    stringBuilder.append(" "+(i+1));
+                                }
+                            }else {
+                                stringBuilder.append(" "+i);
+                            }
+
+                        }
+                        counter = 0;
+                        index = index + 1;
+                        stringBuilder.append("\n");
+                       // printWriter.write(stringBuilder.toString());
+                        // stringBuilder = new StringBuilder();
+
+
+                    }
+                    index = 0;
+                    counter = counter + 1;
+                }
+            }
+        }
+        System.out.println(stringBuilder.toString());*/
+diagonallyLeft();
+diagonalright();
+vertically();
+horizontal();
+    }
 
 
 
 
+    private static void diagonalright() {
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter("diagonalright.txt", StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int board = 3; board <= 30; board++) {
+            for (int condition = 3; condition <= board; condition++) {
+                int borderSize = board;
+                int index = 0;
+                int counter = 0;
+                int borderMax = borderSize * borderSize;
+                for (int y = 0; y <= (borderSize - condition); y++) {
+                    for (int j = 0; j <= borderSize-condition; j++) {
+                        stringBuilder.append("gracz1 x 1 gracz2 " + borderSize + " " + condition);
+                        int diagonal = 0;
+                        for (int i = 0; i <= borderMax; i++) {
+                            if (i % 2 == 0) {
+                                stringBuilder.append(" " + (((y * borderSize) + (borderSize-index) + (counter * borderSize))-diagonal));
+                                counter++;
+                                diagonal++;
+                            } else {
+                                if (diagonal != borderSize) {
+                                    stringBuilder.append(" " + diagonal);
+                                } else {
+                                    stringBuilder.append(" " + (diagonal+1));
+                                }
+                            }
+                        }
+                        counter = 0;
+                        index = index + 1;
+                        stringBuilder.append("\n");
+                        printWriter.write(stringBuilder.toString());
+                        stringBuilder = new StringBuilder();
+                    }
+                    index = 0;
+                    counter = 0;
+                }
+            }
+        }
+        System.out.println(stringBuilder.toString());
+    }
 
-
+    private static void diagonallyLeft() {
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter("diagonalleft.txt", StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int board = 3; board <= 30; board++) {
+            for (int condition = 3; condition <= board; condition++) {
+                int borderSize = board;
+                int index = 1;
+                int counter = 0;
+                int borderMax = borderSize * borderSize;
+                for (int y = 0; y <= (borderSize - condition); y++) {
+                    for (int j = 0; j <= borderSize-condition; j++) {
+                        stringBuilder.append("gracz1 x 1 gracz2 " + borderSize + " " + condition);
+                        int diagonal = 0;
+                        for (int i = 0; i <= borderMax; i++) {
+                            if (i % 2 == 0) {
+                                stringBuilder.append(" " + (((y * borderSize) + index + (counter * borderSize))+diagonal));
+                                counter++;
+                                diagonal++;
+                            } else {
+                                if (index == borderSize) {
+                                    stringBuilder.append(" " + (1+((counter-1) * borderSize)));
+                                } else {
+                                    stringBuilder.append(" " + ((borderSize * counter)));
+                                }
+                            }
+                        }
+                        counter = 0;
+                        index = index + 1;
+                        stringBuilder.append("\n");
+                        printWriter.write(stringBuilder.toString());
+                        stringBuilder = new StringBuilder();
+                    }
+                    index = 1;
+                    counter = 0;
+                }
+            }
+        }
+        System.out.println(stringBuilder.toString());
     }
 
     private static void vertically() {
@@ -59,7 +194,7 @@ class Generator {
     }
 
 
-    void horizontal() {
+    static  void horizontal() {
         PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter("horizontal.txt", StandardCharsets.UTF_8);

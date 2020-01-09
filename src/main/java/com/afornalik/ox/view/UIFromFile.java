@@ -26,7 +26,7 @@ public class UIFromFile extends UI {
         this.counter = counter;
         splitLine();
         try {
-            writer = new BufferedWriter(new FileWriter("result.txt",true));
+            writer = new BufferedWriter(new FileWriter("horizontal.txt",true));
 
         } catch (IOException e) {
             e.printStackTrace();

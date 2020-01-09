@@ -20,7 +20,7 @@ class MainApp {
             generator.horizontal();
         }else {
 
-            File file = new File("result.txt");
+            File file = new File("horizontalresult.txt");
             try {
                 file.createNewFile();
             } catch (IOException e) {
