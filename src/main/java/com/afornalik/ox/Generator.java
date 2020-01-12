@@ -25,26 +25,50 @@ class Generator {
             stringBuilder.append("gracz1 x 1 gracz2 " + borderSize + " " + 3);
             int diagonal = 0;
             for (int i = 1; i <= borderMax; i++) {
-                if (i > 2 * borderSize && i<= 4*borderSize ||
-                        i > 6 * borderSize && i<= 8*borderSize ||
-                        i > 10 * borderSize && i<= 12*borderSize ||
-                        i > 14 * borderSize && i<= 16*borderSize ||
-                        i > 18 * borderSize && i<= 20*borderSize ||
-                        i > 22 * borderSize && i<= 24*borderSize ||
-                        i > 26 * borderSize && i<= 28*borderSize ) {
-                    if (i % 2 == 0) {
-                        stringBuilder.append(" " + (i - 1));
-                    } else {
-                        if (i == borderMax) {
-                            stringBuilder.append(" " + (i));
-                        } else {
-                            stringBuilder.append(" " + (i + 1));
-                        }
-                    }
-                } else {
-                    stringBuilder.append(" " + i);
-                }
+               if(board == 3 || board ==7 || board ==11 || board ==15 || board ==19 || board ==23 || board ==27 ){
+                   if (i > 1 * borderSize && i<= 3*borderSize ||
+                           i > 5 * borderSize && i<= 7*borderSize ||
+                           i > 9 * borderSize && i<= 11*borderSize ||
+                           i > 13 * borderSize && i<= 15*borderSize ||
+                           i > 17 * borderSize && i<= 19*borderSize ||
+                           i > 21 * borderSize && i<= 23*borderSize ||
+                           i > 25 * borderSize && i<= 27*borderSize  ||
+                           i > 29 * borderSize && i<= 31*borderSize ) {
+                       if (i % 2 != 0) {
+                           stringBuilder.append(" " + (i - 1));
+                       } else {
+                           if (i == borderMax) {
+                               stringBuilder.append(" " + (i));
+                           } else {
+                               stringBuilder.append(" " + (i + 1));
+                           }
+                       }
+                   } else {
+                       stringBuilder.append(" " + i);
+                   }
+               }else {
 
+
+                   if (i > 2 * borderSize && i <= 4 * borderSize ||
+                           i > 6 * borderSize && i <= 8 * borderSize ||
+                           i > 10 * borderSize && i <= 12 * borderSize ||
+                           i > 14 * borderSize && i <= 16 * borderSize ||
+                           i > 18 * borderSize && i <= 20 * borderSize ||
+                           i > 22 * borderSize && i <= 24 * borderSize ||
+                           i > 26 * borderSize && i <= 28 * borderSize) {
+                       if (i % 2 == 0) {
+                           stringBuilder.append(" " + (i - 1));
+                       } else {
+                           if (i == borderMax) {
+                               stringBuilder.append(" " + (i));
+                           } else {
+                               stringBuilder.append(" " + (i + 1));
+                           }
+                       }
+                   } else {
+                       stringBuilder.append(" " + i);
+                   }
+               }
 
                 counter = 0;
                 index = index + 1;
