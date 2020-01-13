@@ -15,6 +15,7 @@ class MainApp {
 
         UI ui;
 
+
         if (args.length > 0 && args[0].equalsIgnoreCase("-h")){
             Generator generator = new Generator();
             generator.horizontal();
@@ -29,8 +30,8 @@ class MainApp {
 
 
             int counter = 0;
+            ui = getUi(args, counter);
             do {
-                ui = getUi(args, counter);
                 GameBuilder gameBuilder = new GameBuilder(ui);
 
                 List<Player> players = gameBuilder.createTwoPlayer();
@@ -54,7 +55,7 @@ class MainApp {
 
 
     private static UI getUi(String[] args, int counter) {
-        String file = "horizontal.txt";
+        String file = "draw.txt";
         Scanner scanner = new Scanner(System.in);
         UI ui;
         if (args.length > 0 && args[0].equalsIgnoreCase("-t")) {

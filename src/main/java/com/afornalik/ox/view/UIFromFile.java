@@ -26,7 +26,7 @@ public class UIFromFile extends UI {
         this.counter = counter;
         splitLine();
         try {
-            writer = new BufferedWriter(new FileWriter("horizontal.txt",true));
+            writer = new BufferedWriter(new FileWriter("horizontalresult.txt",true));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,7 +52,8 @@ public class UIFromFile extends UI {
 
     private void splitLine() {
         if (counter > 0) {
-            allLines.subList(0, counter).clear();
+
+            allLines.remove(allLines.size()-1);
         }
         List<String> lineArguments = Arrays.asList(allLines.get(0).split(" "));
         stringIterator = lineArguments.iterator();
