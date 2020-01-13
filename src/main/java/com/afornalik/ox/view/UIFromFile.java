@@ -1,6 +1,9 @@
 package com.afornalik.ox.view;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.*;
 
@@ -20,28 +23,30 @@ public class UIFromFile extends UI {
      * @param scanner object hold input from a user.
      * @param file    file holding arguments
      */
-    public UIFromFile(Scanner scanner, File file,int counter) {
+    public UIFromFile(Scanner scanner, File file, int counter) {
         super(scanner);
         allLines = readFile(file);
         this.counter = counter;
         splitLine();
         try {
-            writer = new BufferedWriter(new FileWriter("horizontalresult.txt",true));
-
+            writer = new BufferedWriter(new FileWriter(counter + "drawresult.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-
-    public List<String> getAllLines() {
-        return allLines;
+    public boolean getAllLines() {
+        if (counter >= allLines.size()-1){
+            return false;
+        }else {
+            return true;
+        }
     }
 
     private List<String> readFile(File file) {
         try {
-            if (writer == null){
+            if (writer == null) {
                 return Files.readAllLines(file.toPath());
             }
         } catch (IOException e) {
@@ -51,12 +56,16 @@ public class UIFromFile extends UI {
     }
 
     private void splitLine() {
-        if (counter > 0) {
+        try {
+            writer = new BufferedWriter(new FileWriter(counter + "drawresult.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
 
-            allLines.remove(allLines.size()-1);
         }
-        List<String> lineArguments = Arrays.asList(allLines.get(0).split(" "));
-        stringIterator = lineArguments.iterator();
+        if(counter <  allLines.size()) {
+            List<String> lineArguments = Arrays.asList(allLines.get(counter).split(" "));
+            stringIterator = lineArguments.iterator();
+        }
     }
 
     /**

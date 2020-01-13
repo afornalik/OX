@@ -24,10 +24,10 @@ class Match {
     }
 
     Board nextRound() {
-        if (checkIfLastMove(players.get(0)) ) {
+        if (checkIfLastMove(players.get(0))) {
             return board;
         }
-        if (checkIfLastMove(players.get(1)) ) {
+        if (checkIfLastMove(players.get(1))) {
             return board;
         }
         return nextRound();

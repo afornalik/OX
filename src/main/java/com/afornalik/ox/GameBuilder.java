@@ -2,7 +2,9 @@ package com.afornalik.ox;
 
 import com.afornalik.ox.view.UI;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 class GameBuilder {
 
@@ -18,16 +20,16 @@ class GameBuilder {
         greetUser();
 
         ui.print("\nPlayer 1\n");
-        Player player1 = createPlayer(Field.EMPTY,0);
+        Player player1 = createPlayer(Field.EMPTY, 0);
         ui.print("\nPlayer 2\n");
         Player player2 = createPlayer(player1.getSign(), player1.getSequence());
 
         List<Player> players = new ArrayList<>();
         players.add(player1);
         players.add(player2);
-        if(player1.getSequence()==1) {
+        if (player1.getSequence() == 1) {
             players.sort(Comparator.comparing(Player::getSequence).reversed());
-        }else {
+        } else {
             players.sort(Comparator.comparing(Player::getSequence));
 
         }
@@ -52,7 +54,7 @@ class GameBuilder {
                 playerMark = Field.O;
             }
         }
-        if(sequence == 0) {
+        if (sequence == 0) {
             playerSequence = whoMakeFirstMove(sequence);
         }
         return new Player.PlayerBuilder(playerMark)

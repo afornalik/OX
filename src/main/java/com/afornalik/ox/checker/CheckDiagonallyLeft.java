@@ -15,7 +15,7 @@ public class CheckDiagonallyLeft implements BoardChecker {
     }
 
     @Override
-    public boolean check(int location, Field field)  {
+    public boolean check(int location, Field field) {
         tempLength = 1;
         checkTempLengthLeftUp(location, field);
         checkTempLengthRightDown(location, field);
@@ -59,7 +59,7 @@ public class CheckDiagonallyLeft implements BoardChecker {
                     rightFlag = false;
                 }
             }
-            rightFlag = isEndOfLineRight(rightFlag,range);
+            rightFlag = isEndOfLineRight(rightFlag, range);
         }
     }
 

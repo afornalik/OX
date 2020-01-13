@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
 class Generator {
+
     public static void main(String[] args) {
         PrintWriter printWriter = null;
         try {
@@ -14,60 +15,65 @@ class Generator {
         }
         StringBuilder stringBuilder = new StringBuilder();
         for (int board = 3; board <= 40; board++) {
-
             int borderSize = board;
             int index = 0;
             int counter = 1;
             int borderMax = borderSize * borderSize;
-
-
-            stringBuilder.append("gracz1 x 1 gracz2 " + borderSize + " " + 4);
-            int diagonal = 0;
+            stringBuilder.append("gracz1 x 1 gracz2 ").append(borderSize).append(" ").append(3);
             for (int i = 1; i <= borderMax; i++) {
-                if (i > 2 * borderSize && i<= 4*borderSize ||
-                        i > 6 * borderSize && i<= 8*borderSize ||
-                        i > 10 * borderSize && i<= 12*borderSize ||
-                        i > 14 * borderSize && i<= 16*borderSize ||
-                        i > 18 * borderSize && i<= 20*borderSize ||
-                        i > 22 * borderSize && i<= 24*borderSize ||
-                        i > 26 * borderSize && i<= 28*borderSize ) {
-                    if (i % 2 == 0) {
-                        stringBuilder.append(" " + (i - 1));
-                    } else {
-                        if (i == borderMax) {
-                            stringBuilder.append(" " + (i));
+                if (board == 3 || board == 7 || board == 11 || board == 15 || board == 19 || board == 23 || board == 27) {
+                    if (i > borderSize && i <= 3 * borderSize ||
+                            i > 5 * borderSize && i <= 7 * borderSize ||
+                            i > 9 * borderSize && i <= 11 * borderSize ||
+                            i > 13 * borderSize && i <= 15 * borderSize ||
+                            i > 17 * borderSize && i <= 19 * borderSize ||
+                            i > 21 * borderSize && i <= 23 * borderSize ||
+                            i > 25 * borderSize && i <= 27 * borderSize ||
+                            i > 29 * borderSize && i <= 31 * borderSize) {
+                        if (i % 2 != 0) {
+                            stringBuilder.append(" " + (i - 1));
                         } else {
-                            stringBuilder.append(" " + (i + 1));
+                            if (i == borderMax) {
+                                stringBuilder.append(" " + (i));
+                            } else {
+                                stringBuilder.append(" " + (i + 1));
+                            }
                         }
+                    } else {
+                        stringBuilder.append(" " + i);
                     }
                 } else {
-                    stringBuilder.append(" " + i);
+                    if (i > 2 * borderSize && i <= 4 * borderSize ||
+                            i > 6 * borderSize && i <= 8 * borderSize ||
+                            i > 10 * borderSize && i <= 12 * borderSize ||
+                            i > 14 * borderSize && i <= 16 * borderSize ||
+                            i > 18 * borderSize && i <= 20 * borderSize ||
+                            i > 22 * borderSize && i <= 24 * borderSize ||
+                            i > 26 * borderSize && i <= 28 * borderSize) {
+                        if (i % 2 == 0) {
+                            stringBuilder.append(" " + (i - 1));
+                        } else {
+                            if (i == borderMax) {
+                                stringBuilder.append(" " + (i));
+                            } else {
+                                stringBuilder.append(" " + (i + 1));
+                            }
+                        }
+                    } else {
+                        stringBuilder.append(" " + i);
+                    }
                 }
-
-
                 counter = 0;
-                index = index + 1;
-
                 printWriter.write(stringBuilder.toString());
                 stringBuilder = new StringBuilder();
-
-
-                index = 0;
-                counter = counter + 1;
-
             }
             stringBuilder.append("\n");
         }
         System.out.println(stringBuilder.toString());
-
-
     }
 
 
-
-
-
-    private static void diagonalright() {
+    static void diagonalRight() {
         PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter("diagonalright.txt", StandardCharsets.UTF_8);
@@ -82,19 +88,19 @@ class Generator {
                 int counter = 0;
                 int borderMax = borderSize * borderSize;
                 for (int y = 0; y <= (borderSize - condition); y++) {
-                    for (int j = 0; j <= borderSize-condition; j++) {
+                    for (int j = 0; j <= borderSize - condition; j++) {
                         stringBuilder.append("gracz1 x 1 gracz2 " + borderSize + " " + condition);
                         int diagonal = 0;
                         for (int i = 0; i <= borderMax; i++) {
                             if (i % 2 == 0) {
-                                stringBuilder.append(" " + (((y * borderSize) + (borderSize-index) + (counter * borderSize))-diagonal));
+                                stringBuilder.append(" " + (((y * borderSize) + (borderSize - index) + (counter * borderSize)) - diagonal));
                                 counter++;
                                 diagonal++;
                             } else {
                                 if (diagonal != borderSize) {
                                     stringBuilder.append(" " + diagonal);
                                 } else {
-                                    stringBuilder.append(" " + (diagonal+1));
+                                    stringBuilder.append(" " + (diagonal + 1));
                                 }
                             }
                         }
@@ -112,7 +118,7 @@ class Generator {
         System.out.println(stringBuilder.toString());
     }
 
-    private static void diagonallyLeft() {
+    static void diagonalLeft() {
         PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter("diagonalleft.txt", StandardCharsets.UTF_8);
@@ -127,17 +133,17 @@ class Generator {
                 int counter = 0;
                 int borderMax = borderSize * borderSize;
                 for (int y = 0; y <= (borderSize - condition); y++) {
-                    for (int j = 0; j <= borderSize-condition; j++) {
+                    for (int j = 0; j <= borderSize - condition; j++) {
                         stringBuilder.append("gracz1 x 1 gracz2 " + borderSize + " " + condition);
                         int diagonal = 0;
                         for (int i = 0; i <= borderMax; i++) {
                             if (i % 2 == 0) {
-                                stringBuilder.append(" " + (((y * borderSize) + index + (counter * borderSize))+diagonal));
+                                stringBuilder.append(" " + (((y * borderSize) + index + (counter * borderSize)) + diagonal));
                                 counter++;
                                 diagonal++;
                             } else {
                                 if (index == borderSize) {
-                                    stringBuilder.append(" " + (1+((counter-1) * borderSize)));
+                                    stringBuilder.append(" " + (1 + ((counter - 1) * borderSize)));
                                 } else {
                                     stringBuilder.append(" " + ((borderSize * counter)));
                                 }
@@ -157,7 +163,7 @@ class Generator {
         System.out.println(stringBuilder.toString());
     }
 
-    private static void vertically() {
+    static void vertical() {
         PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter("vertical.txt", StandardCharsets.UTF_8);
@@ -180,7 +186,7 @@ class Generator {
                                 counter++;
                             } else {
                                 if (index == borderSize) {
-                                    stringBuilder.append(" " + (1+((counter-1) * borderSize)));
+                                    stringBuilder.append(" " + (1 + ((counter - 1) * borderSize)));
                                 } else {
                                     stringBuilder.append(" " + ((borderSize * counter)));
                                 }
@@ -189,8 +195,8 @@ class Generator {
                         counter = 0;
                         index = index + 1;
                         stringBuilder.append("\n");
-                         printWriter.write(stringBuilder.toString());
-                         stringBuilder = new StringBuilder();
+                        printWriter.write(stringBuilder.toString());
+                        stringBuilder = new StringBuilder();
                     }
                     index = 1;
                     counter = 0;
@@ -201,7 +207,7 @@ class Generator {
     }
 
 
-    static  void horizontal() {
+    static void horizontal() {
         PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter("horizontal.txt", StandardCharsets.UTF_8);
@@ -223,8 +229,8 @@ class Generator {
                                 stringBuilder.append(" " + (y + index + counter));
                                 counter++;
                             } else {
-                                if (y + index + counter >= ((borderMax - condition) + counter - 3)) {
-                                    stringBuilder.append(" " + (counter));
+                                if (y + index + counter > borderSize) {
+                                    stringBuilder.append(" " + (counter - 1));
                                 } else {
                                     stringBuilder.append(" " + ((borderMax - condition) + counter - 1));
                                 }
@@ -242,7 +248,10 @@ class Generator {
             }
         }
         System.out.println(stringBuilder.toString());
+        printWriter.close();
     }
+
+
 
   /*  int index =0;
     int counter = 1;

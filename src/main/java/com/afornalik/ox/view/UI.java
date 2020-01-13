@@ -65,7 +65,7 @@ public class UI {
         return scanner.next();
     }
 
-    public List<String> getAllLines() {
-        return allLines;
+    public boolean getAllLines() {
+        return false;
     }
 }
